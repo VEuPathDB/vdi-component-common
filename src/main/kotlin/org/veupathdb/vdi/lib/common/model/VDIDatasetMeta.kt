@@ -1,7 +1,7 @@
 package org.veupathdb.vdi.lib.common.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.veupathdb.vdi.common.field.ProjectID
+import org.veupathdb.vdi.lib.common.field.ProjectID
 
 data class VDIDatasetMeta(
   @JsonProperty(JsonKey.Type)
