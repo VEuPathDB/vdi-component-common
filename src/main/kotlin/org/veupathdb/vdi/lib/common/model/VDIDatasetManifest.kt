@@ -1,4 +1,4 @@
-package org.veupathdb.vdi.common.model
+package org.veupathdb.vdi.lib.common.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
 

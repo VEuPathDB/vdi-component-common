@@ -1,4 +1,4 @@
-package org.veupathdb.vdi.common.async
+package org.veupathdb.vdi.lib.common.async
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.BufferOverflow

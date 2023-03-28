@@ -1,4 +1,4 @@
-package org.veupathdb.vdi.common.fs
+package org.veupathdb.vdi.lib.common.fs
 
 import java.nio.file.Path
 import java.util.UUID

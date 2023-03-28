@@ -1,4 +1,4 @@
-package org.veupathdb.vdi.common
+package org.veupathdb.vdi.lib.common
 
 /**
  * VDI Service Module

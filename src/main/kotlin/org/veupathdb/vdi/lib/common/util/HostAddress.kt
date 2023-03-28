@@ -1,4 +1,4 @@
-package org.veupathdb.vdi.common.util
+package org.veupathdb.vdi.lib.common.util
 
 data class HostAddress(
   val host: String,

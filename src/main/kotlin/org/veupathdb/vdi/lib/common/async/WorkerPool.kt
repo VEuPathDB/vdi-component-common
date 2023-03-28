@@ -1,4 +1,4 @@
-package org.veupathdb.vdi.common.async
+package org.veupathdb.vdi.lib.common.async
 
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.CoroutineScope
@@ -12,7 +12,7 @@ class WorkerPool(
 ) {
   private val shutdown = ShutdownSignal()
   private val queue    = Channel<Job>(jobQueueSize)
-  private val count    = CountdownLatch(workerCount)
+  private val count    = org.veupathdb.vdi.lib.common.async.CountdownLatch(workerCount)
 
   fun start(ctx: CoroutineScope) {
     repeat(workerCount) {

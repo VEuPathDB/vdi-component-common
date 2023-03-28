@@ -1,4 +1,4 @@
-package org.veupathdb.vdi.common.field
+package org.veupathdb.vdi.lib.common.field
 
 sealed interface SecretString {
   fun unwrap(): String
