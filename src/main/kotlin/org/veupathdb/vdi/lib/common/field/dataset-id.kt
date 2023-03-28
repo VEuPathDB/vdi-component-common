@@ -1,5 +1,11 @@
 package org.veupathdb.vdi.lib.common.field
 
+import com.fasterxml.jackson.core.JsonParseException
+import com.fasterxml.jackson.core.JsonParser
+import com.fasterxml.jackson.databind.DeserializationContext
+import com.fasterxml.jackson.databind.JsonDeserializer
+import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import java.util.UUID
 
 /**
@@ -10,6 +16,7 @@ import java.util.UUID
  * @since 1.0.0
  * @author Elizabeth Paige Harper - https://github.com/foxcapades
  */
+@JsonDeserialize(using = DatasetIDDeserializer::class)
 sealed interface DatasetID
 
 @JvmInline
@@ -68,6 +75,17 @@ fun DatasetID(): DatasetID {
     throw IllegalStateException("what the literal heck (a uuid contained fewer than 32 hex digits???)")
 
   return DatasetID(String(buffer))
+}
+
+class DatasetIDDeserializer : JsonDeserializer<DatasetID>() {
+  override fun deserialize(p: JsonParser, ctxt: DeserializationContext): DatasetID {
+    val node = p.codec.readTree<JsonNode>(p)
+    if (node.isTextual) {
+      return DatasetID(node.textValue())
+    } else {
+      throw JsonParseException(p, "expected node to be textual, it was not")
+    }
+  }
 }
 
 private fun Char.isHex() = when {
