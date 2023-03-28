@@ -11,6 +11,16 @@ fun UserID(value: Long): UserID {
   return LongUserID(value)
 }
 
+fun UserID(value: String): UserID {
+  val long = try {
+    value.toLong()
+  } catch (e: Throwable) {
+    throw IllegalArgumentException("User ID values must be integral numbers.")
+  }
+
+  return UserID(long)
+}
+
 @JvmInline
 private value class LongUserID(val value: Long): UserID {
   override fun toLong() = value
