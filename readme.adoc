@@ -2,11 +2,11 @@
 :source-highlighter: highlightjs
 :gh-group: VEuPathDB
 :gh-name: vdi-component-common
-:lib-package: org.veupathdb.vdi.lib.json
+:lib-package: org.veupathdb.vdi.lib.common
 :lib-group: org.veupathdb.vdi
-:lib-name: vdi-component-json
-:lib-version: 1.0.0
-:lib-feature: 1.0.0
+:lib-name: vdi-component-common
+:lib-version: 1.0.0-SNAPSHOT
+:lib-feature: 1.0.0-SNAPSHOT
 
 image:https://img.shields.io/github/license/{gh-group}/{gh-name}[title="License"]
 image:https://img.shields.io/badge/docs-dokka-ff69b4[link="https://{gh-group}.github.io/{gh-name}/dokka/{lib-feature}/{lib-name}/{lib-package}/index.html"]
