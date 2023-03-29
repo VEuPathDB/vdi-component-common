@@ -88,6 +88,9 @@ class DatasetIDDeserializer : JsonDeserializer<DatasetID>() {
   }
 }
 
+fun String.toDatasetID() = DatasetID(this)
+fun String.toDatasetIDOrNull() = try { DatasetID(this) } catch (e: Throwable) { null }
+
 private fun Char.isHex() = when {
   this <= '9' -> this >= '0'
   this <= 'F' -> this >= 'A'

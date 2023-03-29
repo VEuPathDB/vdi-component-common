@@ -29,6 +29,12 @@ fun UserID(value: String): UserID {
   return UserID(long)
 }
 
+fun Long.toUserIDOrNull() = UserID(this)
+fun Long.toUserID() = try { UserID(this) } catch (e: Throwable) { null }
+
+fun String.toUserID() = UserID(this)
+fun String.toUserIDOrNull() = try { UserID(this) } catch (e: Throwable) { null }
+
 @JvmInline
 private value class LongUserID(val value: Long): UserID {
   override fun toLong() = value
