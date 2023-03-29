@@ -129,6 +129,7 @@ $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey///PointingToDeclaration/
 $dokka.location:org.veupathdb.vdi.lib.common.field////PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.field//DatasetID/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-dataset-i-d.html
 $dokka.location:org.veupathdb.vdi.lib.common.field//DatasetID/#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-dataset-i-d.html
+$dokka.location:org.veupathdb.vdi.lib.common.field//SecretString/#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-secret-string.html
 $dokka.location:org.veupathdb.vdi.lib.common.field//UserID/#kotlin.Long/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-user-i-d.html
 $dokka.location:org.veupathdb.vdi.lib.common.field//UserID/#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-user-i-d.html
 $dokka.location:org.veupathdb.vdi.lib.common.field/DatasetID///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-dataset-i-d/index.html

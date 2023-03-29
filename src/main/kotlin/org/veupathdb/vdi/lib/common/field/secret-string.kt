@@ -30,7 +30,7 @@ sealed interface SecretString {
  *
  * @param secret Value to wrap.
  *
- * @return A new [SecretString] instance wrapping the given 
+ * @return A new [SecretString] instance wrapping the given
  */
 fun SecretString(secret: String): SecretString = SecretStringImpl(secret)
 
