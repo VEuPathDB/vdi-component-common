@@ -132,6 +132,12 @@ $dokka.location:org.veupathdb.vdi.lib.common.field//DatasetID/#kotlin.String/Poi
 $dokka.location:org.veupathdb.vdi.lib.common.field//SecretString/#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-secret-string.html
 $dokka.location:org.veupathdb.vdi.lib.common.field//UserID/#kotlin.Long/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-user-i-d.html
 $dokka.location:org.veupathdb.vdi.lib.common.field//UserID/#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-user-i-d.html
+$dokka.location:org.veupathdb.vdi.lib.common.field//toDatasetID/kotlin.String#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/to-dataset-i-d.html
+$dokka.location:org.veupathdb.vdi.lib.common.field//toDatasetIDOrNull/kotlin.String#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/to-dataset-i-d-or-null.html
+$dokka.location:org.veupathdb.vdi.lib.common.field//toUserID/kotlin.Long#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/to-user-i-d.html
+$dokka.location:org.veupathdb.vdi.lib.common.field//toUserID/kotlin.String#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/to-user-i-d.html
+$dokka.location:org.veupathdb.vdi.lib.common.field//toUserIDOrNull/kotlin.Long#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/to-user-i-d-or-null.html
+$dokka.location:org.veupathdb.vdi.lib.common.field//toUserIDOrNull/kotlin.String#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/to-user-i-d-or-null.html
 $dokka.location:org.veupathdb.vdi.lib.common.field/DatasetID///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-dataset-i-d/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.field/DatasetIDDeserializer///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-dataset-i-d-deserializer/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.field/DatasetIDDeserializer/DatasetIDDeserializer/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-dataset-i-d-deserializer/-dataset-i-d-deserializer.html
