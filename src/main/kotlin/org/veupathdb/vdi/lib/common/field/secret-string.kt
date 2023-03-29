@@ -7,10 +7,32 @@ import com.fasterxml.jackson.databind.JsonDeserializer
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 
+/**
+ * Secret String
+ *
+ * Wraps a string value that should be protected from accidentally printing to
+ * logs or leaked through use of [toString].
+ *
+ * @since 1.0.0
+ * @author Elizabeth Paige Harper - https://github.com/foxcapades
+ */
 @JsonDeserialize(using = SecretStringDeserializer::class)
 sealed interface SecretString {
+
+  /**
+   * Unwraps the secret string value from this [SecretString] instance.
+   */
   fun unwrap(): String
 }
+
+/**
+ * Wraps the given string in a new [SecretString] instance.
+ *
+ * @param secret Value to wrap.
+ *
+ * @return A new [SecretString] instance wrapping the given 
+ */
+fun SecretString(secret: String): SecretString = SecretStringImpl(secret)
 
 @JvmInline
 private value class SecretStringImpl(private val value: String) : SecretString {
