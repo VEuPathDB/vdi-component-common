@@ -164,6 +164,7 @@ $dokka.location:org.veupathdb.vdi.lib.common.fs/TempFiles/makeTempFile/#/Pointin
 $dokka.location:org.veupathdb.vdi.lib.common.fs/TempFiles/makeTempPath/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.fs/-temp-files/make-temp-path.html
 $dokka.location:org.veupathdb.vdi.lib.common.fs/TempFiles/withTempDirectory/#kotlin.Function1[java.nio.file.Path,TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.fs/-temp-files/with-temp-directory.html
 $dokka.location:org.veupathdb.vdi.lib.common.fs/TempFiles/withTempFile/#kotlin.Function1[java.nio.file.Path,TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.fs/-temp-files/with-temp-file.html
+$dokka.location:org.veupathdb.vdi.lib.common.fs/TempFiles/withTempPath/#kotlin.Function1[java.nio.file.Path,TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.fs/-temp-files/with-temp-path.html
 $dokka.location:org.veupathdb.vdi.lib.common.fs/Tmp///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.fs/-tmp/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.fs/Tmp/newPath/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.fs/-tmp/new-path.html
 $dokka.location:org.veupathdb.vdi.lib.common.fs/Tmp/withPath/#kotlin.Function1[java.nio.file.Path,kotlin.Unit]/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.fs/-tmp/with-path.html
