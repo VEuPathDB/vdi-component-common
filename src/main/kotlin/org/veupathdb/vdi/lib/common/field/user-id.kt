@@ -29,8 +29,8 @@ fun UserID(value: String): UserID {
   return UserID(long)
 }
 
-fun Long.toUserIDOrNull() = UserID(this)
-fun Long.toUserID() = try { UserID(this) } catch (e: Throwable) { null }
+fun Long.toUserID() = UserID(this)
+fun Long.toUserIDOrNull() = try { UserID(this) } catch (e: Throwable) { null }
 
 fun String.toUserID() = UserID(this)
 fun String.toUserIDOrNull() = try { UserID(this) } catch (e: Throwable) { null }
