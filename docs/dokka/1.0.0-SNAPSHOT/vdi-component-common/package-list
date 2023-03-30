@@ -24,6 +24,10 @@ $dokka.location:org.veupathdb.vdi.lib.common.async/WorkerPool/start/#kotlinx.cor
 $dokka.location:org.veupathdb.vdi.lib.common.async/WorkerPool/stop/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.async/-worker-pool/stop.html
 $dokka.location:org.veupathdb.vdi.lib.common.async/WorkerPool/submit/#org.veupathdb.vdi.lib.common.async.Job/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.async/-worker-pool/submit.html
 $dokka.location:org.veupathdb.vdi.lib.common.async/WorkerPool/workerCount/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.async/-worker-pool/worker-count.html
+$dokka.location:org.veupathdb.vdi.lib.common.compression////PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.compression/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.compression/Tar///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.compression/-tar/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.compression/Tar/compressWithGZip/#java.nio.file.Path#kotlin.collections.Collection[java.nio.file.Path]/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.compression/-tar/compress-with-g-zip.html
+$dokka.location:org.veupathdb.vdi.lib.common.compression/Tar/decompressWithGZip/#java.nio.file.Path#java.nio.file.Path/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.compression/-tar/decompress-with-g-zip.html
 $dokka.location:org.veupathdb.vdi.lib.common.env////PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//optBool/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-bool.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//optDuration/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-duration.html
@@ -240,6 +244,7 @@ $dokka.location:org.veupathdb.vdi.lib.common/VDIServiceModule/start/#/PointingTo
 $dokka.location:org.veupathdb.vdi.lib.common/VDIServiceModule/stop/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common/-v-d-i-service-module/stop.html
 org.veupathdb.vdi.lib.common
 org.veupathdb.vdi.lib.common.async
+org.veupathdb.vdi.lib.common.compression
 org.veupathdb.vdi.lib.common.env
 org.veupathdb.vdi.lib.common.field
 org.veupathdb.vdi.lib.common.fs

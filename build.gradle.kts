@@ -20,6 +20,10 @@ repositories {
   }
 }
 
+configurations.all {
+  resolutionStrategy.cacheChangingModulesFor(0, "seconds")
+}
+
 dependencies {
   implementation("org.veupathdb.vdi:vdi-component-json:1.0.0")
 
