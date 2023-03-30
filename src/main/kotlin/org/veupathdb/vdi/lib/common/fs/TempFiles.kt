@@ -32,4 +32,19 @@ object TempFiles {
     file.deleteIfExists()
     return out
   }
+
+  @OptIn(ExperimentalPathApi::class)
+  inline fun <T> withTempPath(fn: (path: Path) -> T): T {
+    val path = makeTempPath()
+    val out  = fn(path)
+
+    if (path.exists()) {
+      if (path.isDirectory())
+        path.deleteRecursively()
+      else
+        path.deleteIfExists()
+    }
+
+    return out
+  }
 }
