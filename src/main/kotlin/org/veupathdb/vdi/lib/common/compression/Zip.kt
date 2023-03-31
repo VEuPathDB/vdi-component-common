@@ -103,5 +103,34 @@ object Zip {
 
     return unzipped
   }
+
+  /**
+   * Returns a sequence of entry names for the entries in the target zip file.
+   *
+   * @param zip Path to the zip file whose entries should be listed.
+   *
+   * @return A sequence of zip entry names.  An entry name will be the path to
+   * the file or folder in the zip directory.
+   */
+  fun zipEntryNames(zip: Path): Sequence<String> = sequence {
+    if (!zip.exists())
+      throw IllegalStateException("cannot scan non-existent zip file $this")
+
+    if (!zip.isRegularFile())
+      throw IllegalStateException("cannot scan non-regular zip file $this")
+
+    if (!zip.isReadable())
+      throw IllegalStateException("cannot scan unreadable zip file $this")
+
+    zip.inputStream().use { rawInput ->
+      val stream = ZipInputStream(rawInput)
+      var entry: ZipEntry? = stream.nextEntry
+
+      while (entry != null) {
+        yield(entry.name)
+        entry = stream.nextEntry
+      }
+    }
+  }
 }
 
