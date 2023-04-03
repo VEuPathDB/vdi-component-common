@@ -255,6 +255,7 @@ $dokka.location:org.veupathdb.vdi.lib.common.util/HostAddress/host/#/PointingToD
 $dokka.location:org.veupathdb.vdi.lib.common.util/HostAddress/port/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.util/-host-address/port.html
 $dokka.location:org.veupathdb.vdi.lib.common.util/HostAddress/toString/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.util/-host-address/to-string.html
 $dokka.location:org.veupathdb.vdi.lib.common////PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common/index.html
+$dokka.location:org.veupathdb.vdi.lib.common//OriginTimestamp/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common/-origin-timestamp.html
 $dokka.location:org.veupathdb.vdi.lib.common/VDIServiceModule///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common/-v-d-i-service-module/index.html
 $dokka.location:org.veupathdb.vdi.lib.common/VDIServiceModule/start/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common/-v-d-i-service-module/start.html
 $dokka.location:org.veupathdb.vdi.lib.common/VDIServiceModule/stop/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common/-v-d-i-service-module/stop.html
