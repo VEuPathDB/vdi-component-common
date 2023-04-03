@@ -5,5 +5,5 @@ import java.time.*
 /**
  * Project Origin Timestamp
  */
-val OriginTimestamp
+inline val OriginTimestamp
   get() = ZonedDateTime.of(LocalDate.of(2022, Month.JULY, 1), LocalTime.MIN, ZoneId.systemDefault()).toOffsetDateTime()
