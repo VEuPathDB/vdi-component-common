@@ -1,5 +1,8 @@
 package org.veupathdb.vdi.lib.common.compression
 
+import org.veupathdb.vdi.lib.common.io.UncloseableInputStream
+import java.io.FileNotFoundException
+import java.io.InputStream
 import java.nio.file.Path
 import java.nio.file.StandardOpenOption
 import java.util.zip.ZipEntry
@@ -105,6 +108,36 @@ object Zip {
   }
 
   /**
+   * Returns a sequence of [ZipEntry] instances paired with an [InputStream]
+   * that may be used to stream out the contents of the zip entry itself.
+   *
+   * @param zip Path to the zip file whose entries should be sequenced.
+   *
+   * @return A sequence of [ZipEntry] and [InputStream] instances contained in
+   * the target zip file.
+   */
+  fun zipEntries(zip: Path): Sequence<Pair<ZipEntry, InputStream>> = sequence {
+    if (!zip.exists())
+      throw FileNotFoundException("cannot open non-existent zip file $zip")
+
+    if (zip.isDirectory())
+      throw IllegalStateException("cannot open target zip file $zip as it is a directory")
+
+    if (!zip.isReadable())
+      throw IllegalStateException("cannot open unreadable zip file $zip")
+
+    zip.inputStream().use { raw ->
+      val stream = ZipInputStream(raw)
+      var entry  = stream.nextEntry
+
+      while (entry != null) {
+        yield(entry to UncloseableInputStream(stream))
+        entry = stream.nextEntry
+      }
+    }
+  }
+
+  /**
    * Returns a sequence of entry names for the entries in the target zip file.
    *
    * @param zip Path to the zip file whose entries should be listed.
@@ -112,25 +145,8 @@ object Zip {
    * @return A sequence of zip entry names.  An entry name will be the path to
    * the file or folder in the zip directory.
    */
-  fun zipEntryNames(zip: Path): Sequence<String> = sequence {
-    if (!zip.exists())
-      throw IllegalStateException("cannot scan non-existent zip file $this")
-
-    if (!zip.isRegularFile())
-      throw IllegalStateException("cannot scan non-regular zip file $this")
-
-    if (!zip.isReadable())
-      throw IllegalStateException("cannot scan unreadable zip file $this")
-
-    zip.inputStream().use { rawInput ->
-      val stream = ZipInputStream(rawInput)
-      var entry: ZipEntry? = stream.nextEntry
-
-      while (entry != null) {
-        yield(entry.name)
-        entry = stream.nextEntry
-      }
-    }
-  }
+  fun zipEntryNames(zip: Path): Sequence<String> =
+    zipEntries(zip)
+      .map { (it, _) -> it.name }
 }
 
