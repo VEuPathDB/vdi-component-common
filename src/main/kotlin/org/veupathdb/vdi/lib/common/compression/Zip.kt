@@ -64,43 +64,23 @@ object Zip {
     if (!into.isDirectory())
       throw IllegalStateException("cannot unzip $this into non-directory path $into")
 
-    if (!exists())
-      throw IllegalStateException("cannot unzip non-existent file $this")
-
-    if (!isRegularFile())
-      throw IllegalStateException("cannot unzip non-regular-file $this")
-
-    if (!isReadable())
-      throw IllegalStateException("cannot unzip unreadable file $this")
-
     if (into.listDirectoryEntries().isNotEmpty())
       throw IllegalStateException("refusing to unzip $this into non-empty directory $into")
 
     val unzipped = ArrayList<Path>(2)
 
-    inputStream().use { rawInput ->
-      val archiveInput = ZipInputStream(rawInput)
+    zipEntries(this).forEach { (entry, zipStream) ->
+      val target = into.resolve(entry.name)
 
-      var entry: ZipEntry?
+      if (entry.isDirectory) {
+        target.createDirectories()
+      } else {
+        if (target.parent != into)
+          target.parent.createDirectories()
 
-      while (true) {
-        entry = archiveInput.nextEntry
+        target.outputStream().use { outStream -> zipStream.transferTo(outStream) }
 
-        if (entry == null)
-          break
-
-        val target = into.resolve(entry.name)
-
-        if (entry.isDirectory) {
-          target.createDirectories()
-        } else {
-          if (target.parent != into)
-            target.parent.createDirectories()
-
-          target.outputStream().use { outStream -> archiveInput.transferTo(outStream) }
-
-          unzipped.add(target)
-        }
+        unzipped.add(target)
       }
     }
 
@@ -136,17 +116,4 @@ object Zip {
       }
     }
   }
-
-  /**
-   * Returns a sequence of entry names for the entries in the target zip file.
-   *
-   * @param zip Path to the zip file whose entries should be listed.
-   *
-   * @return A sequence of zip entry names.  An entry name will be the path to
-   * the file or folder in the zip directory.
-   */
-  fun zipEntryNames(zip: Path): Sequence<String> =
-    zipEntries(zip)
-      .map { (it, _) -> it.name }
 }
-
