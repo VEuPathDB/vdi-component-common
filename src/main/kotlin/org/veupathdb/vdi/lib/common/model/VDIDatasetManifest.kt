@@ -1,16 +1,22 @@
 package org.veupathdb.vdi.lib.common.model
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonGetter
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 
-data class VDIDatasetManifest(
-  @JsonProperty(JsonKey.InputFiles)
-  var inputFiles: Collection<String>,
+@JsonDeserialize(`as` = VDIDatasetManifestImpl::class)
+interface VDIDatasetManifest {
+  @get:JsonGetter(JsonKey.InputFiles)
+  @set:JsonSetter(JsonKey.InputFiles)
+  var inputFiles: Collection<String>
 
-  @JsonProperty(JsonKey.DataFiles)
+  @get:JsonGetter(JsonKey.DataFiles)
+  @set:JsonSetter(JsonKey.DataFiles)
   var dataFiles: Collection<String>
-) {
+
   object JsonKey {
     const val InputFiles = "inputFiles"
     const val DataFiles  = "dataFiles"
   }
 }
+
