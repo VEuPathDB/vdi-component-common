@@ -1,30 +1,41 @@
 package org.veupathdb.vdi.lib.common.model
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonGetter
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import org.veupathdb.vdi.lib.common.field.ProjectID
+import org.veupathdb.vdi.lib.common.field.UserID
 
-data class VDIDatasetMeta(
-  @JsonProperty(JsonKey.Type)
-  var type: VDIDatasetType,
+@JsonDeserialize(`as` = VDIDatasetMetaImpl::class)
+interface VDIDatasetMeta {
+  @get:JsonGetter(JsonKey.Type)
+  @set:JsonSetter(JsonKey.Type)
+  var type: VDIDatasetType
 
-  @JsonProperty(JsonKey.Projects)
-  var projects: Set<ProjectID>,
+  @get:JsonGetter(JsonKey.Projects)
+  @set:JsonSetter(JsonKey.Projects)
+  var projects: Set<ProjectID>
 
-  @JsonProperty(JsonKey.Owner)
-  var owner: String,
+  @get:JsonGetter(JsonKey.Owner)
+  @set:JsonSetter(JsonKey.Owner)
+  var owner: UserID
 
-  @JsonProperty(JsonKey.Name)
-  var name: String,
+  @get:JsonGetter(JsonKey.Name)
+  @set:JsonSetter(JsonKey.Name)
+  var name: String
 
-  @JsonProperty(JsonKey.Summary)
-  var summary: String?,
+  @get:JsonGetter(JsonKey.Summary)
+  @set:JsonSetter(JsonKey.Summary)
+  var summary: String?
 
-  @JsonProperty(JsonKey.Description)
-  var description: String?,
+  @get:JsonGetter(JsonKey.Description)
+  @set:JsonSetter(JsonKey.Description)
+  var description: String?
 
-  @JsonProperty(JsonKey.Dependencies)
-  var dependencies: Collection<VDIDatasetDependency>,
-) {
+  @get:JsonGetter(JsonKey.Dependencies)
+  @set:JsonSetter(JsonKey.Dependencies)
+  var dependencies: Collection<VDIDatasetDependency>
+
   object JsonKey {
     const val Dependencies = "dependencies"
     const val Description  = "description"
@@ -35,3 +46,4 @@ data class VDIDatasetMeta(
     const val Type         = "type"
   }
 }
+
