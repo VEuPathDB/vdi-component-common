@@ -70,6 +70,29 @@ fun Environment.reqHostAddresses(key: String): List<HostAddress> =
     ?: throwAbsent(key)
 
 /**
+ * Requires that a target environment variable is set to a [HostAddress] value.
+ *
+ * `HostAddress` values are encoded as a string pair in the following format:
+ * ```
+ * host:port
+ * ```
+ *
+ * In this format, the port value must be a valid `uint16` value.
+ *
+ * @param key Key of the target environment variable to require.
+ *
+ * @return The parsed [HostAddress] value.
+ *
+ * @throws IllegalStateException If the environment variable is blank, absent,
+ * or could not be parsed as a `HostAddress` value.
+ *
+ * @throws NumberFormatException If the host address port value is not a valid
+ * `uint16` value.
+ */
+fun Environment.reqHostAddress(key: String): HostAddress =
+  require(key).splitToPair(key).let { HostAddress(it.first, it.second.toUShort()) }
+
+/**
  * Retrieves an optional target environment variable or `null` if the target
  * variable is blank or absent.
  *
