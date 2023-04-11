@@ -43,6 +43,7 @@ $dokka.location:org.veupathdb.vdi.lib.common.env//optDuration/kotlin.collections
 $dokka.location:org.veupathdb.vdi.lib.common.env//optInt/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-int.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//optLong/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-long.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//optMap/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-map.html
+$dokka.location:org.veupathdb.vdi.lib.common.env//optUInt/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-u-int.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//optional/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/optional.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//reqHostAddress/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/req-host-address.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//reqHostAddresses/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/req-host-addresses.html
@@ -57,6 +58,8 @@ $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Port/#/PointingT
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Username/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/-username.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handler///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handler/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handler/HostAddress/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handler/-host-address.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.ImportTriggerHandler///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-import-trigger-handler/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.ImportTriggerHandler/WorkerPoolSize/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-import-trigger-handler/-worker-pool-size.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Kafka.Consumer///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-kafka/-consumer/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Kafka.Consumer/AutoCommitInterval/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-kafka/-consumer/-auto-commit-interval.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Kafka.Consumer/AutoOffsetReset/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-kafka/-consumer/-auto-offset-reset.html
