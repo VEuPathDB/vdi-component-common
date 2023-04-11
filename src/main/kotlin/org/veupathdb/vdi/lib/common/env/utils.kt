@@ -105,21 +105,7 @@ fun Environment.reqHostAddress(key: String): HostAddress =
  * or could not be parsed as a `UShort` value.
  */
 fun Environment.reqUShort(key: String): UShort =
-  require(key)
-    .let { raw ->
-      try {
-        raw.toInt()
-          .let {
-            if (it < 0)
-              throw NumberFormatException()
-            if (it > UShort.MAX_VALUE.toInt())
-              throw NumberFormatException()
-            it.toUShort()
-          }
-      } catch (e: Throwable) {
-        throw IllegalStateException("environment variable $key could not be parsed as a uint16 value", e)
-      }
-    }
+  optUShort(key) ?: throwAbsent(key)
 
 /**
  * Requires that the target environment variable is set to a [Boolean] value.
@@ -209,6 +195,62 @@ fun Environment.optInt(key: String) =
     optional(key)?.toInt()
   } catch (e: Throwable) {
     throw IllegalStateException("environment variable $key could not be parsed as an int32 value")
+  }
+
+/**
+ * Retrieves an optional target `uint8` environment variable or `null` if the
+ * target variable is blank or absent.
+ *
+ * @param key Key of the target environment variable to look up.
+ *
+ * @return The parsed `uint8` value from the environment or `null` if the
+ * variable was blank or absent.
+ *
+ * @throws IllegalStateException If the target environment variable could not be
+ * parsed as an `uint8` value.
+ */
+fun Environment.optUByte(key: String) =
+  try {
+    optional(key)
+      ?.toShort()
+      ?.let {
+        if (it < 0)
+          throw NumberFormatException()
+        if (it > UByte.MAX_VALUE.toShort())
+          throw NumberFormatException()
+
+        it.toUByte()
+      }
+  } catch (e: Throwable) {
+    throw IllegalStateException("environment variable $key could not be parsed as a uint32 value")
+  }
+
+/**
+ * Retrieves an optional target `uint16` environment variable or `null` if the
+ * target variable is blank or absent.
+ *
+ * @param key Key of the target environment variable to look up.
+ *
+ * @return The parsed `uint16` value from the environment or `null` if the
+ * variable was blank or absent.
+ *
+ * @throws IllegalStateException If the target environment variable could not be
+ * parsed as an `uint16` value.
+ */
+fun Environment.optUShort(key: String) =
+  try {
+    optional(key)
+      ?.toInt()
+      ?.let {
+        if (it < 0)
+          throw NumberFormatException()
+        if (it > UShort.MAX_VALUE.toInt())
+          throw NumberFormatException()
+
+        it.toUShort()
+      }
+  } catch (e: Throwable) {
+    throw IllegalStateException("environment variable $key could not be parsed as a uint32 value")
   }
 
 /**
