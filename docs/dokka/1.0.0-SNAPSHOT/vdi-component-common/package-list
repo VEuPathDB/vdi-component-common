@@ -55,6 +55,8 @@ $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Password/#/Point
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/PoolSize/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/-pool-size.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Port/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/-port.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Username/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/-username.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handler///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handler/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handler/HostAddress/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handler/-host-address.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Kafka.Consumer///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-kafka/-consumer/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Kafka.Consumer/AutoCommitInterval/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-kafka/-consumer/-auto-commit-interval.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Kafka.Consumer/AutoOffsetReset/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-kafka/-consumer/-auto-offset-reset.html
