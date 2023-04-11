@@ -8,6 +8,10 @@ package org.veupathdb.vdi.lib.common.env
  */
 object EnvKey {
 
+  object ImportTriggerHandler {
+    const val WorkerPoolSize = "IMPORT_HANDLER_WORKER_POOL_SIZE"
+  }
+
   object Handler {
     const val HostAddress = "HANDLER_HOST"
   }

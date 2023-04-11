@@ -1,6 +1,8 @@
 package org.veupathdb.vdi.lib.common.env
 
 import org.veupathdb.vdi.lib.common.util.HostAddress
+import java.lang.NumberFormatException
+import kotlin.NumberFormatException
 import kotlin.time.Duration
 
 typealias Environment = Map<String, String>
@@ -155,7 +157,35 @@ fun Environment.optInt(key: String) =
   try {
     optional(key)?.toInt()
   } catch (e: Throwable) {
-    throw IllegalStateException("environment variable $key could not be parsed as an int value")
+    throw IllegalStateException("environment variable $key could not be parsed as an int32 value")
+  }
+
+/**
+ * Retrieves an optional target `uint32` environment variable or `null` if the
+ * target variable is blank or absent.
+ *
+ * @param key Key of the target environment variable to look up.
+ *
+ * @return The parsed `uint32` value from the environment or `null` if the
+ * variable was blank or absent.
+ *
+ * @throws IllegalStateException If the target environment variable could not be
+ * parsed as an `uint32` value.
+ */
+fun Environment.optUInt(key: String) =
+  try {
+    optional(key)
+      ?.toLong()
+      ?.let {
+        if (it < 0)
+          throw NumberFormatException()
+        if (it > UInt.MAX_VALUE.toLong())
+          throw NumberFormatException()
+
+        it.toUInt()
+      }
+  } catch (e: Throwable) {
+    throw IllegalStateException("environment variable $key could not be parsed as a uint32 value")
   }
 
 /**
