@@ -1,8 +1,6 @@
 package org.veupathdb.vdi.lib.common.env
 
 import org.veupathdb.vdi.lib.common.util.HostAddress
-import java.lang.NumberFormatException
-import kotlin.NumberFormatException
 import kotlin.time.Duration
 
 typealias Environment = Map<String, String>
