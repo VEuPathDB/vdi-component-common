@@ -95,6 +95,33 @@ fun Environment.reqHostAddress(key: String): HostAddress =
     .let { HostAddress(it.first, it.second.toUShort()) }
 
 /**
+ * Requires that a target environment variable is set to a [UShort] value.
+ *
+ * @param key Key of the target environment variable to require.
+ *
+ * @return The parsed [UShort] value.
+ *
+ * @throws IllegalStateException If the environment variable is blank, absent,
+ * or could not be parsed as a `UShort` value.
+ */
+fun Environment.reqUShort(key: String): UShort =
+  require(key)
+    .let { raw ->
+      try {
+        raw.toInt()
+          .let {
+            if (it < 0)
+              throw NumberFormatException()
+            if (it > UShort.MAX_VALUE.toInt())
+              throw NumberFormatException()
+            it.toUShort()
+          }
+      } catch (e: Throwable) {
+        throw IllegalStateException("environment variable $key could not be parsed as a uint16 value", e)
+      }
+    }
+
+/**
  * Retrieves an optional target environment variable or `null` if the target
  * variable is blank or absent.
  *
