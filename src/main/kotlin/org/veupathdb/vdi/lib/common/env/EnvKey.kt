@@ -8,6 +8,10 @@ package org.veupathdb.vdi.lib.common.env
  */
 object EnvKey {
 
+  object Handler {
+    const val HostAddress = "HANDLER_HOST"
+  }
+
   object CacheDB {
     const val Host     = "CACHE_DB_HOST"
     const val Port     = "CACHE_DB_PORT"

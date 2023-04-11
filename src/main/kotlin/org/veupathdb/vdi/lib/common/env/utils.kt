@@ -90,7 +90,9 @@ fun Environment.reqHostAddresses(key: String): List<HostAddress> =
  * `uint16` value.
  */
 fun Environment.reqHostAddress(key: String): HostAddress =
-  require(key).splitToPair(key).let { HostAddress(it.first, it.second.toUShort()) }
+  require(key)
+    .splitToPair(key)
+    .let { HostAddress(it.first, it.second.toUShort()) }
 
 /**
  * Retrieves an optional target environment variable or `null` if the target
