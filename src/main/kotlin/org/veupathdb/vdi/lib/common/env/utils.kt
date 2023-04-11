@@ -122,6 +122,32 @@ fun Environment.reqUShort(key: String): UShort =
     }
 
 /**
+ * Requires that the target environment variable is set to a [Boolean] value.
+ *
+ * Valid boolean values must align with a value in the following mapping table:
+ *
+ * | Raw Value | Parsed Value |
+ * |-----------|--------------|
+ * | `"true"`  | `true`       |
+ * | `"yes"`   | `true`       |
+ * | `"on"`    | `true`       |
+ * | `"1"`     | `true`       |
+ * | `"false"` | `false`      |
+ * | `"no"`    | `false`      |
+ * | `"off"`   | `false`      |
+ * | `"0"`     | `false`      |
+ *
+ * @param key Key of the target environment variable to require.
+ *
+ * @return The parsed `Boolean` value.
+ *
+ * @throws IllegalStateException If the environment variable is blank, absent,
+ * or could not be parsed as a `Boolean` value.
+ */
+fun Environment.reqBool(key: String): Boolean =
+  optBool(key) ?: throwAbsent(key)
+
+/**
  * Retrieves an optional target environment variable or `null` if the target
  * variable is blank or absent.
  *
