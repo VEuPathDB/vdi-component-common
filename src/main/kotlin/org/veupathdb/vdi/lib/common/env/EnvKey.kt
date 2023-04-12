@@ -9,86 +9,428 @@ package org.veupathdb.vdi.lib.common.env
 object EnvKey {
 
   object ImportTriggerHandler {
+
+    /**
+     * Type: UInt
+     * Required: no
+     */
     const val WorkerPoolSize = "IMPORT_HANDLER_WORKER_POOL_SIZE"
   }
 
+  object UpdateMetaTriggerHandler {
+
+    /**
+     * Type: UInt
+     * Required: no
+     */
+    const val WorkerPoolSize = "UPDATE_META_HANDLER_WORKER_POOL_SIZE"
+  }
+
+  object InstallDataTriggerHandler {
+
+    /**
+     * Type: UInt
+     * Required: no
+     */
+    const val WorkerPoolSize = "INSTALL_DATA_HANDLER_WORKER_POOL_SIZE"
+  }
+
+  object ShareTriggerHandler {
+
+    /**
+     * Type: UInt
+     * Required: no
+     */
+    const val WorkerPoolSize = "SHARE_HANDLER_WORKER_POOL_SIZE"
+  }
+
+  object SoftDeleteTriggerHandler {
+
+    /**
+     * Type: UInt
+     * Required: no
+     */
+    const val WorkerPoolSize = "SOFT_DELETE_HANDLER_WORKER_POOL_SIZE"
+  }
+
+  object HardDeleteTriggerHandler {
+
+    /**
+     * Type: UInt
+     * Required: no
+     */
+    const val WorkerPoolSize = "HARD_DELETE_HANDLER_WORKER_POOL_SIZE"
+  }
+
   object Handler {
+
+    /**
+     * Type: HostAddress (`"host:port"`)
+     */
     const val HostAddress = "HANDLER_HOST"
   }
 
   object CacheDB {
-    const val Host     = "CACHE_DB_HOST"
-    const val Port     = "CACHE_DB_PORT"
-    const val Name     = "CACHE_DB_NAME"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
+    const val Host = "CACHE_DB_HOST"
+
+    /**
+     * Type: UShort
+     * Required: no
+     */
+    const val Port = "CACHE_DB_PORT"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
+    const val Name = "CACHE_DB_NAME"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
     const val Username = "CACHE_DB_USERNAME"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
     const val Password = "CACHE_DB_PASSWORD"
+
+    /**
+     * Type: UByte
+     * Required: no
+     */
     const val PoolSize = "CACHE_DB_POOL_SIZE"
   }
 
   object Kafka {
 
+    /**
+     * Type: List<HostAddress> (`"host:port,host:port"`)
+     * Required: yes
+     */
     const val Servers = "KAFKA_SERVERS"
 
     object Consumer {
-      const val AutoCommitInterval      = "KAFKA_CONSUMER_AUTO_COMMIT_INTERVAL"
-      const val AutoOffsetReset         = "KAFKA_CONSUMER_AUTO_OFFSET_RESET"
-      const val ClientID                = "KAFKA_CONSUMER_CLIENT_ID"
-      const val ConnectionsMaxIdle      = "KAFKA_CONSUMER_CONNECTIONS_MAX_IDLE"
-      const val DefaultAPITimeout       = "KAFKA_CONSUMER_DEFAULT_API_TIMEOUT"
-      const val EnableAutoCommit        = "KAFKA_CONSUMER_ENABLE_AUTO_COMMIT"
-      const val FetchMaxBytes           = "KAFKA_CONSUMER_FETCH_MAX_BYTES"
-      const val FetchMinBytes           = "KAFKA_CONSUMER_FETCH_MIN_BYTES"
-      const val GroupID                 = "KAFKA_CONSUMER_GROUP_ID"
-      const val GroupInstanceID         = "KAFKA_CONSUMER_GROUP_INSTANCE_ID"
-      const val HeartbeatInterval       = "KAFKA_CONSUMER_HEARTBEAT_INTERVAL"
-      const val MaxPollInterval         = "KAFKA_CONSUMER_MAX_POLL_INTERVAL"
-      const val MaxPollRecords          = "KAFKA_CONSUMER_MAX_POLL_RECORDS"
-      const val PollDuration            = "KAFKA_CONSUMER_POLL_DURATION"
-      const val ReceiveBufferSizeBytes  = "KAFKA_CONSUMER_RECEIVE_BUFFER_SIZE_BYTES"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val AutoCommitInterval = "KAFKA_CONSUMER_AUTO_COMMIT_INTERVAL"
+
+      /**
+       * Type: Enum("earliest"|"latest"|"none")
+       * Required: no
+       */
+      const val AutoOffsetReset = "KAFKA_CONSUMER_AUTO_OFFSET_RESET"
+
+      /**
+       * Type: String
+       * Required: yes
+       */
+      const val ClientID = "KAFKA_CONSUMER_CLIENT_ID"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val ConnectionsMaxIdle = "KAFKA_CONSUMER_CONNECTIONS_MAX_IDLE"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val DefaultAPITimeout = "KAFKA_CONSUMER_DEFAULT_API_TIMEOUT"
+
+      /**
+       * Type: Boolean
+       * Required: no
+       */
+      const val EnableAutoCommit = "KAFKA_CONSUMER_ENABLE_AUTO_COMMIT"
+
+      /**
+       * Type: UInt
+       * Required: no
+       */
+      const val FetchMaxBytes = "KAFKA_CONSUMER_FETCH_MAX_BYTES"
+
+      /**
+       * Type: UInt
+       * Required: no
+       */
+      const val FetchMinBytes = "KAFKA_CONSUMER_FETCH_MIN_BYTES"
+
+      /**
+       * Type: String
+       * Required: yes
+       */
+      const val GroupID = "KAFKA_CONSUMER_GROUP_ID"
+
+      /**
+       * Type: String
+       * Required: no
+       */
+      const val GroupInstanceID = "KAFKA_CONSUMER_GROUP_INSTANCE_ID"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val HeartbeatInterval = "KAFKA_CONSUMER_HEARTBEAT_INTERVAL"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val MaxPollInterval = "KAFKA_CONSUMER_MAX_POLL_INTERVAL"
+
+      /**
+       * Type: UInt
+       * Required: no
+       */
+      const val MaxPollRecords = "KAFKA_CONSUMER_MAX_POLL_RECORDS"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val PollDuration = "KAFKA_CONSUMER_POLL_DURATION"
+
+      /**
+       * Type: UInt
+       * Required: no
+       */
+      const val ReceiveBufferSizeBytes = "KAFKA_CONSUMER_RECEIVE_BUFFER_SIZE_BYTES"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
       const val ReconnectBackoffMaxTime = "KAFKA_CONSUMER_RECONNECT_BACKOFF_MAX_TIME"
-      const val ReconnectBackoffTime    = "KAFKA_CONSUMER_RECONNECT_BACKOFF_TIME"
-      const val RequestTimeout          = "KAFKA_CONSUMER_REQUEST_TIMEOUT"
-      const val RetryBackoffTime        = "KAFKA_CONSUMER_RETRY_BACKOFF_TIME"
-      const val SendBufferSizeBytes     = "KAFKA_CONSUMER_SEND_BUFFER_SIZE_BYTES"
-      const val SessionTimeout          = "KAFKA_CONSUMER_SESSION_TIMEOUT"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val ReconnectBackoffTime = "KAFKA_CONSUMER_RECONNECT_BACKOFF_TIME"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val RequestTimeout = "KAFKA_CONSUMER_REQUEST_TIMEOUT"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val RetryBackoffTime = "KAFKA_CONSUMER_RETRY_BACKOFF_TIME"
+
+      /**
+       * Type: UInt
+       * Required: no
+       */
+      const val SendBufferSizeBytes = "KAFKA_CONSUMER_SEND_BUFFER_SIZE_BYTES"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val SessionTimeout = "KAFKA_CONSUMER_SESSION_TIMEOUT"
     }
 
     object Producer {
-      const val BatchSize               = "KAFKA_PRODUCER_BATCH_SIZE"
-      const val BufferMemoryBytes       = "KAFKA_PRODUCER_BUFFER_MEMORY_BYTES"
-      const val ClientID                = "KAFKA_PRODUCER_CLIENT_ID"
-      const val CompressionType         = "KAFKA_PRODUCER_COMPRESSION_TYPE"
-      const val ConnectionsMaxIdle      = "KAFKA_PRODUCER_CONNECTIONS_MAX_IDLE"
-      const val DeliveryTimeout         = "KAFKA_PRODUCER_DELIVERY_TIMEOUT"
-      const val LingerTime              = "KAFKA_PRODUCER_LINGER_TIME"
-      const val MaxBlockingTimeout      = "KAFKA_PRODUCER_MAX_BLOCKING_TIMEOUT"
-      const val MaxRequestSizeBytes     = "KAFKA_PRODUCER_MAX_REQUEST_SIZE_BYTES"
-      const val ReceiveBufferSizeBytes  = "KAFKA_PRODUCER_RECEIVE_BUFFER_SIZE_BYTES"
+
+      /**
+       * Type: UInt
+       * Required: no
+       */
+      const val BatchSize = "KAFKA_PRODUCER_BATCH_SIZE"
+
+      /**
+       * Type: UInt
+       * Required: no
+       */
+      const val BufferMemoryBytes = "KAFKA_PRODUCER_BUFFER_MEMORY_BYTES"
+
+      /**
+       * Type: String
+       * Required: yes
+       */
+      const val ClientID = "KAFKA_PRODUCER_CLIENT_ID"
+
+      /**
+       * Type: Enum("none"|"gzip"|"snappy"|"lz4"|"zstd")
+       * Required: no
+       */
+      const val CompressionType = "KAFKA_PRODUCER_COMPRESSION_TYPE"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val ConnectionsMaxIdle = "KAFKA_PRODUCER_CONNECTIONS_MAX_IDLE"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val DeliveryTimeout = "KAFKA_PRODUCER_DELIVERY_TIMEOUT"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val LingerTime = "KAFKA_PRODUCER_LINGER_TIME"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val MaxBlockingTimeout = "KAFKA_PRODUCER_MAX_BLOCKING_TIMEOUT"
+
+      /**
+       * Type: UInt
+       * Required: no
+       */
+      const val MaxRequestSizeBytes = "KAFKA_PRODUCER_MAX_REQUEST_SIZE_BYTES"
+
+      /**
+       * Type: Uint
+       * Required: no
+       */
+      const val ReceiveBufferSizeBytes = "KAFKA_PRODUCER_RECEIVE_BUFFER_SIZE_BYTES"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
       const val ReconnectBackoffMaxTime = "KAFKA_PRODUCER_RECONNECT_BACKOFF_MAX_TIME"
-      const val ReconnectBackoffTime    = "KAFKA_PRODUCER_RECONNECT_BACKOFF_TIME"
-      const val RequestTimeout          = "KAFKA_PRODUCER_REQUEST_TIMEOUT"
-      const val RetryBackoffTime        = "KAFKA_PRODUCER_RETRY_BACKOFF_TIME"
-      const val SendBufferSizeBytes     = "KAFKA_PRODUCER_SEND_BUFFER_SIZE_BYTES"
-      const val SendRetries             = "KAFKA_PRODUCER_SEND_RETRIES"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val ReconnectBackoffTime = "KAFKA_PRODUCER_RECONNECT_BACKOFF_TIME"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val RequestTimeout = "KAFKA_PRODUCER_REQUEST_TIMEOUT"
+
+      /**
+       * Type: Duration
+       * Required: no
+       */
+      const val RetryBackoffTime = "KAFKA_PRODUCER_RETRY_BACKOFF_TIME"
+
+      /**
+       * Type: UInt
+       * Required: no
+       */
+      const val SendBufferSizeBytes = "KAFKA_PRODUCER_SEND_BUFFER_SIZE_BYTES"
+
+      /**
+       * Type: UInt
+       * Required: no
+       */
+      const val SendRetries = "KAFKA_PRODUCER_SEND_RETRIES"
     }
 
     object Topic {
+
+      /**
+       * Type: String
+       * Required: no
+       */
       const val HardDeleteTriggers = "KAFKA_TOPIC_HARD_DELETE_TRIGGERS"
-      const val ImportResults      = "KAFKA_TOPIC_IMPORT_RESULTS"
-      const val ImportTriggers     = "KAFKA_TOPIC_IMPORT_TRIGGERS"
-      const val InstallTriggers    = "KAFKA_TOPIC_INSTALL_TRIGGERS"
-      const val ShareTriggers      = "KAFKA_TOPIC_SHARE_TRIGGERS"
+
+      /**
+       * Type: String
+       * Required: no
+       */
+      const val ImportResults = "KAFKA_TOPIC_IMPORT_RESULTS"
+
+      /**
+       * Type: String
+       * Required: no
+       */
+      const val ImportTriggers = "KAFKA_TOPIC_IMPORT_TRIGGERS"
+
+      /**
+       * Type: String
+       * Required: no
+       */
+      const val InstallTriggers = "KAFKA_TOPIC_INSTALL_TRIGGERS"
+
+      /**
+       * Type: String
+       * Required: no
+       */
+      const val ShareTriggers = "KAFKA_TOPIC_SHARE_TRIGGERS"
+
+      /**
+       * Type: String
+       * Required: no
+       */
       const val SoftDeleteTriggers = "KAFKA_TOPIC_SOFT_DELETE_TRIGGERS"
+
+      /**
+       * Type: String
+       * Required: no
+       */
       const val UpdateMetaTriggers = "KAFKA_TOPIC_UPDATE_META_TRIGGERS"
     }
 
     object MessageKey {
+      /**
+       * Type: String
+       * Required: no
+       */
       const val HardDeleteTriggers = "KAFKA_MESSAGE_KEY_HARD_DELETE_TRIGGERS"
-      const val ImportResults      = "KAFKA_MESSAGE_KEY_IMPORT_RESULTS"
-      const val ImportTriggers     = "KAFKA_MESSAGE_KEY_IMPORT_TRIGGERS"
-      const val InstallTriggers    = "KAFKA_MESSAGE_KEY_INSTALL_TRIGGERS"
-      const val ShareTriggers      = "KAFKA_MESSAGE_KEY_SHARE_TRIGGERS"
+
+      /**
+       * Type: String
+       * Required: no
+       */
+      const val ImportResults = "KAFKA_MESSAGE_KEY_IMPORT_RESULTS"
+
+      /**
+       * Type: String
+       * Required: no
+       */
+      const val ImportTriggers = "KAFKA_MESSAGE_KEY_IMPORT_TRIGGERS"
+
+      /**
+       * Type: String
+       * Required: no
+       */
+      const val InstallTriggers = "KAFKA_MESSAGE_KEY_INSTALL_TRIGGERS"
+
+      /**
+       * Type: String
+       * Required: no
+       */
+      const val ShareTriggers = "KAFKA_MESSAGE_KEY_SHARE_TRIGGERS"
+
+      /**
+       * Type: String
+       * Required: no
+       */
       const val SoftDeleteTriggers = "KAFKA_MESSAGE_KEY_SOFT_DELETE_TRIGGERS"
+
+      /**
+       * Type: String
+       * Required: no
+       */
       const val UpdateMetaTriggers = "KAFKA_MESSAGE_KEY_UPDATE_META_TRIGGERS"
     }
   }
@@ -124,11 +466,41 @@ object EnvKey {
   }
 
   object S3 {
+
+    /**
+     * Type: String
+     * Required: yes
+     */
     const val AccessToken = "S3_ACCESS_TOKEN"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
     const val BucketName  = "S3_BUCKET_NAME"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
     const val Host        = "S3_HOST"
+
+    /**
+     * Type: UShort
+     * Required: yes
+     */
     const val Port        = "S3_PORT"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
     const val SecretKey   = "S3_SECRET_KEY"
+
+    /**
+     * Type: Boolean
+     * Required: yes
+     */
     const val UseHTTPS    = "S3_USE_HTTPS"
   }
 }
