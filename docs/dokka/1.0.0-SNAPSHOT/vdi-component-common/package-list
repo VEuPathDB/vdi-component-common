@@ -62,8 +62,12 @@ $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Port/#/PointingT
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Username/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/-username.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handler///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handler/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handler/HostAddress/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handler/-host-address.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.HardDeleteTriggerHandler///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-hard-delete-trigger-handler/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.HardDeleteTriggerHandler/WorkerPoolSize/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-hard-delete-trigger-handler/-worker-pool-size.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.ImportTriggerHandler///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-import-trigger-handler/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.ImportTriggerHandler/WorkerPoolSize/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-import-trigger-handler/-worker-pool-size.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.InstallDataTriggerHandler///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-install-data-trigger-handler/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.InstallDataTriggerHandler/WorkerPoolSize/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-install-data-trigger-handler/-worker-pool-size.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Kafka.Consumer///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-kafka/-consumer/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Kafka.Consumer/AutoCommitInterval/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-kafka/-consumer/-auto-commit-interval.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Kafka.Consumer/AutoOffsetReset/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-kafka/-consumer/-auto-offset-reset.html
@@ -150,6 +154,12 @@ $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.S3/Host/#/PointingToDecl
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.S3/Port/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-s3/-port.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.S3/SecretKey/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-s3/-secret-key.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.S3/UseHTTPS/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-s3/-use-h-t-t-p-s.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.ShareTriggerHandler///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-share-trigger-handler/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.ShareTriggerHandler/WorkerPoolSize/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-share-trigger-handler/-worker-pool-size.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.SoftDeleteTriggerHandler///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-soft-delete-trigger-handler/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.SoftDeleteTriggerHandler/WorkerPoolSize/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-soft-delete-trigger-handler/-worker-pool-size.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.UpdateMetaTriggerHandler///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-update-meta-trigger-handler/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.UpdateMetaTriggerHandler/WorkerPoolSize/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-update-meta-trigger-handler/-worker-pool-size.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.field////PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.field//DatasetID/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-dataset-i-d.html
