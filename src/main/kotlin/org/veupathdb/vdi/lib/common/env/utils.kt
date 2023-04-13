@@ -357,10 +357,17 @@ fun Environment.optMap(key: String) =
   optPairSequence(key)
     ?.toMap()
 
+fun Environment.optList(key: String) =
+  optCommaSeparatedSequence(key)?.toList()
+
+fun Environment.optSet(key: String) =
+  optCommaSeparatedSequence(key)?.toSet()
+
+private fun Environment.optCommaSeparatedSequence(key: String) =
+  optional(key)?.splitToSequence(',')
+
 private fun Environment.optPairSequence(key: String): Sequence<Pair<String, String>>? =
-  optional(key)
-    ?.splitToSequence(',')
-    ?.map { it.splitToPair(key) }
+  optCommaSeparatedSequence(key)?.map { it.splitToPair(key) }
 
 private fun String.splitToPair(key: String): Pair<String, String> {
   if (isBlank())

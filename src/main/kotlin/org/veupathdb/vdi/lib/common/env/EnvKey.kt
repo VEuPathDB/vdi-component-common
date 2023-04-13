@@ -62,12 +62,77 @@ object EnvKey {
     const val WorkerPoolSize = "HARD_DELETE_HANDLER_WORKER_POOL_SIZE"
   }
 
-  object Handler {
+  /**
+   * Handler Environment Key Components.
+   *
+   * ```
+   * PLUGIN_HANDLER_<NAME>_NAME
+   * PLUGIN_HANDLER_<NAME>_ADDRESS
+   * PLUGIN_HANDLER_<NAME>_PROJECT_IDS
+   * ```
+   *
+   * Unlike most of the other environment key values defined in the [EnvKey]
+   * object, these constants define components of wildcard environment keys
+   * which may be specified with any arbitrary `<NAME>` value between the
+   * defined prefix value and suffix options.
+   *
+   * The environment variables set using the prefix and suffixes defined below
+   * must appear in groups that contain all suffixes.  For example, given the
+   * `<NAME>` value `"RNASEQ"` the following environment variables must all be
+   * present:
+   *
+   * ```
+   * PLUGIN_HANDLER_RNASEQ_NAME
+   * PLUGIN_HANDLER_RNASEQ_ADDRESS
+   * PLUGIN_HANDLER_RNASEQ_PROJECT_IDS
+   * ```
+   *
+   * The types of each of the variables is defined in the comment attached to
+   * each of the suffix variables in the [Handlers] object below.
+   */
+  object Handlers {
+
+    const val Prefix = "PLUGIN_HANDLER_"
 
     /**
-     * Type: HostAddress (`"host:port"`)
+     * Represents the environment variable `PLUGIN_HANDLER_{NAME}_NAME` where
+     * `{NAME}` is a wildcard matching any string.
+     *
+     * This environment variable declares the name for a dataset type.
+     *
+     * Type: String
+     * Required: yes
      */
-    const val HostAddress = "HANDLER_HOST"
+    const val NameSuffix = "_NAME"
+
+    /**
+     * Represents the environment variable `PLUGIN_HANDLER_{NAME}_ADDRESS` where
+     * `{NAME}` is a wildcard matching any string.
+     *
+     * This environment variable declares the host address (hostname and port)
+     * of the plugin handler service for datasets of the type named by the
+     * wildcard environment variable `PLUGIN_HANDLER_{NAME}_NAME`.
+     *
+     * Type: HostAddress (`"host:port"`)
+     * Required: yes
+     */
+    const val AddressSuffix = "_ADDRESS"
+
+    /**
+     * Represents the environment variable `PLUGIN_HANDLER_{NAME}_PROJECT_IDS`
+     * where `{NAME}` is a wildcard matching any string.
+     *
+     * This environment variable declares the valid projects for a dataset of
+     * the type named by the wildcard environment variable
+     * `PLUGIN_HANDLER_{NAME}_NAME`.
+     *
+     * While this environment variable is required, it may be blank.  A blank
+     * value means datasets of the defined type are applicable to all projects.
+     *
+     * Type: List<String> (`"project1,project2,project3"`)
+     * Required: yes
+     */
+    const val ProjectIDsSuffix = "_PROJECT_IDS"
   }
 
   object CacheDB {
