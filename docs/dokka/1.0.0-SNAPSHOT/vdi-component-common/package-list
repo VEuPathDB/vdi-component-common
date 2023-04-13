@@ -41,8 +41,10 @@ $dokka.location:org.veupathdb.vdi.lib.common.env////PointingToDeclaration/vdi-c
 $dokka.location:org.veupathdb.vdi.lib.common.env//optBool/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-bool.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//optDuration/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-duration.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//optInt/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-int.html
+$dokka.location:org.veupathdb.vdi.lib.common.env//optList/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-list.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//optLong/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-long.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//optMap/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-map.html
+$dokka.location:org.veupathdb.vdi.lib.common.env//optSet/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-set.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//optUByte/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-u-byte.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//optUInt/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-u-int.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//optUShort/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/opt-u-short.html
@@ -60,8 +62,11 @@ $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Password/#/Point
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/PoolSize/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/-pool-size.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Port/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/-port.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Username/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/-username.html
-$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handler///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handler/index.html
-$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handler/HostAddress/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handler/-host-address.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handlers///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handlers/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handlers/AddressSuffix/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handlers/-address-suffix.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handlers/NameSuffix/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handlers/-name-suffix.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handlers/Prefix/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handlers/-prefix.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handlers/ProjectIDsSuffix/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handlers/-project-i-ds-suffix.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.HardDeleteTriggerHandler///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-hard-delete-trigger-handler/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.HardDeleteTriggerHandler/WorkerPoolSize/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-hard-delete-trigger-handler/-worker-pool-size.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.ImportTriggerHandler///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-import-trigger-handler/index.html
