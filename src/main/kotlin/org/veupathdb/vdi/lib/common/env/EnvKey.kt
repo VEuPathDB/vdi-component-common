@@ -130,7 +130,7 @@ object EnvKey {
      * value means datasets of the defined type are applicable to all projects.
      *
      * Type: List<String> (`"project1,project2,project3"`)
-     * Required: yes
+     * Required: no
      */
     const val ProjectIDsSuffix = "_PROJECT_IDS"
   }
