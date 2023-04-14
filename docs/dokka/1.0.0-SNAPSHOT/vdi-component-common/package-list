@@ -139,6 +139,7 @@ $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Kafka///PointingToDeclar
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Kafka/Servers/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-kafka/-servers.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.LDAP///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-l-d-a-p/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.LDAP/LDAPServers/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-l-d-a-p/-l-d-a-p-servers.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.LDAP/OracleBaseDN/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-l-d-a-p/-oracle-base-d-n.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Rabbit.Exchange///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-rabbit/-exchange/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Rabbit.Exchange/Arguments/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-rabbit/-exchange/-arguments.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Rabbit.Exchange/AutoDelete/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-rabbit/-exchange/-auto-delete.html

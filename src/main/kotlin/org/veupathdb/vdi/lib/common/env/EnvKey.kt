@@ -16,6 +16,12 @@ object EnvKey {
      * Required: yes
      */
     const val LDAPServers = "LDAP_SERVER"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
+    const val OracleBaseDN = "ORACLE_BASE_DN"
   }
 
   object ImportTriggerHandler {
