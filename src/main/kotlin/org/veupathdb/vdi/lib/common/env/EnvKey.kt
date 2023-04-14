@@ -8,6 +8,16 @@ package org.veupathdb.vdi.lib.common.env
  */
 object EnvKey {
 
+
+  object LDAP {
+
+    /**
+     * Type: List<HostAddress>
+     * Required: yes
+     */
+    const val LDAPServers = "LDAP_SERVER"
+  }
+
   object ImportTriggerHandler {
 
     /**
