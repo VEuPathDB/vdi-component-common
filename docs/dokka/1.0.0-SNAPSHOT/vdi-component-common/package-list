@@ -55,6 +55,7 @@ $dokka.location:org.veupathdb.vdi.lib.common.env//reqHostAddresses/kotlin.collec
 $dokka.location:org.veupathdb.vdi.lib.common.env//reqMap/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/req-map.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//reqUShort/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/req-u-short.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//require/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/require.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.AppDB///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-app-d-b/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Host/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/-host.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Name/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/-name.html

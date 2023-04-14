@@ -135,6 +135,70 @@ object EnvKey {
     const val ProjectIDsSuffix = "_PROJECT_IDS"
   }
 
+  /**
+   * Application Database Key Components
+   *
+   * ```
+   * DB_CONNECTION_NAME_<NAME>
+   * DB_CONNECTION_LDAP_<NAME>
+   * DB_CONNECTION_USER_<NAME>
+   * DB_CONNECTION_PASS_<NAME>
+   * DB_CONNECTION_POOL_SIZE_<NAME>
+   * ```
+   *
+   * Unlike most of the other environment key values defined in the [EnvKey]
+   * object, these constants define components of wildcard environment keys
+   * which may be specified with any arbitrary `<NAME>` value following the
+   * defined prefix option.
+   *
+   * The environment variables set using the prefixes defined below must appear
+   * in groups that contain all prefixes.  For example, given the `<NAME>` value
+   * `"PLASMO"`, the following environment variables must all be present:
+   *
+   * ```
+   * DB_CONNECTION_NAME_PLASMO
+   * DB_CONNECTION_LDAP_PLASMO
+   * DB_CONNECTION_USER_PLASMO
+   * DB_CONNECTION_PASS_PLASMO
+   * DB_CONNECTION_POOL_SIZE_PLASMO
+   * ```
+   *
+   * The types of each of the variables is defined in the comment attached to
+   * each of the prefix variables in the [AppDB] object below.
+   */
+  object AppDB {
+
+    /**
+     * Type: String
+     * Required: yes
+     */
+    private const val DBNamePrefix = "DB_CONNECTION_NAME_"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
+    private const val DBLDAPPrefix = "DB_CONNECTION_LDAP_"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
+    private const val DBUserPrefix = "DB_CONNECTION_USER_"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
+    private const val DBPassPrefix = "DB_CONNECTION_PASS_"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
+    private const val DBPoolPrefix = "DB_CONNECTION_POOL_SIZE_"
+  }
+
   object CacheDB {
 
     /**
