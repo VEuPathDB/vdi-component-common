@@ -193,7 +193,7 @@ object EnvKey {
     const val DBPassPrefix = "DB_CONNECTION_PASS_"
 
     /**
-     * Type: String
+     * Type: UByte
      * Required: yes
      */
     const val DBPoolPrefix = "DB_CONNECTION_POOL_SIZE_"

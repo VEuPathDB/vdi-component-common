@@ -95,6 +95,19 @@ fun Environment.reqHostAddress(key: String): HostAddress =
     .let { HostAddress(it.first, it.second.toUShort()) }
 
 /**
+ * Requires that a target environment variable is set to a [UByte] value.
+ *
+ * @param key Key of the target environment variable to require.
+ *
+ * @return The parsed [UByte] value.
+ *
+ * @throws IllegalStateException If the environment variable is blank, absent,
+ * or could not be parsed as a `UByte` value.
+ */
+fun Environment.reqUByte(key: String): UByte =
+  optUByte(key) ?: throwAbsent(key)
+
+/**
  * Requires that a target environment variable is set to a [UShort] value.
  *
  * @param key Key of the target environment variable to require.
