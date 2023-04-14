@@ -56,6 +56,11 @@ $dokka.location:org.veupathdb.vdi.lib.common.env//reqMap/kotlin.collections.Map[
 $dokka.location:org.veupathdb.vdi.lib.common.env//reqUShort/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/req-u-short.html
 $dokka.location:org.veupathdb.vdi.lib.common.env//require/kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/require.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.AppDB///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-app-d-b/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.AppDB/DBLDAPPrefix/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-app-d-b/-d-b-l-d-a-p-prefix.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.AppDB/DBNamePrefix/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-app-d-b/-d-b-name-prefix.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.AppDB/DBPassPrefix/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-app-d-b/-d-b-pass-prefix.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.AppDB/DBPoolPrefix/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-app-d-b/-d-b-pool-prefix.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.AppDB/DBUserPrefix/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-app-d-b/-d-b-user-prefix.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Host/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/-host.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Name/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/-name.html

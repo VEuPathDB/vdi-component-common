@@ -172,31 +172,31 @@ object EnvKey {
      * Type: String
      * Required: yes
      */
-    private const val DBNamePrefix = "DB_CONNECTION_NAME_"
+    const val DBNamePrefix = "DB_CONNECTION_NAME_"
 
     /**
      * Type: String
      * Required: yes
      */
-    private const val DBLDAPPrefix = "DB_CONNECTION_LDAP_"
+    const val DBLDAPPrefix = "DB_CONNECTION_LDAP_"
 
     /**
      * Type: String
      * Required: yes
      */
-    private const val DBUserPrefix = "DB_CONNECTION_USER_"
+    const val DBUserPrefix = "DB_CONNECTION_USER_"
 
     /**
      * Type: String
      * Required: yes
      */
-    private const val DBPassPrefix = "DB_CONNECTION_PASS_"
+    const val DBPassPrefix = "DB_CONNECTION_PASS_"
 
     /**
      * Type: String
      * Required: yes
      */
-    private const val DBPoolPrefix = "DB_CONNECTION_POOL_SIZE_"
+    const val DBPoolPrefix = "DB_CONNECTION_POOL_SIZE_"
   }
 
   object CacheDB {
