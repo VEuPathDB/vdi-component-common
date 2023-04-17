@@ -91,6 +91,13 @@ object Zip {
    * Returns a sequence of [ZipEntry] instances paired with an [InputStream]
    * that may be used to stream out the contents of the zip entry itself.
    *
+   * **WARNING**: The [InputStream]s in the returned sequence must be consumed
+   * or skipped entirely before processing the next entry in the sequence.  This
+   * is due to the way the underlying [ZipInputStream] functions.  If an
+   * [InputStream] is consumed _after_ proceeding to the next sequence entry, it
+   * will return the contents of the next [InputStream] rather than the contents
+   * of the stream that was originally returned.
+   *
    * @param zip Path to the zip file whose entries should be sequenced.
    *
    * @return A sequence of [ZipEntry] and [InputStream] instances contained in
