@@ -30,6 +30,8 @@ $dokka.location:org.veupathdb.vdi.lib.common.compression/Tar/compressWithGZip/#j
 $dokka.location:org.veupathdb.vdi.lib.common.compression/Tar/decompressWithGZip/#java.nio.file.Path#java.nio.file.Path/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.compression/-tar/decompress-with-g-zip.html
 $dokka.location:org.veupathdb.vdi.lib.common.compression/Zip///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.compression/-zip/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.compression/Zip/getZipType/java.nio.file.Path#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.compression/-zip/get-zip-type.html
+$dokka.location:org.veupathdb.vdi.lib.common.compression/Zip/unzip/java.nio.file.Path#java.nio.file.Path/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.compression/-zip/unzip.html
+$dokka.location:org.veupathdb.vdi.lib.common.compression/Zip/zipEntries/#java.nio.file.Path/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.compression/-zip/zip-entries.html
 $dokka.location:org.veupathdb.vdi.lib.common.compression/ZipType.Empty///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}vdi-component-common/org.veupathdb.vdi.lib.common.compression/-zip-type/-empty/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.compression/ZipType.Invalid///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}vdi-component-common/org.veupathdb.vdi.lib.common.compression/-zip-type/-invalid/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.compression/ZipType.Spanned///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}vdi-component-common/org.veupathdb.vdi.lib.common.compression/-zip-type/-spanned/index.html
@@ -214,6 +216,13 @@ $dokka.location:org.veupathdb.vdi.lib.common.fs/TempFiles/withTempPath/#kotlin.F
 $dokka.location:org.veupathdb.vdi.lib.common.fs/Tmp///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.fs/-tmp/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.fs/Tmp/newPath/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.fs/-tmp/new-path.html
 $dokka.location:org.veupathdb.vdi.lib.common.fs/Tmp/withPath/#kotlin.Function1[java.nio.file.Path,kotlin.Unit]/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.fs/-tmp/with-path.html
+$dokka.location:org.veupathdb.vdi.lib.common.io////PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.io/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.io/UncloseableInputStream///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.io/-uncloseable-input-stream/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.io/UncloseableInputStream/UncloseableInputStream/#java.io.InputStream/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.io/-uncloseable-input-stream/-uncloseable-input-stream.html
+$dokka.location:org.veupathdb.vdi.lib.common.io/UncloseableInputStream/close/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.io/-uncloseable-input-stream/close.html
+$dokka.location:org.veupathdb.vdi.lib.common.io/UncloseableInputStream/read/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.io/-uncloseable-input-stream/read.html
+$dokka.location:org.veupathdb.vdi.lib.common.io/UncloseableInputStream/read/#kotlin.ByteArray#kotlin.Int#kotlin.Int/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.io/-uncloseable-input-stream/read.html
+$dokka.location:org.veupathdb.vdi.lib.common.io/UncloseableInputStream/read/#kotlin.ByteArray/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.io/-uncloseable-input-stream/read.html
 $dokka.location:org.veupathdb.vdi.lib.common.model////PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.model/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.model/VDIDatasetDependency.JsonKey///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.model/-v-d-i-dataset-dependency/-json-key/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.model/VDIDatasetDependency.JsonKey/DisplayName/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.model/-v-d-i-dataset-dependency/-json-key/-display-name.html
@@ -321,6 +330,7 @@ org.veupathdb.vdi.lib.common.compression
 org.veupathdb.vdi.lib.common.env
 org.veupathdb.vdi.lib.common.field
 org.veupathdb.vdi.lib.common.fs
+org.veupathdb.vdi.lib.common.io
 org.veupathdb.vdi.lib.common.model
 org.veupathdb.vdi.lib.common.util
 
