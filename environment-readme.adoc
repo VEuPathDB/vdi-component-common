@@ -1,0 +1,202 @@
+= VDI Project Environment Variables
+:icons: font
+:source-highlighter: highlightjs
+:gh-org: VEuPathDB
+:gh-project: vdi-component-common
+:gh-root-url: https://github.com/
+:gh-org-url: {gh-root-url}/{gh-group}/
+:gh-project-url: {gh-org-url}/{gh-project}
+
+The following environment variables are declared by the
+link:{gh-project-url}[{gh-project}] project.
+
+== Static Environment Variables
+
+[%header, cols="1,4m,2m,5"]
+|===
+| Req. | Key | Type | Description
+
+4+^h| LDAP
+
+| :sparkle:
+| LDAP_SERVER
+| List<HostAddress>
+| List of host addresses for LDAP servers to connect to.
+
+| :sparkle:
+| ORACLE_BASE_DN
+| String
+| Base distinguished name used when querying for OracleNetDesc LDAP entries for
+  VEuPathDB Oracle databases.
+
+4+^h| Handler Configurations
+
+|
+| IMPORT_HANDLER_WORKER_POOL_SIZE
+| uint8
+| Number of worker coroutines to use when processing import jobs.
+
+|
+| UPDATE_META_HANDLER_WORKER_POOL_SIZE
+| uint8
+| Number of worker coroutines to use when processing metadata install/update
+  jobs.
+
+|
+| INSTALL_DATA_HANDLER_WORKER_POOL_SIZE
+| uint8
+| Number of worker coroutines to use when processing data install jobs.
+
+|
+| SHARE_HANDLER_WORKER_POOL_SIZE
+| uint8
+| Number of worker coroutines to use when processing share update jobs.
+
+|
+| SOFT_DELETE_HANDLER_WORKER_POOL_SIZE
+| uint8
+| Number of worker coroutines to use when processing soft delete jobs.
+
+|
+| HARD_DELETE_HANDLER_WORKER_POOL_SIZE
+| uint8
+| Number of worker coroutines to use when processing hard delete jobs.
+
+4+^h| Cache DB Configuration
+
+| :sparkle:
+| CACHE_DB_HOST
+| String
+| Hostname of the cache DB instance.
+
+|
+| CACHE_DB_PORT
+| uint16
+| Port for the cache DB connection.
+
+| :sparkle:
+| CACHE_DB_NAME
+| String
+| Name of the cache database.
+
+| :sparkle:
+| CACHE_DB_USERNAME
+| String
+| Username for the cache DB.
+
+| :sparkle:
+| CACHE_DB_PASSWORD
+| String
+| Password for the cache DB.
+
+|
+| CACHE_DB_POOL_SIZE
+| uint8
+| Max connection pool size for the cache database connections.
+
+|===
+
+== Wildcard Environment Variables
+
+Environment variables that contain a wildcard component.  These variables appear
+in groups that may be repeated for each new wildcard value.  The wildcard value
+will be represented in the tables below as `{NAME}`.
+
+If a variable is marked as required, then it is required to appear in each group
+defined by the wildcard name.
+
+=== Plugin Handlers
+
+Each group of environment variables that appears in the relevant application's
+environment represents a plugin handler that will be registered to be used and
+called on by the VDI service.
+
+[%header, cols="1,4m,2m,5"]
+|===
+| Req. | Key | Type | Description
+
+| :sparkle:
+| PLUGIN_HANDLER_{NAME}_NAME
+| String
+| Plugin handler name.  This value MUST be a valid dataset type name.
+
+| :sparkle:
+| PLUGIN_HANDLER_{NAME}_ADDRESS
+| HostAddress
+| Host address of the plugin handler service to call
+  for the target dataset type.
+
+|
+| PLUGIN_HANDLER_{NAME}_PROJECT_IDS
+| List<String>
+| Target projects for which this plugin handler is relevant.  If this value is
+  blank or absent the VDI service will assume the plugin handler is relevant to
+  all projects.
+
+|===
+
+=== Application Databases
+
+[%header, cols="1,4m,2m,5"]
+|===
+| Req. | Key | Type | Description
+
+| :sparkle:
+| DB_CONNECTION_NAME_{NAME}
+| String
+| Name of the database connection, should be the name of a target application,
+  such as a VEuPathDB project ID/name.
+
+| :sparkle:
+| DB_CONNECTION_LDAP_{NAME}
+| String
+| LDAP name of the entry containing the OracleNetDesc for the target Oracle database.
+
+| :sparkle:
+| DB_CONNECTION_USER_{NAME}
+| String
+| Username to use when connecting to the target database.
+
+| :sparkle:
+| DB_CONNECTION_PASS_{NAME}
+| String
+| Password to use when connecting to the target database.
+
+| :sparkle:
+| DB_CONNECTION_POOL_SIZE_{NAME}
+| uint8
+| Max size of the database connection pool for the target database.
+|===
+
+== Variable Types
+
+`List<T>`::
+A comma separated list of values of type `T`.
++
+Example:
+[source, shell]
+----
+FOO=happy,sad,mad
+----
+
+`Map<T>`::
+A map of `String` keys to values of type `T`.  Map entries appear in the format
+`{key}:{value}` separated by commas.  Map entry keys must not contain `:`
+characters, however values may.
++
+Type `T` must not be a `List` or `Map` value.
++
+Example:
+[source, shell]
+----
+FOO=mood1:happy,mood2:sad,mood3:mad
+----
+
+`HostAddress`::
+A hostname/port pairing in the format: `{hostname}:{port}`.
++
+Example:
+[source, shell]
+----
+FOO=google.com:80
+----
