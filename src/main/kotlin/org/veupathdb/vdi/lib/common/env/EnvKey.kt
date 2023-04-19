@@ -31,6 +31,12 @@ object EnvKey {
      * Required: no
      */
     const val WorkerPoolSize = "IMPORT_HANDLER_WORKER_POOL_SIZE"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
+    const val KafkaConsumerClientID = "IMPORT_HANDLER_KAFKA_CONSUMER_CLIENT_ID"
   }
 
   object UpdateMetaTriggerHandler {
@@ -40,6 +46,12 @@ object EnvKey {
      * Required: no
      */
     const val WorkerPoolSize = "UPDATE_META_HANDLER_WORKER_POOL_SIZE"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
+    const val KafkaConsumerClientID = "UPDATE_META_HANDLER_KAFKA_CONSUMER_CLIENT_ID"
   }
 
   object InstallDataTriggerHandler {
@@ -49,6 +61,12 @@ object EnvKey {
      * Required: no
      */
     const val WorkerPoolSize = "INSTALL_DATA_HANDLER_WORKER_POOL_SIZE"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
+    const val KafkaConsumerClientID = "INSTALL_DATA_HANDLER_KAFKA_CONSUMER_CLIENT_ID"
   }
 
   object ShareTriggerHandler {
@@ -58,6 +76,12 @@ object EnvKey {
      * Required: no
      */
     const val WorkerPoolSize = "SHARE_HANDLER_WORKER_POOL_SIZE"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
+    const val KafkaConsumerClientID = "SHARE_HANDLER_KAFKA_CONSUMER_CLIENT_ID"
   }
 
   object SoftDeleteTriggerHandler {
@@ -67,6 +91,12 @@ object EnvKey {
      * Required: no
      */
     const val WorkerPoolSize = "SOFT_DELETE_HANDLER_WORKER_POOL_SIZE"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
+    const val KafkaConsumerClientID = "SOFT_DELETE_HANDLER_KAFKA_CONSUMER_CLIENT_ID"
   }
 
   object HardDeleteTriggerHandler {
@@ -76,6 +106,12 @@ object EnvKey {
      * Required: no
      */
     const val WorkerPoolSize = "HARD_DELETE_HANDLER_WORKER_POOL_SIZE"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
+    const val KafkaConsumerClientID = "HARD_DELETE_HANDLER_KAFKA_CONSUMER_CLIENT_ID"
   }
 
   /**
@@ -275,12 +311,6 @@ object EnvKey {
        * Required: no
        */
       const val AutoOffsetReset = "KAFKA_CONSUMER_AUTO_OFFSET_RESET"
-
-      /**
-       * Type: String
-       * Required: yes
-       */
-      const val ClientID = "KAFKA_CONSUMER_CLIENT_ID"
 
       /**
        * Type: Duration

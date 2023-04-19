@@ -18,6 +18,8 @@ link:{gh-project-url}[{gh-project}] project.
 
 4+^h| LDAP
 
+// region LDAP
+
 | :sparkle:
 | LDAP_SERVER
 | List<HostAddress>
@@ -29,12 +31,21 @@ link:{gh-project-url}[{gh-project}] project.
 | Base distinguished name used when querying for OracleNetDesc LDAP entries for
   VEuPathDB Oracle databases.
 
+// endregion LDAP
+
 4+^h| Handler Configurations
+
+// region Handler Configurations
 
 |
 | IMPORT_HANDLER_WORKER_POOL_SIZE
 | uint8
 | Number of worker coroutines to use when processing import jobs.
+
+| :sparkle:
+| IMPORT_HANDLER_KAFKA_CONSUMER_CLIENT_ID
+| String
+| Kafka consumer client ID for the import trigger handler.
 
 |
 | UPDATE_META_HANDLER_WORKER_POOL_SIZE
@@ -42,27 +53,56 @@ link:{gh-project-url}[{gh-project}] project.
 | Number of worker coroutines to use when processing metadata install/update
   jobs.
 
+| :sparkle:
+| UPDATE_META_HANDLER_KAFKA_CONSUMER_CLIENT_ID
+| String
+| Kafka consumer client ID for the update/install meta trigger handler.
+
 |
 | INSTALL_DATA_HANDLER_WORKER_POOL_SIZE
 | uint8
 | Number of worker coroutines to use when processing data install jobs.
+
+| :sparkle:
+| INSTALL_DATA_HANDLER_KAFKA_CONSUMER_CLIENT_ID
+| String
+| Kafka consumer client ID for the install data trigger handler.
 
 |
 | SHARE_HANDLER_WORKER_POOL_SIZE
 | uint8
 | Number of worker coroutines to use when processing share update jobs.
 
+| :sparkle:
+| SHARE_HANDLER_KAFKA_CONSUMER_CLIENT_ID
+| String
+| Kafka consumer client ID for the share trigger handler.
+
 |
 | SOFT_DELETE_HANDLER_WORKER_POOL_SIZE
 | uint8
 | Number of worker coroutines to use when processing soft delete jobs.
+
+| :sparkle:
+| SOFT_DELETE_HANDLER_KAFKA_CONSUMER_CLIENT_ID
+| String
+| Kafka consumer client ID for the soft delete trigger handler.
 
 |
 | HARD_DELETE_HANDLER_WORKER_POOL_SIZE
 | uint8
 | Number of worker coroutines to use when processing hard delete jobs.
 
+| :sparkle:
+| HARD_DELETE_HANDLER_KAFKA_CONSUMER_CLIENT_ID
+| String
+| Kafka consumer client ID for the hard delete trigger handler.
+
+// endregion Handler Configurations
+
 4+^h| Cache DB Configuration
+
+// region Cache DB
 
 | :sparkle:
 | CACHE_DB_HOST
@@ -94,6 +134,8 @@ link:{gh-project-url}[{gh-project}] project.
 | uint8
 | Max connection pool size for the cache database connections.
 
+// endregion Cache DB
+
 4+^h| Kafka General
 
 | :sparkle:
@@ -119,12 +161,6 @@ link:{gh-project-url}[{gh-project}] project.
   - none
 | What the default position in the message log should be when first subscribing
   to a Kafka topic.
-
-| :sparkle:
-| KAFKA_CONSUMER_CLIENT_ID
-| String
-| ID of the consumer.  This value is used to track which consumers have seen
-  what log messages.
 
 |
 | KAFKA_CONSUMER_CONNECTIONS_MAX_IDLE
@@ -380,6 +416,158 @@ link:{gh-project-url}[{gh-project}] project.
 | String
 | Message key for update/install meta trigger messages delivered to Kafka.
 
+4+^h| RabbitMQ General Configuration
+
+// region RabbitMQ General
+
+|
+| GLOBAL_RABBIT_CONNECTION_NAME
+| String
+| Optional name for the connection to RabbitMQ.  This value is used to label the
+  connection in the RabbitMQ management console.
+
+| :sparkle:
+| GLOBAL_RABBIT_HOST
+| String
+| Hostname of the global RabbitMQ instance.
+
+|
+| GLOBAL_RABBIT_PORT
+| uint16
+| Port for connecting to the global RabbitMQ instance.
+
+| :sparkle:
+| GLOBAL_RABBIT_USERNAME
+| String
+| Username for connecting to the global RabbitMQ instance.
+
+| :sparkle:
+| GLOBAL_RABBIT_PASSWORD
+| String
+| Password for connecting to the global RabbitMQ instance.
+
+|
+| GLOBAL_RABBIT_VDI_POLLING_INTERVAL
+| Duration
+| Interval at which RabbitMQ should be polled for new messages from MinIO.
+
+// endregion RabbitMQ General
+
+4+^h| RabbitMQ Exchange Definition
+
+// region RabbitMQ Exchange
+
+| :sparkle:
+| GLOBAL_RABBIT_VDI_EXCHANGE_NAME
+| String
+| Name of the exchange to declare and use in the RabbitMQ instance.
+
+|
+| GLOBAL_RABBIT_VDI_EXCHANGE_TYPE
+| Enum: +
+  - direct +
+  - fanout +
+  - topic +
+  - match
+| Exchange type for the RabbitMQ exchange.
+
+|
+| GLOBAL_RABBIT_VDI_QUEUE_DURABLE
+| Boolean
+| Whether the declared exchange should be durable.
+
+|
+| GLOBAL_RABBIT_VDI_QUEUE_EXCLUSIVE
+| Boolean
+| Whether the declared exchange should be exclusive.
+
+|
+| GLOBAL_RABBIT_VDI_QUEUE_AUTO_DELETE
+| Boolean
+| Whether the declared exchange should be auto-deleted.
+
+|
+| GLOBAL_RABBIT_VDI_EXCHANGE_ARGUMENTS
+| Map<String, String>
+| Additional arguments to pass to the declaration of the RabbitMQ exchange.
+
+// endregion RabbitMQ Exchange
+
+4+^h| RabbitMQ Queue Definition
+
+| :sparkle:
+| GLOBAL_RABBIT_VDI_QUEUE_NAME
+| String
+| Name of the queue to declare and use in the RabbitMQ instance.
+
+|
+| GLOBAL_RABBIT_VDI_QUEUE_DURABLE
+| Boolean
+| Whether the declared queue should be durable.
+
+|
+| GLOBAL_RABBIT_VDI_QUEUE_EXCLUSIVE
+| Boolean
+| Whether the declared queue should be exclusive.
+
+|
+| GLOBAL_RABBIT_VDI_QUEUE_AUTO_DELETE
+| Boolean
+| Whether the declared queue should be subject to auto deletion.
+
+|
+| GLOBAL_RABBIT_VDI_QUEUE_ARGUMENTS
+| Map<String, String>
+| Additional arguments to pass to the declaration of the RabbitMQ queue.
+
+4+^h| RabbitMQ Routing
+
+|
+| GLOBAL_RABBIT_VDI_ROUTING_KEY
+| String
+| Routing key to use when routing messages to the declared queue from the
+  declared exchange.
+
+|
+| GLOBAL_RABBIT_VDI_ROUTING_ARGUMENTS
+| Map<String, String>
+| Additional arguments to pass to the declaration of the routing from the
+  declared exchange to the declared queue.
+
+
+4+^h| S3 Connection Configuration
+
+| :sparkle:
+| S3_HOST
+| String
+| Hostname for the global S3 (MinIO) instance.
+
+| :sparkle:
+| S3_PORT
+| uint16
+| Port to use when connecting to the global S3 (MinIO) instance.
+
+| :sparkle:
+| S3_ACCESS_TOKEN
+| String
+| Username/access token to use when connecting to the global S3 (MinIO)
+  instance.
+
+| :sparkle:
+| S3_SECRET_KEY
+| String
+| Password/secret key to use when connecting to the global S3 (MinIO) instance.
+
+| :sparkle:
+| S3_BUCKET_NAME
+| String
+| Name of the S3 (MinIO) bucket to be used by the VDI service(s).
+
+| :sparkle:
+| S3_USE_HTTPS
+| Boolean
+| Whether HTTPS should be used when connecting to S3 (MinIO).
+
 |===
 
 == Wildcard Environment Variables
@@ -465,12 +653,14 @@ Example:
 FOO=happy,sad,mad
 ----
 
-`Map<T>`::
-A map of `String` keys to values of type `T`.  Map entries appear in the format
-`{key}:{value}` separated by commas.  Map entry keys must not contain `:`
-characters, however values may.
+`Map<K, V>`::
+A map of simple keys of type `K` to values of type `V`.  Map entries appear in
+the format `{key}:{value}` separated by commas.  Map entry keys must not contain
+`:` characters, however values may.
 +
-Type `T` must not be a `List` or `Map` value.
+Type `K` must be scalar.
++
+Type `V` must not be a `List` or `Map` value.
 +
 Example:
 [source, shell]
