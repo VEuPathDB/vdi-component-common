@@ -94,6 +94,292 @@ link:{gh-project-url}[{gh-project}] project.
 | uint8
 | Max connection pool size for the cache database connections.
 
+4+^h| Kafka General
+
+| :sparkle:
+| KAFKA_SERVERS
+| List<HostAddress>
+| List of Kafka servers that will be connected to for sending internal messages.
+
+4+^h| Kafka Consumer Configuration
+
+// region Kafka Consumer Config
+
+|
+| KAFKA_CONSUMER_AUTO_COMMIT_INTERVAL
+| Duration
+| Time interval for automatically committing the position of the last read
+  message from the Kafka log.
+
+|
+| KAFKA_CONSUMER_AUTO_OFFSET_RESET
+| Enum: +
+  - earliest +
+  - latest +
+  - none
+| What the default position in the message log should be when first subscribing
+  to a Kafka topic.
+
+| :sparkle:
+| KAFKA_CONSUMER_CLIENT_ID
+| String
+| ID of the consumer.  This value is used to track which consumers have seen
+  what log messages.
+
+|
+| KAFKA_CONSUMER_CONNECTIONS_MAX_IDLE
+| Duration
+| Length of time an idle consumer connection should remain open.
+
+|
+| KAFKA_CONSUMER_DEFAULT_API_TIMEOUT
+| Duration
+| ???
+
+|
+| KAFKA_CONSUMER_ENABLE_AUTO_COMMIT
+| Boolean
+| Enable or disable auto committing message log last read position.
+
+|
+| KAFKA_CONSUMER_FETCH_MAX_BYTES
+| uint32
+| Max number of bytes to fetch from Kafka at a time per API request.
+
+|
+| KAFKA_CONSUMER_FETCH_MIN_BYTES
+| uint32
+| Minimum number of bytes to wait for when fetching data from Kafka.
+
+| :sparkle:
+| KAFKA_CONSUMER_GROUP_ID
+| String
+| Group ID for the client.  Message log positions are tracked per group ID and
+  distributed among the connected clients.
+
+|
+| KAFKA_CONSUMER_GROUP_INSTANCE_ID
+| String
+| ???
+
+|
+| KAFKA_CONSUMER_HEARTBEAT_INTERVAL
+| Duration
+| Heartbeat interval for keeping client connections alive.
+
+|
+| KAFKA_CONSUMER_MAX_POLL_INTERVAL
+| Duration
+| ???
+
+|
+| KAFKA_CONSUMER_MAX_POLL_RECORDS
+| uint32
+| Max number of records to return from Kafka in a single request.
+
+|
+| KAFKA_CONSUMER_POLL_DURATION
+| Duration
+| ???
+
+|
+| KAFKA_CONSUMER_RECEIVE_BUFFER_SIZE_BYTES
+| uint32
+| ???
+
+|
+| KAFKA_CONSUMER_RECONNECT_BACKOFF_MAX_TIME
+| Duration
+| Max backoff time for reconnecting to the Kafka server when the connection is
+  lost.
+
+|
+| KAFKA_CONSUMER_RECONNECT_BACKOFF_TIME
+| Duration
+| Amount of time to backoff after a failed reconnection attempt before
+  attempting to reconnect again.
+
+|
+| KAFKA_CONSUMER_REQUEST_TIMEOUT
+| Duration
+| ???
+
+|
+| KAFKA_CONSUMER_RETRY_BACKOFF_TIME
+| Duration
+| ???
+
+|
+| KAFKA_CONSUMER_SEND_BUFFER_SIZE_BYTES
+| uint32
+| ???
+
+|
+| KAFKA_CONSUMER_SESSION_TIMEOUT
+| Duration
+| ???
+
+// endregion Kafka Consumer Config
+
+4+^h| Kafka Producer Configuration
+
+// region Kafka Producer Config
+
+|
+| KAFKA_PRODUCER_BATCH_SIZE
+| uint32
+| ???
+
+|
+| KAFKA_PRODUCER_BUFFER_MEMORY_BYTES
+| uint32
+| ???
+
+| :sparkle:
+| KAFKA_PRODUCER_CLIENT_ID
+| String
+| ???
+
+|
+| KAFKA_PRODUCER_COMPRESSION_TYPE
+| Enum: +
+  - none +
+  - gzip +
+  - snappy +
+  - lz4 +
+  - zstd
+| ???
+
+|
+| KAFKA_PRODUCER_CONNECTIONS_MAX_IDLE
+| Duration
+| ???
+
+|
+| KAFKA_PRODUCER_DELIVERY_TIMEOUT
+| Duration
+| ???
+
+|
+| KAFKA_PRODUCER_LINGER_TIME
+| Duration
+| How long the Kafka producer should let messages "linger" to batch them
+  together before sending off a batch of collected messages.
+
+|
+| KAFKA_PRODUCER_MAX_BLOCKING_TIMEOUT
+| Duration
+| ???
+
+|
+| KAFKA_PRODUCER_MAX_REQUEST_SIZE_BYTES
+| uint32
+| ???
+
+|
+| KAFKA_PRODUCER_RECEIVE_BUFFER_SIZE_BYTES
+| uint32
+| ???
+
+|
+| KAFKA_PRODUCER_RECONNECT_BACKOFF_MAX_TIME
+| Duration
+| ???
+
+|
+| KAFKA_PRODUCER_RECONNECT_BACKOFF_TIME
+| Duration
+| ???
+
+|
+| KAFKA_PRODUCER_REQUEST_TIMEOUT
+| Duration
+| ???
+
+|
+| KAFKA_PRODUCER_RETRY_BACKOFF_TIME
+| Duration
+| ???
+
+|
+| KAFKA_PRODUCER_SEND_BUFFER_SIZE_BYTES
+| uint32
+| ???
+
+|
+| KAFKA_PRODUCER_SEND_RETRIES
+| uint32
+| ???
+
+// endregion Kafka Producer Config
+
+4+^h| Kafka Topics
+
+|
+| KAFKA_TOPIC_HARD_DELETE_TRIGGERS
+| String
+| Name of the Kafka topic to which hard delete trigger messages should be
+  delivered.
+
+|
+| KAFKA_TOPIC_IMPORT_TRIGGERS
+| String
+| Name of the Kafka topic to which import trigger messages should be delivered.
+
+|
+| KAFKA_TOPIC_INSTALL_TRIGGERS
+| String
+| Name of the Kafka topic to which install trigger messages should be delivered.
+
+|
+| KAFKA_TOPIC_SHARE_TRIGGERS
+| String
+| Name of the Kafka topic to which share trigger messages should be delivered.
+
+|
+| KAFKA_TOPIC_SOFT_DELETE_TRIGGERS
+| String
+| Name of the Kafka topic to which soft delete trigger messages should be
+  delivered.
+
+|
+| KAFKA_TOPIC_UPDATE_META_TRIGGERS
+| String
+| Name of the Kafka topic to which update/install meta trigger messages should
+  be delivered.
+
+4+^h| Kafka Message Keys
+
+|
+| KAFKA_MESSAGE_KEY_HARD_DELETE_TRIGGERS
+| String
+| Message key for hard delete trigger messages delivered to Kafka.
+
+|
+| KAFKA_MESSAGE_KEY_IMPORT_TRIGGERS
+| String
+| Message key for import trigger messages delivered to Kafka.
+
+|
+| KAFKA_MESSAGE_KEY_INSTALL_TRIGGERS
+| String
+| Message key for install trigger messages delivered to Kafka.
+
+|
+| KAFKA_MESSAGE_KEY_SHARE_TRIGGERS
+| String
+| Message key for share trigger messages delivered to Kafka.
+
+|
+| KAFKA_MESSAGE_KEY_SOFT_DELETE_TRIGGERS
+| String
+| Message key for soft delete trigger messages delivered to Kafka.
+
+|
+| KAFKA_MESSAGE_KEY_UPDATE_META_TRIGGERS
+| String
+| Message key for update/install meta trigger messages delivered to Kafka.
+
 |===
 
 == Wildcard Environment Variables
@@ -190,6 +476,20 @@ Example:
 [source, shell]
 ----
 FOO=mood1:happy,mood2:sad,mood3:mad
+----
+
+`Duration`::
+???
++
+Examples:
+[source, shell]
+----
+FOO=1d
+FOO=1h
+FOO=1m
+FOO=1s
+FOO=1ms
+FOO=1d 2h 3m 4.567s
 ----
 
 `HostAddress`::

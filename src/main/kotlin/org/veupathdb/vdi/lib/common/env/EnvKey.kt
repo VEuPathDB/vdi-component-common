@@ -502,12 +502,6 @@ object EnvKey {
        * Type: String
        * Required: no
        */
-      const val ImportResults = "KAFKA_TOPIC_IMPORT_RESULTS"
-
-      /**
-       * Type: String
-       * Required: no
-       */
       const val ImportTriggers = "KAFKA_TOPIC_IMPORT_TRIGGERS"
 
       /**
@@ -541,12 +535,6 @@ object EnvKey {
        * Required: no
        */
       const val HardDeleteTriggers = "KAFKA_MESSAGE_KEY_HARD_DELETE_TRIGGERS"
-
-      /**
-       * Type: String
-       * Required: no
-       */
-      const val ImportResults = "KAFKA_MESSAGE_KEY_IMPORT_RESULTS"
 
       /**
        * Type: String
