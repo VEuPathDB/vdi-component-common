@@ -33,7 +33,6 @@ class WorkerPool(
               log.debug("worker pool {} executing job {}", name, ++jobs)
               queue.receive()()
             } else {
-              log.trace("worker pool {} is sleeping for 100ms", name)
               delay(100.milliseconds)
             }
           }
