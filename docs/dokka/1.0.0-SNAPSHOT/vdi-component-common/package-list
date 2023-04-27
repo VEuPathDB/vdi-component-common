@@ -18,12 +18,10 @@ $dokka.location:org.veupathdb.vdi.lib.common.async/SuspendingIterator/next/#/Poi
 $dokka.location:org.veupathdb.vdi.lib.common.async/SuspendingSequence///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.async/-suspending-sequence/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.async/SuspendingSequence/iterator/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.async/-suspending-sequence/iterator.html
 $dokka.location:org.veupathdb.vdi.lib.common.async/WorkerPool///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.async/-worker-pool/index.html
-$dokka.location:org.veupathdb.vdi.lib.common.async/WorkerPool/WorkerPool/#kotlin.Int#kotlin.Int/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.async/-worker-pool/-worker-pool.html
-$dokka.location:org.veupathdb.vdi.lib.common.async/WorkerPool/jobQueueSize/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.async/-worker-pool/job-queue-size.html
+$dokka.location:org.veupathdb.vdi.lib.common.async/WorkerPool/WorkerPool/#kotlin.String#kotlin.Int#kotlin.Int/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.async/-worker-pool/-worker-pool.html
 $dokka.location:org.veupathdb.vdi.lib.common.async/WorkerPool/start/#kotlinx.coroutines.CoroutineScope/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.async/-worker-pool/start.html
 $dokka.location:org.veupathdb.vdi.lib.common.async/WorkerPool/stop/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.async/-worker-pool/stop.html
 $dokka.location:org.veupathdb.vdi.lib.common.async/WorkerPool/submit/#org.veupathdb.vdi.lib.common.async.Job/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.async/-worker-pool/submit.html
-$dokka.location:org.veupathdb.vdi.lib.common.async/WorkerPool/workerCount/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.async/-worker-pool/worker-count.html
 $dokka.location:org.veupathdb.vdi.lib.common.compression////PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.compression/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.compression/Tar///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.compression/-tar/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.compression/Tar/compressWithGZip/#java.nio.file.Path#kotlin.collections.Collection[java.nio.file.Path]/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.compression/-tar/compress-with-g-zip.html
