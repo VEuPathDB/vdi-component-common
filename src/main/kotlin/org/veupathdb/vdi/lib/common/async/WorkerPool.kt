@@ -3,6 +3,7 @@ package org.veupathdb.vdi.lib.common.async
 import org.slf4j.LoggerFactory
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -17,7 +18,9 @@ class WorkerPool(
   private val shutdown = ShutdownSignal()
   private val queue    = Channel<Job>(jobQueueSize)
   private val count    = CountdownLatch(workerCount)
+  private var jobs     = 0uL
 
+  @OptIn(ExperimentalCoroutinesApi::class)
   fun start(ctx: CoroutineScope) {
     log.trace("start(ctx={}}", ctx)
 
@@ -26,14 +29,12 @@ class WorkerPool(
     repeat(workerCount) {
       ctx.launch {
         while (!shutdown.isTriggered()) {
-          val job = queue.tryReceive()
-            .getOrNull()
-
-          if (job == null) {
-            delay(100.milliseconds)
+          if (!queue.isEmpty) {
+            log.debug("worker pool {} executing job {}", name, ++jobs)
+            queue.receive()()
           } else {
-            log.debug("received ")
-            job()
+            log.trace("worker pool {} is sleeping for 100ms", name)
+            delay(100.milliseconds)
           }
         }
 
