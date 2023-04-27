@@ -1,5 +1,6 @@
 package org.veupathdb.vdi.lib.common.field
 
+import com.fasterxml.jackson.annotation.JsonValue
 import com.fasterxml.jackson.core.JsonParseException
 import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.DeserializationContext
@@ -17,7 +18,10 @@ import java.util.UUID
  * @author Elizabeth Paige Harper - https://github.com/foxcapades
  */
 @JsonDeserialize(using = DatasetIDDeserializer::class)
-sealed interface DatasetID
+sealed interface DatasetID {
+  @JsonValue
+  override fun toString(): String
+}
 
 @JvmInline
 private value class StringDatasetID(val value: String) : DatasetID

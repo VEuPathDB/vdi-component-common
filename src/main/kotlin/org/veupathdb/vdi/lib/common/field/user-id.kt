@@ -1,5 +1,6 @@
 package org.veupathdb.vdi.lib.common.field
 
+import com.fasterxml.jackson.annotation.JsonValue
 import com.fasterxml.jackson.core.JsonParseException
 import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.DeserializationContext
@@ -10,6 +11,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 @JsonDeserialize(using = UserIDDeserializer::class)
 sealed interface UserID {
   fun toLong(): Long
+
+  @JsonValue
+  override fun toString(): String
 }
 
 fun UserID(value: Long): UserID {
