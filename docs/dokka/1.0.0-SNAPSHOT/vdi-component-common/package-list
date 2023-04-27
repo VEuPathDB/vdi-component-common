@@ -194,6 +194,7 @@ $dokka.location:org.veupathdb.vdi.lib.common.field//toUserID/kotlin.String#/Poin
 $dokka.location:org.veupathdb.vdi.lib.common.field//toUserIDOrNull/kotlin.Long#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/to-user-i-d-or-null.html
 $dokka.location:org.veupathdb.vdi.lib.common.field//toUserIDOrNull/kotlin.String#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/to-user-i-d-or-null.html
 $dokka.location:org.veupathdb.vdi.lib.common.field/DatasetID///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-dataset-i-d/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.field/DatasetID/toString/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-dataset-i-d/to-string.html
 $dokka.location:org.veupathdb.vdi.lib.common.field/DatasetIDDeserializer///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-dataset-i-d-deserializer/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.field/DatasetIDDeserializer/DatasetIDDeserializer/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-dataset-i-d-deserializer/-dataset-i-d-deserializer.html
 $dokka.location:org.veupathdb.vdi.lib.common.field/DatasetIDDeserializer/deserialize/#com.fasterxml.jackson.core.JsonParser#com.fasterxml.jackson.databind.DeserializationContext/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-dataset-i-d-deserializer/deserialize.html
@@ -204,6 +205,7 @@ $dokka.location:org.veupathdb.vdi.lib.common.field/SecretStringDeserializer/Secr
 $dokka.location:org.veupathdb.vdi.lib.common.field/SecretStringDeserializer/deserialize/#com.fasterxml.jackson.core.JsonParser#com.fasterxml.jackson.databind.DeserializationContext/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-secret-string-deserializer/deserialize.html
 $dokka.location:org.veupathdb.vdi.lib.common.field/UserID///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-user-i-d/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.field/UserID/toLong/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-user-i-d/to-long.html
+$dokka.location:org.veupathdb.vdi.lib.common.field/UserID/toString/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-user-i-d/to-string.html
 $dokka.location:org.veupathdb.vdi.lib.common.field/UserIDDeserializer///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-user-i-d-deserializer/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.field/UserIDDeserializer/UserIDDeserializer/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-user-i-d-deserializer/-user-i-d-deserializer.html
 $dokka.location:org.veupathdb.vdi.lib.common.field/UserIDDeserializer/deserialize/#com.fasterxml.jackson.core.JsonParser#com.fasterxml.jackson.databind.DeserializationContext/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.field/-user-i-d-deserializer/deserialize.html
