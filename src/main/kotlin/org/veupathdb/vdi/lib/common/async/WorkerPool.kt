@@ -26,8 +26,12 @@ class WorkerPool(
 
     log.info("starting worker pool {} with queue size {} and worker count {}", name, jobQueueSize, workerCount)
 
+    var i = 0
     repeat(workerCount) {
+      val j = ++i
       ctx.launch {
+        log.debug("worker pool {} starting worker #{}", name, j)
+
         while (!shutdown.isTriggered()) {
           if (!queue.isEmpty) {
             log.debug("worker pool {} executing job {}", name, ++jobs)
@@ -38,6 +42,7 @@ class WorkerPool(
           }
         }
 
+        log.debug("worker pool {} shutting down worker #{}", name, j)
         count.decrement()
       }
     }
