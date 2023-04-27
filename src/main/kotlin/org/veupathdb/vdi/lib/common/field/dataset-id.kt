@@ -1,12 +1,12 @@
 package org.veupathdb.vdi.lib.common.field
 
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.core.JsonParseException
 import com.fasterxml.jackson.core.JsonParser
-import com.fasterxml.jackson.databind.DeserializationContext
-import com.fasterxml.jackson.databind.JsonDeserializer
-import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.*
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
+import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import java.util.UUID
 
 /**
@@ -18,6 +18,7 @@ import java.util.UUID
  * @author Elizabeth Paige Harper - https://github.com/foxcapades
  */
 @JsonDeserialize(using = DatasetIDDeserializer::class)
+@JsonSerialize(using = DatasetIDSerializer::class)
 sealed interface DatasetID {
   @JsonValue
   override fun toString(): String
@@ -89,6 +90,12 @@ class DatasetIDDeserializer : JsonDeserializer<DatasetID>() {
     } else {
       throw JsonParseException(p, "expected node to be textual, it was not")
     }
+  }
+}
+
+class DatasetIDSerializer : JsonSerializer<DatasetID>() {
+  override fun serialize(value: DatasetID, gen: JsonGenerator, serializers: SerializerProvider) {
+    gen.writeString(value.toString())
   }
 }
 
