@@ -25,7 +25,9 @@ sealed interface DatasetID {
 }
 
 @JvmInline
-private value class StringDatasetID(val value: String) : DatasetID
+private value class StringDatasetID(val value: String) : DatasetID {
+  override fun toString() = value
+}
 
 /**
  * Attempts to construct a new [DatasetID] instance from the given string value.
