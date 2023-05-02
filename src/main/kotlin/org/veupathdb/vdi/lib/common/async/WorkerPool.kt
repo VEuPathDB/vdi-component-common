@@ -31,7 +31,14 @@ class WorkerPool(
           while (!shutdown.isTriggered()) {
             if (!queue.isEmpty) {
               log.debug("worker pool {} executing job {}", name, ++jobs)
-              queue.receive()()
+              val job = queue.receive()
+
+              try {
+                job()
+              } catch (e: Throwable) {
+                log.error("job $jobs failed with exception:", e)
+              }
+
             } else {
               delay(100.milliseconds)
             }
