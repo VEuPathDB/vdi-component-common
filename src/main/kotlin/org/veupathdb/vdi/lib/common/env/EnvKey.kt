@@ -9,6 +9,9 @@ package org.veupathdb.vdi.lib.common.env
 object EnvKey {
 
 
+  /**
+   * Environment keys for LDAP related settings.
+   */
   object LDAP {
 
     /**
@@ -33,6 +36,12 @@ object EnvKey {
     const val WorkerPoolSize = "IMPORT_HANDLER_WORKER_POOL_SIZE"
 
     /**
+     * Type: UInt
+     * Required: no
+     */
+    const val WorkQueueSize = "IMPORT_HANDLER_WORK_QUEUE_SIZE"
+
+    /**
      * Type: String
      * Required: yes
      */
@@ -46,6 +55,12 @@ object EnvKey {
      * Required: no
      */
     const val WorkerPoolSize = "UPDATE_META_HANDLER_WORKER_POOL_SIZE"
+
+    /**
+     * Type: UInt
+     * Required: no
+     */
+    const val WorkQueueSize = "UPDATE_META_HANDLER_WORK_QUEUE_SIZE"
 
     /**
      * Type: String
@@ -63,6 +78,12 @@ object EnvKey {
     const val WorkerPoolSize = "INSTALL_DATA_HANDLER_WORKER_POOL_SIZE"
 
     /**
+     * Type: UInt
+     * Required: no
+     */
+    const val WorkQueueSize = "INSTALL_DATA_HANDLER_WORK_QUEUE_SIZE"
+
+    /**
      * Type: String
      * Required: yes
      */
@@ -76,6 +97,12 @@ object EnvKey {
      * Required: no
      */
     const val WorkerPoolSize = "SHARE_HANDLER_WORKER_POOL_SIZE"
+
+    /**
+     * Type: UInt
+     * Required: no
+     */
+    const val WorkQueueSize = "SHARE_HANDLER_WORK_QUEUE_SIZE"
 
     /**
      * Type: String
@@ -93,6 +120,12 @@ object EnvKey {
     const val WorkerPoolSize = "SOFT_DELETE_HANDLER_WORKER_POOL_SIZE"
 
     /**
+     * Type: UInt
+     * Required: no
+     */
+    const val WorkQueueSize = "SOFT_DELETE_HANDLER_WORK_QUEUE_SIZE"
+
+    /**
      * Type: String
      * Required: yes
      */
@@ -106,6 +139,12 @@ object EnvKey {
      * Required: no
      */
     const val WorkerPoolSize = "HARD_DELETE_HANDLER_WORKER_POOL_SIZE"
+
+    /**
+     * Type: UInt
+     * Required: no
+     */
+    const val WorkQueueSize = "HARD_DELETE_HANDLER_WORK_QUEUE_SIZE"
 
     /**
      * Type: String
