@@ -328,6 +328,7 @@ $dokka.location:org.veupathdb.vdi.lib.common.model/VDISyncControlRecord/datasetI
 $dokka.location:org.veupathdb.vdi.lib.common.model/VDISyncControlRecord/metaUpdated/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.model/-v-d-i-sync-control-record/meta-updated.html
 $dokka.location:org.veupathdb.vdi.lib.common.model/VDISyncControlRecord/sharesUpdated/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.model/-v-d-i-sync-control-record/shares-updated.html
 $dokka.location:org.veupathdb.vdi.lib.common.util////PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.util/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.util//isNull/TypeParam(bounds=[kotlin.Any?])?#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.util/is-null.html
 $dokka.location:org.veupathdb.vdi.lib.common.util//or/TypeParam(bounds=[kotlin.Any?])?#kotlin.Function0[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.util/or.html
 $dokka.location:org.veupathdb.vdi.lib.common.util/CloseableIterator///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.util/-closeable-iterator/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.util/HostAddress///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.util/-host-address/index.html

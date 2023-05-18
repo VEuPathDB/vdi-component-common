@@ -18,3 +18,9 @@ package org.veupathdb.vdi.lib.common.util
  * returned by executing the block [fn].
  */
 inline infix fun <T> T?.or(fn: () -> T): T = this ?: fn()
+
+/**
+ * Tests if the target object reference is null.
+ */
+inline val <T> T?.isNull: Boolean
+  get() = this == null
