@@ -25,9 +25,6 @@ inline infix fun <T> T?.or(fn: () -> T): T = this ?: fn()
 /**
  * Tests if the target object reference is null.
  */
-inline val <T> T?.isNull: Boolean
-  get() = this == null
-
 @OptIn(ExperimentalContracts::class)
 fun <T> T?.isNull(): Boolean {
   contract {
