@@ -22,6 +22,36 @@ fun Environment.require(key: String): String =
 
 /**
  * Requires that a target environment variable is set, non-blank, and is a valid
+ * [Duration] value.
+ *
+ * Valid duration values consist of one or more numeric components with time
+ * unit identifiers. Each component is a number followed by the unit abbreviated
+ * name: `d`, `h`, `m`, `s`, `ms`, `us`, `ns`: `"5h"`, `"1d 12h"`,
+ * `"1h 0m 30.340s"`, `"-(1h 30m)"`. The last component can be a number with a
+ * fractional part.
+ *
+ * Valid time unit identifiers are:
+ * * `d` - Days
+ * * `h` - Hours
+ * * `m` - Minutes
+ * * `s` - Seconds
+ * * `ms` - Milliseconds
+ * * `us` - Microseconds
+ * * `ns` - Nanoseconds
+ *
+ * @param key Key of the target environment variable to look up.
+ *
+ * @return The parsed [Duration] value from the environment or `null` if the
+ * variable was blank or absent.
+ *
+ * @throws IllegalStateException If the target environment variable could not be
+ * parsed as a [Duration] value.
+ */
+fun Environment.reqDuration(key: String): Duration =
+  optDuration(key) ?: throwAbsent(key)
+
+/**
+ * Requires that a target environment variable is set, non-blank, and is a valid
  * map of key:value pairs.
  *
  * Key/value pairs are defined as a string value in the following format:
