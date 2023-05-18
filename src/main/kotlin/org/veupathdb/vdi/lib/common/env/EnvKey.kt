@@ -669,6 +669,7 @@ object EnvKey {
 
   object Pruner {
     const val DeletionThreshold = "DATASET_PRUNING_DELETION_THRESHOLD"
+    const val PruningInterval   = "DATASET_PRUNING_INTERVAL"
   }
 
   object S3 {
