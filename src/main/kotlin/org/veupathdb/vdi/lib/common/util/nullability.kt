@@ -1,5 +1,8 @@
 package org.veupathdb.vdi.lib.common.util
 
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.contract
+
 /**
  * `or` infix function for elvis operator like functionality with executable
  * blocks.
@@ -24,3 +27,12 @@ inline infix fun <T> T?.or(fn: () -> T): T = this ?: fn()
  */
 inline val <T> T?.isNull: Boolean
   get() = this == null
+
+@OptIn(ExperimentalContracts::class)
+fun <T> T?.isNull(): Boolean {
+  contract {
+    returns(false) implies(this@isNull != null)
+  }
+
+  return this == null
+}
