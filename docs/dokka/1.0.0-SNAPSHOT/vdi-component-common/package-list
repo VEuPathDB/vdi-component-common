@@ -147,6 +147,7 @@ $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.LDAP/OracleBaseDN/#/Poin
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Pruner///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-pruner/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Pruner/DeletionThreshold/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-pruner/-deletion-threshold.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Pruner/PruningInterval/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-pruner/-pruning-interval.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Pruner/PruningWakeupInterval/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-pruner/-pruning-wakeup-interval.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Rabbit.Exchange///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-rabbit/-exchange/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Rabbit.Exchange/Arguments/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-rabbit/-exchange/-arguments.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Rabbit.Exchange/AutoDelete/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-rabbit/-exchange/-auto-delete.html
