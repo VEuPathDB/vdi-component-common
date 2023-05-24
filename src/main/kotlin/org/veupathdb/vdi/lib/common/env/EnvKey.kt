@@ -668,8 +668,34 @@ object EnvKey {
   }
 
   object Pruner {
+
+    /**
+     * How old a dataset must be before it is considered "prunable" from S3.
+     *
+     * Type: Duration
+     * Required: no
+     */
     const val DeletionThreshold = "DATASET_PRUNING_DELETION_THRESHOLD"
-    const val PruningInterval   = "DATASET_PRUNING_INTERVAL"
+
+    /**
+     * Interval at which the automated pruning job will be run.
+     *
+     * Type: Duration
+     * Required: no
+     */
+    const val PruningInterval = "DATASET_PRUNING_INTERVAL"
+
+    /**
+     * Interval at which the automated pruning module will wake up to check for
+     * the service shutdown signal.
+     *
+     * This value should be fairly short as, assuming a pruning job is not in
+     * progress, this defines the wait time for a service shutdown.
+     *
+     * Type: Duration
+     * Required: no
+     */
+    const val PruningWakeupInterval = "DATASET_PRUNING_WAKEUP_INTERVAL"
   }
 
   object S3 {
