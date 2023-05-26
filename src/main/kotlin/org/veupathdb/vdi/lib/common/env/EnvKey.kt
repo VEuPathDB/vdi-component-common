@@ -8,6 +8,16 @@ package org.veupathdb.vdi.lib.common.env
  */
 object EnvKey {
 
+  object Admin {
+
+    /**
+     * Administration endpoint secret key value.
+     *
+     * Type: String
+     * Required: yes
+     */
+    const val SecretKey = "ADMIN_SECRET_KEY"
+  }
 
   /**
    * Environment keys for LDAP related settings.
