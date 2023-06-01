@@ -72,6 +72,9 @@ $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Password/#/Point
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/PoolSize/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/-pool-size.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Port/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/-port.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.CacheDB/Username/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-cache-d-b/-username.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.DatasetReinstaller///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-dataset-reinstaller/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.DatasetReinstaller/RunInterval/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-dataset-reinstaller/-run-interval.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.DatasetReinstaller/WakeInterval/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-dataset-reinstaller/-wake-interval.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handlers///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handlers/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handlers/AddressSuffix/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handlers/-address-suffix.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handlers/NameSuffix/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handlers/-name-suffix.html

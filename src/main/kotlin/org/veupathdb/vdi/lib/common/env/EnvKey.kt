@@ -37,6 +37,21 @@ object EnvKey {
     const val OracleBaseDN = "ORACLE_BASE_DN"
   }
 
+  object DatasetReinstaller {
+
+    /**
+     * Type: Duration
+     * Required: no
+     */
+    const val RunInterval = "DATASET_REINSTALLER_RUN_INTERVAL"
+
+    /**
+     * Type: Duration
+     * Required: no
+     */
+    const val WakeInterval = "DATASET_REINSTALLER_WAKE_INTERVAL"
+  }
+
   object ImportTriggerHandler {
 
     /**
