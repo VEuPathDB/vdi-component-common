@@ -692,6 +692,10 @@ object EnvKey {
     }
   }
 
+  object Reconciler {
+    const val RunIntervalSeconds = "RECONCILER_RUN_INTERVAL_SECONDS"
+  }
+
   object Pruner {
 
     /**
