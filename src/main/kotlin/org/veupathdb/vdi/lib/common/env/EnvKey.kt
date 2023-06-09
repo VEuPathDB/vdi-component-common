@@ -183,6 +183,7 @@ object EnvKey {
    *
    * ```
    * PLUGIN_HANDLER_<NAME>_NAME
+   * PLUGIN_HANDLER_<NAME>_VERSION
    * PLUGIN_HANDLER_<NAME>_ADDRESS
    * PLUGIN_HANDLER_<NAME>_PROJECT_IDS
    * ```
@@ -199,6 +200,7 @@ object EnvKey {
    *
    * ```
    * PLUGIN_HANDLER_RNASEQ_NAME
+   * PLUGIN_HANDLER_RNASEQ_VERSION
    * PLUGIN_HANDLER_RNASEQ_ADDRESS
    * PLUGIN_HANDLER_RNASEQ_PROJECT_IDS
    * ```
@@ -220,6 +222,17 @@ object EnvKey {
      * Required: yes
      */
     const val NameSuffix = "_NAME"
+
+    /**
+     * Represents the environment variable `PLUGIN_HANDLER_{NAME}_VERSION` where
+     * `{NAME}` is a wildcard matching any string.
+     *
+     * This environment variable declares the version for a dataset type.
+     *
+     * Type: String
+     * Required: yes
+     */
+    const val VersionSuffix = "_VERSION"
 
     /**
      * Represents the environment variable `PLUGIN_HANDLER_{NAME}_ADDRESS` where
