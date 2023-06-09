@@ -80,6 +80,7 @@ $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handlers/AddressSuffix/#
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handlers/NameSuffix/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handlers/-name-suffix.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handlers/Prefix/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handlers/-prefix.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handlers/ProjectIDsSuffix/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handlers/-project-i-ds-suffix.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Handlers/VersionSuffix/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-handlers/-version-suffix.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.HardDeleteTriggerHandler///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-hard-delete-trigger-handler/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.HardDeleteTriggerHandler/KafkaConsumerClientID/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-hard-delete-trigger-handler/-kafka-consumer-client-i-d.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.HardDeleteTriggerHandler/WorkQueueSize/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-hard-delete-trigger-handler/-work-queue-size.html
@@ -175,6 +176,9 @@ $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Rabbit/Password/#/Pointi
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Rabbit/PollingInterval/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-rabbit/-polling-interval.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Rabbit/Port/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-rabbit/-port.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Rabbit/Username/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-rabbit/-username.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Reconciler///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-reconciler/index.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Reconciler/ReconcilerEnabled/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-reconciler/-reconciler-enabled.html
+$dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.Reconciler/RunIntervalSeconds/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-reconciler/-run-interval-seconds.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.S3///PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-s3/index.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.S3/AccessToken/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-s3/-access-token.html
 $dokka.location:org.veupathdb.vdi.lib.common.env/EnvKey.S3/BucketName/#/PointingToDeclaration/vdi-component-common/org.veupathdb.vdi.lib.common.env/-env-key/-s3/-bucket-name.html
