@@ -4,6 +4,9 @@ import org.slf4j.LoggerFactory
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
+import org.apache.logging.log4j.kotlin.CoroutineThreadContext
+import org.apache.logging.log4j.kotlin.ThreadContextData
+import java.util.*
 
 class WorkerPool(
   private val name: String,
@@ -25,7 +28,16 @@ class WorkerPool(
     runBlocking {
       repeat(workerCount) {
         val j = ++i
-        launch {
+        launch (CoroutineThreadContext(
+          contextData = ThreadContextData(
+            map = mapOf(
+              Pair(
+                "workerID",
+                "$name-$j"
+              )
+            ), Stack()
+          )
+        )) {
           log.debug("worker pool {} starting worker #{}", name, j)
 
           while (!shutdown.isTriggered()) {
