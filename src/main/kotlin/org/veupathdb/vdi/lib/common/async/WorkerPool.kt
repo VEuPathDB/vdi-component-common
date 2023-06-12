@@ -6,6 +6,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import org.apache.logging.log4j.kotlin.CoroutineThreadContext
 import org.apache.logging.log4j.kotlin.ThreadContextData
+import org.apache.logging.log4j.kotlin.logger
 import java.util.*
 
 class WorkerPool(
@@ -13,7 +14,7 @@ class WorkerPool(
   private val jobQueueSize: Int,
   private val workerCount: Int = 5,
 ) {
-  private val log = LoggerFactory.getLogger(javaClass)
+  private val log = logger()
 
   private val shutdown = ShutdownSignal()
   private val queue    = Channel<Job>(jobQueueSize)
@@ -22,7 +23,7 @@ class WorkerPool(
 
   @OptIn(ExperimentalCoroutinesApi::class)
   fun start() {
-    log.info("starting worker pool {} with queue size {} and worker count {}", name, jobQueueSize, workerCount)
+    log.info("starting worker pool $name with queue size $jobQueueSize and worker count $workerCount")
 
     var i = 0
     runBlocking {
@@ -38,11 +39,11 @@ class WorkerPool(
             ), Stack()
           )
         )) {
-          log.debug("worker pool {} starting worker #{}", name, j)
+          log.debug("worker pool $name starting worker $j")
 
           while (!shutdown.isTriggered()) {
             if (!queue.isEmpty) {
-              log.debug("worker pool {} executing job {}", name, ++jobs)
+              log.debug("worker pool $name executing job ${++jobs}")
               val job = queue.receive()
 
               try {
@@ -56,7 +57,7 @@ class WorkerPool(
             }
           }
 
-          log.debug("worker pool {} shutting down worker #{}", name, j)
+          log.debug("worker pool $name shutting down worker $j")
           count.decrement()
         }
       }
