@@ -19,6 +19,25 @@ object EnvKey {
     const val SecretKey = "ADMIN_SECRET_KEY"
   }
 
+  object Quotas {
+
+    /**
+     * Maximum file size for a user upload in bytes.
+     *
+     * Type: ULong
+     * Required: no
+     */
+    const val MaxUploadFileSize = "MAX_UPLOAD_FILE_SIZE"
+
+    /**
+     * Quota cap for user uploads in bytes.
+     *
+     * Type: ULong
+     * Required: no
+     */
+    const val UserUploadQuota = "USER_UPLOAD_QUOTA"
+  }
+
   /**
    * Environment keys for LDAP related settings.
    */
