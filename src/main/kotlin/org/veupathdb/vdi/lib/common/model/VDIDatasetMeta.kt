@@ -16,6 +16,10 @@ interface VDIDatasetMeta {
   @set:JsonSetter(JsonKey.Projects)
   var projects: Set<ProjectID>
 
+  @get:JsonGetter(JsonKey.Visibility)
+  @set:JsonSetter(JsonKey.Visibility)
+  var visibility: VDIDatasetVisibility
+
   @get:JsonGetter(JsonKey.Owner)
   @set:JsonSetter(JsonKey.Owner)
   var owner: UserID
@@ -44,6 +48,6 @@ interface VDIDatasetMeta {
     const val Projects     = "projects"
     const val Summary      = "summary"
     const val Type         = "type"
+    const val Visibility   = "visibility"
   }
 }
-
