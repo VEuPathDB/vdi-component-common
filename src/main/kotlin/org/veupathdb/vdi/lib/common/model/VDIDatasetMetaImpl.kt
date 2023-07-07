@@ -11,6 +11,9 @@ data class VDIDatasetMetaImpl(
   @JsonProperty(VDIDatasetMeta.JsonKey.Projects)
   override var projects: Set<ProjectID>,
 
+  @JsonProperty(VDIDatasetMeta.JsonKey.Visibility)
+  override var visibility: VDIDatasetVisibility,
+
   @JsonProperty(VDIDatasetMeta.JsonKey.Owner)
   override var owner: UserID,
 
