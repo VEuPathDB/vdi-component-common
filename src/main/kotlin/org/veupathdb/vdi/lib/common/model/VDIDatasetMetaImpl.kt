@@ -26,6 +26,9 @@ data class VDIDatasetMetaImpl(
   @JsonProperty(VDIDatasetMeta.JsonKey.Description)
   override var description: String?,
 
+  @JsonProperty(VDIDatasetMeta.JsonKey.Origin)
+  override var origin: String,
+
   @JsonProperty(VDIDatasetMeta.JsonKey.Dependencies)
   override var dependencies: Collection<VDIDatasetDependency>,
 ) : VDIDatasetMeta
