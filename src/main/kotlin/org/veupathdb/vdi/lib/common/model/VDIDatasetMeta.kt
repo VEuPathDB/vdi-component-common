@@ -36,6 +36,10 @@ interface VDIDatasetMeta {
   @set:JsonSetter(JsonKey.Description)
   var description: String?
 
+  @get:JsonGetter(JsonKey.Origin)
+  @set:JsonSetter(JsonKey.Origin)
+  var origin: String
+
   @get:JsonGetter(JsonKey.Dependencies)
   @set:JsonSetter(JsonKey.Dependencies)
   var dependencies: Collection<VDIDatasetDependency>
@@ -46,6 +50,7 @@ interface VDIDatasetMeta {
     const val Name         = "name"
     const val Owner        = "owner"
     const val Projects     = "projects"
+    const val Origin       = "origin"
     const val Summary      = "summary"
     const val Type         = "type"
     const val Visibility   = "visibility"
