@@ -278,9 +278,22 @@ object EnvKey {
      * value means datasets of the defined type are applicable to all projects.
      *
      * Type: List<String> (`"project1,project2,project3"`)
-     * Required: no
+     * Required: yes
      */
     const val ProjectIDsSuffix = "_PROJECT_IDS"
+
+    /**
+     * Represents the environment variable `PLUGIN_HANDLER_{NAME}_DISPLAY_NAME`
+     * where `{NAME}` is a wildcard matching any string.
+     *
+     * This environment variable declares the plugin's display name that will be
+     * used to show to the end user for a dataset of the type named by the
+     * wildcard environment variable `PLUGIN_HANDLER_{NAME}_NAME`.
+     *
+     * Type: String
+     * Required: yes
+     */
+    const val DisplayNameSuffix = "_DISPLAY_NAME"
   }
 
   /**
