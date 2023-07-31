@@ -132,7 +132,8 @@ be copied as a base for tickets involving changes to this project.
 
 * [ ] update the vdi service to use the new commons version
 * [ ] Update the vdi service to require the new environment variable
-* [ ] Add the new environment variable to the .env files
+* [ ] Add the new environment variable(s) to the .env files
+* [ ] Add the new environment variable(s) to the docker-compose.yml file.
 * [ ] Tag the new VDI service version
 * [ ] Ensure the new tag builds in Jenkins
 
