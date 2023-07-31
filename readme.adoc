@@ -2,6 +2,7 @@
 :source-highlighter: highlightjs
 :gh-group: VEuPathDB
 :gh-name: vdi-component-common
+:gh-url: https://github.com/{gh-group}
 :lib-package: org.veupathdb.vdi.lib.common
 :lib-group: org.veupathdb.vdi
 :lib-name: vdi-component-common
@@ -21,3 +22,198 @@ Common JSON handling functionality for all VDI JVM-based projects.
 ----
   implementation("{lib-group}:{lib-name}:{lib-version}")
 ----
+
+== How to Update
+
+Due to the nature of the projects that depend on this library, making changes
+and getting them out to the dependent services is quite a hassle at the moment.
+
+This is an attempt to document the steps necessary to get changes to this
+library published and distributed.
+
+First, let's list the projects that directly and indirectly depend on this
+library:
+
+.Direct Dependents
+* {gh-url}/vdi-service[vdi-service]
+* {gh-url}/vdi-plugin-handler-server[vdi-plugin-handler-server]
+
+.Child/Grandchild Dependents
+* {gh-url}/vdi-docker-plugin-base[vdi-docker-plugin-base]
+* {gh-url}/vdi-plugin-biom[vdi-plugin-biom]
+* {gh-url}/vdi-plugin-isasimple[vdi-plugin-isasimple]
+* {gh-url}/vdi-plugin-rnaseq[vdi-plugin-rnaseq]
+* {gh-url}/vdi-plugin-genelist[vdi-plugin-genelist]
+* {gh-url}/vdi-plugin-bigwig[vdi-plugin-bigwig]
+* {gh-url}/vdi-plugin-example[vdi-plugin-example]
+* Any other VDI plugins that were created after the time of this writing.
+
+=== Update Steps
+
+==== Making the Change
+
+. Make your changes to this project.
+. Bump the version in the link:build.gradle.kts[build.gradle.kts file].
+. Publish the new version via `gradle publish`
+
+==== Updating the Direct Dependents
+
+. Update the {gh-url}/vdi-service[vdi-service] project:
+.. Update the {gh-url}/vdi-service/blob/main/platform/build.gradle.kts[platform build.gradle.kts file].
+.. Make any changes necessary to the vdi-service to use your update.
++
+This may include updating the raml and weaving the change through the service,
+adding new environment requirements, changing function call signatures, adding
+new database columns, etc..
+.. Tag a new version of {gh-url}/vdi-service[vdi-service].
+.. Ensure the new tag builds in Jenkins.
+. Update the {gh-url}/vdi-plugin-handler-server[vdi-plugin-handler-server] project.
+.. Update the {gh-url}/vdi-plugin-handler-server/blob/main/service/build.gradle.kts[service build.gradle.kts file].
+.. Make any changes necessary to the handler server service to incorporate your
+commons changes.
+.. Tag a new version of the plugin handler server.
+.. Ensure the new version builds in Jenkins.
+
+==== Updating Child Dependencies
+
+This is where things start to get a little tedious.  From here we need to get
+the new version of the plugin handler server out to all the plugins.
+
+These steps depend on the plugin handler server new tag having been built in
+Jenkins.
+
+. Update the {gh-url}/vdi-docker-plugin-base/blob/main/Dockerfile[vdi-docker-plugin-base Dockerfile]
+to use the new plugin handler server version by updating the `FROM` statement.
+. Tag a new version of the `vdi-docker-plugin-base` project.
+. Wait for the new `vdi-docker-plugin-base` tag to build in Jenkins.
+. Go to each VDI plugin repository and update the `FROM` statement in each
+Dockerfile to depend on the new `vdi-docker-plugin-base` tag.
+. Tag a new version of each plugin and ensure they build in Jenkins.
+
+==== Secondary Updates
+
+Sometimes your change is dependent on or caused by other necessary changes, such
+as changes to the internal Postgres database schema.  For these cases, updating
+and tagging the new database schema is the first step.
+
+==== Issue Templates
+
+Since publishing and distributing changes to this project is such a hassle, it
+may be advisable to create checklists in relevant tickets to ensure that no step
+gets missed.  The following are example checklists for GitHub issues that may
+be copied as a base for tickets involving changes to this project.
+
+===== Environment Changes
+
+.Expand for template
+[%collapsible]
+====
+[source, markdown]
+----
+* [ ] Add the new environment variable to the commons library
+* [ ] PR the change to the commons library
+* [ ] Tag the new version of the commons library
+* [ ] Publish the new version of the commons library
+
+* [ ] Update the plugin service to use the new version of the commons library
+* [ ] PR the change to the plugin service
+* [ ] Tag the updated plugin service
+* [ ] Wait for jenkins to build the new plugin service tag
+
+* [ ] Update the plugin base image to use the new plugin service tag
+* [ ] Tag the plugin base image
+* [ ] Wait for jenkins to build the new plugin base image
+
+* [ ] Update the bigwig plugin to use the new plugin base image
+* [ ] Update the genelist plugin to use the new plugin base image
+* [ ] Update the rnaseq plugin to use the new plugin base image
+* [ ] Update the isa plugin to use the new plugin base image
+* [ ] Update the biom plugin to use the new plugin base image
+
+* [ ] update the vdi service to use the new commons version
+* [ ] Update the vdi service to require the new environment variable
+* [ ] Add the new environment variable to the .env files
+* [ ] Tag the new VDI service version
+* [ ] Ensure the new tag builds in Jenkins
+
+* [ ] Publish the new image versions to dev or QA via tagger
+----
+====
+
+===== Model Changes
+
+.With Database Change
+--
+.Expand for template
+[%collapsible]
+====
+[source, markdown]
+----
+* [ ] Update the internal database schema
+* [ ] Create a migration script to update the live schema
+* [ ] Tag the new schema version
+* [ ] Wait for the new database container to build in Jenkins
+* [ ] Update the VDI service docker-compose.yml file to use the new database tag
+
+* [ ] Add the new field to the relevant model interface(s) and class(es).
+* [ ] PR the change to the commons library
+* [ ] Tag the new version of the commons library
+* [ ] Publish the new version of the commons library
+
+* [ ] Update the plugin service to use the new version of the commons library
+* [ ] PR the change to the plugin service
+* [ ] Tag the updated plugin service
+* [ ] Wait for jenkins to build the new plugin service tag
+
+* [ ] Update the plugin base image to use the new plugin service tag
+* [ ] Tag the plugin base image
+* [ ] Wait for jenkins to build the new plugin base image
+
+* [ ] Update the bigwig plugin to use the new plugin base image
+* [ ] Update the genelist plugin to use the new plugin base image
+* [ ] Update the rnaseq plugin to use the new plugin base image
+* [ ] Update the isa plugin to use the new plugin base image
+* [ ] Update the biom plugin to use the new plugin base image
+
+* [ ] Update the VDI service to use the new commons version
+* [ ] Update the VDI service queries to use the new database field(s) and write to the new model property or properties
+
+* [ ] Publish the new image versions to dev or QA via tagger
+----
+====
+--
+
+.Without Database Change
+--
+.Expand for template
+[%collapsible]
+====
+[source, markdown]
+----
+* [ ] Add the new field to the relevant model interface(s) and class(es).
+* [ ] PR the change to the commons library
+* [ ] Tag the new version of the commons library
+* [ ] Publish the new version of the commons library
+
+* [ ] Update the plugin service to use the new version of the commons library
+* [ ] PR the change to the plugin service
+* [ ] Tag the updated plugin service
+* [ ] Wait for jenkins to build the new plugin service tag
+
+* [ ] Update the plugin base image to use the new plugin service tag
+* [ ] Tag the plugin base image
+* [ ] Wait for jenkins to build the new plugin base image
+
+* [ ] Update the bigwig plugin to use the new plugin base image
+* [ ] Update the genelist plugin to use the new plugin base image
+* [ ] Update the rnaseq plugin to use the new plugin base image
+* [ ] Update the isa plugin to use the new plugin base image
+* [ ] Update the biom plugin to use the new plugin base image
+
+* [ ] Update the VDI service to use the new commons version
+* [ ] Update the VDI service queries to use the new database field(s) and write to the new model property or properties
+
+* [ ] Publish the new image versions to dev or QA via tagger
+----
+====
+--
