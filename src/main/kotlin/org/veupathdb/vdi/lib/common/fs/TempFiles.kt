@@ -15,6 +15,24 @@ object TempFiles {
   fun makeTempDirectory() =
     makeTempPath().also { it.createDirectories() }
 
+  /**
+   * Creates a temporary file with the given file name in a new temp directory.
+   *
+   * Returns a pair containing the temp directory path and the temp file path.
+   *
+   * This directory must be manually deleted after it has served its purpose.
+   *
+   * @param fileName Name of the file to create.
+   *
+   * @return A pair containing the path to the temp directory as well as the
+   * path to the temp file in that directory.
+   */
+  fun makeTempPath(fileName: String): Pair<Path, Path> {
+    val dir = makeTempDirectory()
+    val file = dir.resolve(fileName)
+    return dir to file
+  }
+
   fun makeTempFile() =
     makeTempPath().also { it.createFile() }
 
