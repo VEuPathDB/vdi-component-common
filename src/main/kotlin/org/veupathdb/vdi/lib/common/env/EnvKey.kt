@@ -333,7 +333,13 @@ object EnvKey {
      * Type: String
      * Required: yes
      */
-    const val DBSchemaPrefix = "DB_CONNECTION_SCHEMA_"
+    const val DBControlSchemaPrefix = "DB_CONNECTION_CONTROL_SCHEMA_"
+
+    /**
+     * Type: String
+     * Required: yes
+     */
+    const val DBDataSchemaPrefix = "DB_CONNECTION_DATA_SCHEMA_"
 
     /**
      * Type: String
