@@ -294,6 +294,20 @@ object EnvKey {
      * Required: yes
      */
     const val DisplayNameSuffix = "_DISPLAY_NAME"
+
+    /**
+     * Represents the environment variable
+     * `PLUGIN_HANDLER_{NAME}_USER_FILES_PATH` where `{NAME}` is a wildcard
+     * matching any string.
+     *
+     * This environment variable declares the plugin's user data files mount
+     * path.  User data files will be installed into subdirectories under this
+     * mount point.
+     *
+     * Type: String
+     * Required: yes
+     */
+    const val UserFilesSuffix = "_USER_FILES_PATH"
   }
 
   /**
@@ -339,7 +353,7 @@ object EnvKey {
      * Type: String
      * Required: yes
      */
-    const val DBDataSchemaPrefix = "DB_CONNECTION_DATA_SCHEMA_"
+    const val DBUserDataSchemaPrefix = "DB_CONNECTION_USER_DATA_SCHEMA_"
 
     /**
      * Type: String
