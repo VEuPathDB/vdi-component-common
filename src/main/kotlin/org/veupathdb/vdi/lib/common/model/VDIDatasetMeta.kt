@@ -22,7 +22,7 @@ interface VDIDatasetMeta {
 
   @get:JsonGetter(JsonKey.Owner)
   @set:JsonSetter(JsonKey.Owner)
-  var owner: UserID
+  var owner: UserID?
 
   @get:JsonGetter(JsonKey.Name)
   @set:JsonSetter(JsonKey.Name)
