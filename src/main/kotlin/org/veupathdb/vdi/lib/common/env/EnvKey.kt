@@ -353,7 +353,7 @@ object EnvKey {
      * Type: String
      * Required: yes
      */
-    const val DBUserDataSchemaPrefix = "DB_CONNECTION_USER_DATA_SCHEMA_"
+    const val DBDataSchemaPrefix = "DB_CONNECTION_DATA_SCHEMA_"
 
     /**
      * Type: String
