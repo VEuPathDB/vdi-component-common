@@ -16,7 +16,7 @@ object EnvKey {
      * Type: String
      * Required: yes
      */
-    const val SecretKey = "ADMIN_SECRET_KEY"
+    const val SecretKey = "ADMIN_AUTH_TOKEN"
   }
 
   object Quotas {
