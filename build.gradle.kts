@@ -1,11 +1,11 @@
 plugins {
-  kotlin("jvm") version "1.8.10"
-  id("org.jetbrains.dokka") version "1.8.10"
+  kotlin("jvm") version "1.9.10"
+  id("org.jetbrains.dokka") version "1.9.10"
   `maven-publish`
 }
 
 group = "org.veupathdb.vdi"
-version = "4.2.1"
+version = "5.0.0"
 description = "Common components for VDI projects"
 
 repositories {
