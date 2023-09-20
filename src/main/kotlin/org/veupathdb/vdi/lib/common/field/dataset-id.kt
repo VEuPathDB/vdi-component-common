@@ -7,7 +7,7 @@ import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.*
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
-import java.util.UUID
+import org.veupathdb.vdi.lib.common.util.ShortUUID
 
 /**
  * Dataset Identifier
@@ -35,29 +35,23 @@ private value class StringDatasetID(val value: String) : DatasetID {
  * If the given string value could not be a valid [DatasetID] value, an
  * [IllegalArgumentException] will be thrown.
  *
- * For a string value to appear valid, it must be a 32 digit string consisting
- * of only hex characters.
+ * For a string value to appear valid, it must be a 22 digit base64 string.
  *
  * For example:
- * * `78609580dba2787a5cf677d6f334a707`
- * * `A5FA4B2B38398ADD73D5929F3DCFDEA8`
+ * * `KyQ47_UmQc2zrzfbRBcsEw`
  *
  * @param raw Raw string value that should be parsed as a [DatasetID] instance.
  *
  * @return A [DatasetID] instance parsed from the given [raw] string.
  *
- * @throws IllegalArgumentException If the given raw string is not 32 characters
- * in length, or contains a non-hex character.
+ * @throws IllegalArgumentException If the given raw string is not 22 characters
+ * in length.
  */
 fun DatasetID(raw: String): DatasetID {
-  if (raw.length != 32)
-    throw IllegalArgumentException("invalid Dataset ID string, must be exactly 32 hex characters")
+  if (raw.length != 22)
+    throw IllegalArgumentException("invalid Dataset ID string, must be exactly 22 characters")
 
-  for (c in raw)
-    if (!c.isHex())
-      throw IllegalArgumentException("invalid Dataset ID string, must contain only hex characters")
-
-  return StringDatasetID(raw.uppercase())
+  return StringDatasetID(raw)
 }
 
 /**
@@ -70,18 +64,7 @@ fun DatasetID(raw: String): DatasetID {
  * @return A new random dataset ID.
  */
 fun DatasetID(): DatasetID {
-  val start  = UUID.randomUUID().toString()
-  val buffer = CharArray(32)
-
-  var i = 0
-  for (c in start)
-    if (c.isHex())
-      buffer[i++] = c
-
-  if (i != 32)
-    throw IllegalStateException("what the literal heck (a uuid contained fewer than 32 hex digits???)")
-
-  return DatasetID(String(buffer))
+  return DatasetID(ShortUUID.generate())
 }
 
 class DatasetIDDeserializer : JsonDeserializer<DatasetID>() {
@@ -103,11 +86,3 @@ class DatasetIDSerializer : JsonSerializer<DatasetID>() {
 
 fun String.toDatasetID() = DatasetID(this)
 fun String.toDatasetIDOrNull() = try { DatasetID(this) } catch (e: Throwable) { null }
-
-private fun Char.isHex() = when {
-  this <= '9' -> this >= '0'
-  this <= 'F' -> this >= 'A'
-  this <= 'f' -> this >= 'a'
-  else        -> false
-}
-
