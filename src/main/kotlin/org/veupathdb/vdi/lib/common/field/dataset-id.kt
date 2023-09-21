@@ -7,7 +7,7 @@ import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.*
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
-import org.veupathdb.vdi.lib.common.util.ShortUUID
+import org.veupathdb.vdi.lib.common.util.generateShortID
 
 /**
  * Dataset Identifier
@@ -48,8 +48,8 @@ private value class StringDatasetID(val value: String) : DatasetID {
  * in length.
  */
 fun DatasetID(raw: String): DatasetID {
-  if (raw.length != 22)
-    throw IllegalArgumentException("invalid Dataset ID string, must be exactly 22 characters")
+  if (raw.length != 11)
+    throw IllegalArgumentException("invalid Dataset ID string, must be exactly 11 characters")
 
   return StringDatasetID(raw)
 }
@@ -64,7 +64,7 @@ fun DatasetID(raw: String): DatasetID {
  * @return A new random dataset ID.
  */
 fun DatasetID(): DatasetID {
-  return DatasetID(ShortUUID.generate())
+  return DatasetID(generateShortID())
 }
 
 class DatasetIDDeserializer : JsonDeserializer<DatasetID>() {
