@@ -7,7 +7,7 @@ import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.*
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
-import org.veupathdb.vdi.lib.common.util.generateShortID
+import org.veupathdb.vdi.lib.common.util.ShortID
 
 /**
  * Dataset Identifier
@@ -32,25 +32,11 @@ private value class StringDatasetID(val value: String) : DatasetID {
 /**
  * Attempts to construct a new [DatasetID] instance from the given string value.
  *
- * If the given string value could not be a valid [DatasetID] value, an
- * [IllegalArgumentException] will be thrown.
+ * @param raw Raw string value that should be used as a [DatasetID] instance.
  *
- * For a string value to appear valid, it must be a 22 digit base64 string.
- *
- * For example:
- * * `KyQ47_UmQc2zrzfbRBcsEw`
- *
- * @param raw Raw string value that should be parsed as a [DatasetID] instance.
- *
- * @return A [DatasetID] instance parsed from the given [raw] string.
- *
- * @throws IllegalArgumentException If the given raw string is not 22 characters
- * in length.
+ * @return A [DatasetID] instance wrapping the given [raw] string.
  */
 fun DatasetID(raw: String): DatasetID {
-  if (raw.length != 11)
-    throw IllegalArgumentException("invalid Dataset ID string, must be exactly 11 characters")
-
   return StringDatasetID(raw)
 }
 
@@ -64,7 +50,7 @@ fun DatasetID(raw: String): DatasetID {
  * @return A new random dataset ID.
  */
 fun DatasetID(): DatasetID {
-  return DatasetID(generateShortID())
+  return DatasetID(ShortID.generate())
 }
 
 class DatasetIDDeserializer : JsonDeserializer<DatasetID>() {

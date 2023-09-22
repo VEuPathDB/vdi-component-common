@@ -2,41 +2,55 @@ package org.veupathdb.vdi.lib.common.util
 
 import java.nio.ByteBuffer
 import java.util.Base64
+import java.util.concurrent.locks.ReentrantLock
+import kotlin.concurrent.withLock
 import kotlin.random.Random
 
-private val random = Random(System.nanoTime())
+object ShortID {
+  private val random = Random(System.nanoTime())
 
-/**
- * Generates an 11 digit time-based random identifier encoded in base-64.
- *
- * IDs generated with this method follow the following structure:
- * ```
- * 63     23       0
- * +------+--------+
- * | Time | Random |
- * +------+--------+
- * ```
- *
- * The "Time" value is the 40 least significant bits of a Unix Epoch timestamp
- * in milliseconds.
- *
- * The "Random" value is 40 random bits giving 16777216 possible distinct
- * random values.
- *
- * @return A new random identifier string.
- */
-internal fun generateShortID(): String {
-  var uid = System.currentTimeMillis()
+  private val miniLock = ReentrantLock()
 
-  uid = uid shl 24
-  uid = uid or (random.nextLong() and 0xFFFFFF)
+  private var now = System.currentTimeMillis()
 
-  val raw = ByteArray(8)
-  val buf = ByteBuffer.wrap(raw)
+  private var miniCount: UShort = 0u
 
-  buf.putLong(uid)
+  /**
+   * Generates a 14 digit time-based "mini" identifier encoded in base-64.
+   *
+   * @return A new random identifier string.
+   */
+  @JvmStatic
+  fun generate(): String {
+    var uid = System.currentTimeMillis()
 
-  return Base64.getUrlEncoder()
-    .encodeToString(raw)
-    .trimEnd('=')
+    miniLock.withLock {
+      if (uid == now) {
+        if (miniCount == UShort.MAX_VALUE) {
+          Thread.sleep(1)
+          uid = System.currentTimeMillis()
+          now = uid
+          miniCount = 0u
+        } else {
+          miniCount++
+        }
+      } else {
+        now = uid
+        miniCount = 0u
+      }
+    }
+
+    uid = uid shl 24
+    uid = uid or (random.nextLong() and 0xFFFFFF)
+
+    val raw = ByteArray(10)
+    val buf = ByteBuffer.wrap(raw)
+
+    buf.putLong(uid)
+    buf.putShort(miniCount.toShort())
+
+    return Base64.getUrlEncoder()
+      .encodeToString(raw)
+      .trimEnd('=')
+  }
 }
