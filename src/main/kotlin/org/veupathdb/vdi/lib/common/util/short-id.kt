@@ -29,6 +29,13 @@ object ShortID {
    * 3. 40 bits of timestamp milliseconds.  This is to prevent ID conflicts over
    *    time for up to 35 years.
    *
+   * ```
+   * 79       47            39          0
+   * |--------|-------------|-----------|
+   * | Random | Tie Breaker | Timestamp |
+   * |--------|-------------|-----------|
+   * ```
+   *
    * @return A new random identifier string.
    */
   @JvmStatic
