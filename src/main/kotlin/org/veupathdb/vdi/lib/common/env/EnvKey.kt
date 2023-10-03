@@ -1,3 +1,5 @@
+@file:Suppress("ConstPropertyName")
+
 package org.veupathdb.vdi.lib.common.env
 
 /**
@@ -8,6 +10,9 @@ package org.veupathdb.vdi.lib.common.env
  */
 object EnvKey {
 
+  /**
+   * Service administration related environment variables.
+   */
   object Admin {
 
     /**
@@ -19,6 +24,9 @@ object EnvKey {
     const val SecretKey = "ADMIN_AUTH_TOKEN"
   }
 
+  /**
+   * VDI file upload quotas and maximums.
+   */
   object Quotas {
 
     /**
@@ -56,6 +64,9 @@ object EnvKey {
     const val OracleBaseDN = "ORACLE_BASE_DN"
   }
 
+  /**
+   * Environment variables for configuring the Dataset Reinstaller component of VDI.
+   */
   object DatasetReinstaller {
 
     /**
@@ -768,6 +779,9 @@ object EnvKey {
     const val ReconcilerEnabled = "RECONCILER_ENABLED"
   }
 
+  /**
+   * Configuration variables for the Dataset Pruner component of VDI.
+   */
   object Pruner {
 
     /**
@@ -799,6 +813,9 @@ object EnvKey {
     const val PruningWakeupInterval = "DATASET_PRUNING_WAKEUP_INTERVAL"
   }
 
+  /**
+   * Connection configuration for VDI to communicate with an S3 compatible service.
+   */
   object S3 {
 
     /**
