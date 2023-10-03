@@ -314,10 +314,13 @@ object EnvKey {
    * Application Database Key Components
    *
    * ```
+   * DB_CONNECTION_ENABLED_<NAME>
    * DB_CONNECTION_NAME_<NAME>
    * DB_CONNECTION_LDAP_<NAME>
    * DB_CONNECTION_USER_<NAME>
    * DB_CONNECTION_PASS_<NAME>
+   * DB_CONNECTION_CONTROL_SCHEMA_<NAME>
+   * DB_CONNECTION_DATA_SCHEMA_<NAME>
    * DB_CONNECTION_POOL_SIZE_<NAME>
    * ```
    *
@@ -331,10 +334,13 @@ object EnvKey {
    * `"PLASMO"`, the following environment variables must all be present:
    *
    * ```
+   * DB_CONNECTION_ENABLED_PLASMO
    * DB_CONNECTION_NAME_PLASMO
    * DB_CONNECTION_LDAP_PLASMO
    * DB_CONNECTION_USER_PLASMO
    * DB_CONNECTION_PASS_PLASMO
+   * DB_CONNECTION_CONTROL_SCHEMA_PLASMO
+   * DB_CONNECTION_DATA_SCHEMA_PLASMO
    * DB_CONNECTION_POOL_SIZE_PLASMO
    * ```
    *
@@ -342,6 +348,12 @@ object EnvKey {
    * each of the prefix variables in the [AppDB] object below.
    */
   object AppDB {
+
+    /**
+     * Type: Boolean
+     * Required: yes
+     */
+    const val DBEnabledPrefix = "DB_CONNECTION_ENABLED_"
 
     /**
      * Type: String
