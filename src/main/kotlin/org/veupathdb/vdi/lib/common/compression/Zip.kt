@@ -7,12 +7,62 @@ import java.nio.file.Path
 import java.nio.file.StandardOpenOption
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
+import java.util.zip.ZipOutputStream
 import kotlin.io.path.*
 
+/**
+ * Zip file operations.
+ *
+ * @since 1.0.0
+ */
 object Zip {
   private val SingleZipHeader  = byteArrayOf(0x50, 0x4B, 0x03, 0x04)
   private val EmptyZipHeader   = byteArrayOf(0x50, 0x4B, 0x05, 0x06)
   private val SpannedZipHeader = byteArrayOf(0x50, 0x4B, 0x07, 0x08)
+
+  /**
+   * Zip compression level.
+   *
+   * Must be a value from 0-9.
+   *
+   * @since 6.3.0
+   */
+  @JvmInline
+  value class Level(val value: UByte) {
+    init {
+      if (value > 9u) {
+        throw IllegalArgumentException("Zip level must be 0-9, $value was given.")
+      }
+    }
+  }
+
+  /**
+   * Compresses the files at the given paths ([files]) into a new zip file at
+   * the target [zipPath].
+   *
+   * @param zipPath Path for the zip file that will be created.
+   *
+   * @param files Paths to the target files that should be included in the built
+   * zip file.
+   *
+   * @param zipLevel Compression level for the output zip.  Defaults to 9.
+   *
+   * @since 6.3.0
+   */
+  fun compress(zipPath: Path, files: Iterable<Path>, zipLevel: Level = Level(9u)) {
+    val zip = ZipOutputStream(zipPath.toFile().outputStream())
+    zip.setLevel(zipLevel.value.toInt())
+
+    for (file in files) {
+      val entry = ZipEntry(file.name)
+      zip.putNextEntry(entry)
+
+      file.inputStream().transferTo(zip)
+      zip.closeEntry()
+    }
+
+    zip.close()
+  }
 
   /**
    * Returns the type of Zip archive the target path points to.
