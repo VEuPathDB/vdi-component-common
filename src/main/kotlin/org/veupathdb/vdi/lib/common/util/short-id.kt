@@ -2,7 +2,6 @@ package org.veupathdb.vdi.lib.common.util
 
 import org.unbrokendome.base62.Base62
 import java.nio.ByteBuffer
-import java.util.Base64
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.withLock
 import kotlin.random.Random
