@@ -27,7 +27,8 @@ configurations.all {
 dependencies {
   implementation("org.veupathdb.vdi:vdi-component-json:1.0.0")
 
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+  implementation("org.unbroken-dome.base62:base62:1.1.0")
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
   implementation("org.apache.commons:commons-compress:1.22")
   implementation("org.slf4j:slf4j-api:1.7.36")
   implementation("org.apache.logging.log4j:log4j-api-kotlin:1.2.0")
