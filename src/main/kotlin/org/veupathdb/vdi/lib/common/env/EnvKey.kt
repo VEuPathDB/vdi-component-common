@@ -763,6 +763,7 @@ object EnvKey {
     const val PollingInterval = "GLOBAL_RABBIT_VDI_POLLING_INTERVAL"
     const val Port            = "GLOBAL_RABBIT_PORT"
     const val Username        = "GLOBAL_RABBIT_USERNAME"
+    const val UseTLS          = "GLOBAL_RABBIT_USE_TLS"
 
     object Exchange {
       const val Arguments  = "GLOBAL_RABBIT_VDI_EXCHANGE_ARGUMENTS"
