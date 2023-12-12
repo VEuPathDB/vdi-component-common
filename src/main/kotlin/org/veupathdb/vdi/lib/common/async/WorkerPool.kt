@@ -1,6 +1,5 @@
 package org.veupathdb.vdi.lib.common.async
 
-import org.slf4j.LoggerFactory
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
@@ -29,21 +28,12 @@ class WorkerPool(
     runBlocking {
       repeat(workerCount) {
         val j = ++i
-        launch (CoroutineThreadContext(
-          contextData = ThreadContextData(
-            map = mapOf(
-              Pair(
-                "workerID",
-                "$name-$j"
-              )
-            ), Stack()
-          )
-        )) {
+        launch (CoroutineThreadContext(contextData = ThreadContextData(map = mapOf("workerID" to "$name-$j"), Stack()))) {
           log.debug("worker pool $name starting worker $j")
 
           while (!shutdown.isTriggered()) {
             if (!queue.isEmpty) {
-              log.debug("worker pool $name executing job ${++jobs}")
+              log.debug("worker $name-$j executing job ${++jobs}")
               val job = queue.receive()
 
               try {
