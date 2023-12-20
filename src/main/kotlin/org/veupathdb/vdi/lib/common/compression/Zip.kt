@@ -1,5 +1,6 @@
 package org.veupathdb.vdi.lib.common.compression
 
+import org.apache.logging.log4j.kotlin.logger
 import org.veupathdb.vdi.lib.common.io.UncloseableInputStream
 import java.io.FileNotFoundException
 import java.io.InputStream
@@ -16,6 +17,8 @@ import kotlin.io.path.*
  * @since 1.0.0
  */
 object Zip {
+  private val log = logger()
+
   private val SingleZipHeader  = byteArrayOf(0x50, 0x4B, 0x03, 0x04)
   private val EmptyZipHeader   = byteArrayOf(0x50, 0x4B, 0x05, 0x06)
   private val SpannedZipHeader = byteArrayOf(0x50, 0x4B, 0x07, 0x08)
@@ -50,6 +53,7 @@ object Zip {
    * @since 6.3.0
    */
   fun compress(zipPath: Path, files: Iterable<Path>, zipLevel: Level = Level(9u)) {
+    log.debug("Compressing zip file $zipPath")
     val zip = ZipOutputStream(zipPath.toFile().outputStream())
     zip.setLevel(zipLevel.value.toInt())
 
@@ -108,6 +112,7 @@ object Zip {
    * @return A collection of paths to the files that were unzipped.
    */
   fun Path.unzip(into: Path): Collection<Path> {
+    log.debug("Unzipping file $this")
     if (!into.exists())
       throw IllegalStateException("cannot unzip $this into non-existent path $into")
 
