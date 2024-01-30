@@ -12,6 +12,7 @@ class WorkerPool(
   private val name: String,
   private val jobQueueSize: Int,
   private val workerCount: Int = 5,
+  private val reportQueueSizeChange: (Int) -> Unit = { }
 ) {
   private val log = logger()
 
@@ -35,6 +36,7 @@ class WorkerPool(
             if (!queue.isEmpty) {
               log.debug("worker $name-$j executing job ${++jobs}")
               val job = queue.receive()
+              reportQueueSizeChange(-1) // Report one less job in queue.
 
               try {
                 job()
@@ -56,6 +58,7 @@ class WorkerPool(
 
   suspend fun submit(job: Job) {
     queue.send(job)
+    reportQueueSizeChange(1) // Report one more job in queue.
   }
 
   suspend fun stop() {
