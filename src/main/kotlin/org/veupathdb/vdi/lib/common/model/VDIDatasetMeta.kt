@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import org.veupathdb.vdi.lib.common.field.ProjectID
 import org.veupathdb.vdi.lib.common.field.UserID
+import java.time.OffsetDateTime
 
 @JsonDeserialize(`as` = VDIDatasetMetaImpl::class)
 interface VDIDatasetMeta {
@@ -48,6 +49,10 @@ interface VDIDatasetMeta {
   @set:JsonSetter(JsonKey.Dependencies)
   var dependencies: Collection<VDIDatasetDependency>
 
+  @get:JsonGetter(JsonKey.Created)
+  @set:JsonSetter(JsonKey.Created)
+  var created: OffsetDateTime
+
   object JsonKey {
     const val Dependencies = "dependencies"
     const val Description  = "description"
@@ -59,5 +64,6 @@ interface VDIDatasetMeta {
     const val Type         = "type"
     const val SourceURL    = "sourceUrl"
     const val Visibility   = "visibility"
+    const val Created      = "created"
   }
 }

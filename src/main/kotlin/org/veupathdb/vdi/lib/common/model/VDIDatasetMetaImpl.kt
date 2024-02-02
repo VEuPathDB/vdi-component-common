@@ -3,6 +3,7 @@ package org.veupathdb.vdi.lib.common.model
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.veupathdb.vdi.lib.common.field.ProjectID
 import org.veupathdb.vdi.lib.common.field.UserID
+import java.time.OffsetDateTime
 
 data class VDIDatasetMetaImpl(
   @JsonProperty(VDIDatasetMeta.JsonKey.Type)
@@ -31,6 +32,9 @@ data class VDIDatasetMetaImpl(
 
   @JsonProperty(VDIDatasetMeta.JsonKey.SourceURL)
   override var sourceURL: String?,
+
+  @JsonProperty(VDIDatasetMeta.JsonKey.Created)
+  override var created: OffsetDateTime,
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Dependencies)
   override var dependencies: Collection<VDIDatasetDependency>,
