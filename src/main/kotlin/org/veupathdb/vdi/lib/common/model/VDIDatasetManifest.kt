@@ -8,11 +8,11 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 interface VDIDatasetManifest {
   @get:JsonGetter(JsonKey.InputFiles)
   @set:JsonSetter(JsonKey.InputFiles)
-  var inputFiles: Collection<String>
+  var inputFiles: Collection<VDIDatasetFileInfo>
 
   @get:JsonGetter(JsonKey.DataFiles)
   @set:JsonSetter(JsonKey.DataFiles)
-  var dataFiles: Collection<String>
+  var dataFiles: Collection<VDIDatasetFileInfo>
 
   object JsonKey {
     const val InputFiles = "inputFiles"

@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 data class VDIDatasetManifestImpl(
   @JsonProperty(VDIDatasetManifest.JsonKey.InputFiles)
-  override var inputFiles: Collection<String>,
+  override var inputFiles: Collection<VDIDatasetFileInfo>,
 
   @JsonProperty(VDIDatasetManifest.JsonKey.DataFiles)
-  override var dataFiles: Collection<String>
+  override var dataFiles: Collection<VDIDatasetFileInfo>
 ) : VDIDatasetManifest
