@@ -98,9 +98,30 @@ object EnvKey {
 
     /**
      * Type: String
-     * Required: yes
+     * Required: no
      */
     const val KafkaConsumerClientID = "IMPORT_HANDLER_KAFKA_CONSUMER_CLIENT_ID"
+  }
+
+  object ReconciliationTriggerHandler {
+
+    /**
+     * Type: UInt
+     * Required: no
+     */
+    const val WorkerPoolSize = "RECONCILIATION_HANDLER_WORKER_POOL_SIZE"
+
+    /**
+     * Type: UInt
+     * Required: no
+     */
+    const val WorkQueueSize = "RECONCILIATION_HANDLER_WORK_QUEUE_SIZE"
+
+    /**
+     * Type: String
+     * Required: no
+     */
+    const val KafkaConsumerClientID = "RECONCILIATION_HANDLER_KAFKA_CONSUMER_CLIENT_ID"
   }
 
   object UpdateMetaTriggerHandler {
@@ -119,7 +140,7 @@ object EnvKey {
 
     /**
      * Type: String
-     * Required: yes
+     * Required: no
      */
     const val KafkaConsumerClientID = "UPDATE_META_HANDLER_KAFKA_CONSUMER_CLIENT_ID"
   }
@@ -140,7 +161,7 @@ object EnvKey {
 
     /**
      * Type: String
-     * Required: yes
+     * Required: no
      */
     const val KafkaConsumerClientID = "INSTALL_DATA_HANDLER_KAFKA_CONSUMER_CLIENT_ID"
   }
@@ -161,7 +182,7 @@ object EnvKey {
 
     /**
      * Type: String
-     * Required: yes
+     * Required: no
      */
     const val KafkaConsumerClientID = "SHARE_HANDLER_KAFKA_CONSUMER_CLIENT_ID"
   }
@@ -182,7 +203,7 @@ object EnvKey {
 
     /**
      * Type: String
-     * Required: yes
+     * Required: no
      */
     const val KafkaConsumerClientID = "SOFT_DELETE_HANDLER_KAFKA_CONSUMER_CLIENT_ID"
   }
@@ -203,7 +224,7 @@ object EnvKey {
 
     /**
      * Type: String
-     * Required: yes
+     * Required: no
      */
     const val KafkaConsumerClientID = "HARD_DELETE_HANDLER_KAFKA_CONSUMER_CLIENT_ID"
   }
@@ -392,8 +413,9 @@ object EnvKey {
 
     /**
      * Type: String
-     * Required: yes
+     * Required: no
      */
+    @Deprecated("no longer used, VDI now uses the schema name as the login user")
     const val DBUserPrefix = "DB_CONNECTION_USER_"
 
     /**
@@ -715,6 +737,12 @@ object EnvKey {
        * Required: no
        */
       const val UpdateMetaTriggers = "KAFKA_TOPIC_UPDATE_META_TRIGGERS"
+
+      /**
+       * Type: String
+       * Required: no
+       */
+      const val ReconciliationTriggers = "KAFKA_TOPIC_RECONCILIATION_TRIGGERS"
     }
 
     object MessageKey {
@@ -753,6 +781,12 @@ object EnvKey {
        * Required: no
        */
       const val UpdateMetaTriggers = "KAFKA_MESSAGE_KEY_UPDATE_META_TRIGGERS"
+
+      /**
+       * Type: String
+       * Required: no
+       */
+      const val ReconciliationTriggers = "KAFKA_MESSAGE_KEY_RECONCILIATION_TRIGGERS"
     }
   }
 
