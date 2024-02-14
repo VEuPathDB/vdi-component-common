@@ -10,15 +10,14 @@ import java.time.OffsetDateTime
 
 @JsonDeserialize(`as` = VDIReconcilerTargetRecordImpl::class)
 interface VDIReconcilerTargetRecord : VDISyncControlRecord {
-  @get:JsonIgnore
-  @Deprecated("shifting to ownerID for clarity", replaceWith = ReplaceWith("ownerID"))
-  val owner get() = ownerID
-
   @get:JsonGetter(JsonKey.OwnerID)
   val ownerID: UserID
 
   @get:JsonGetter(JsonKey.Type)
   val type: VDIDatasetType
+
+  @get:JsonGetter(JsonKey.IsUninstalled)
+  val isUninstalled: Boolean
 
   @JsonIgnore
   fun getComparableID(): String
@@ -26,19 +25,9 @@ interface VDIReconcilerTargetRecord : VDISyncControlRecord {
   object JsonKey {
     const val OwnerID = "ownerId"
     const val Type = "type"
+    const val IsUninstalled = "isUninstalled"
   }
 }
-
-@Deprecated("kept for backwards compatibility, shift usages to the full constructor", replaceWith = ReplaceWith("VDIReconcilerTargetRecord"))
-fun VDIReconcilerTargetRecord(syncControlRecord: VDISyncControlRecord, owner: UserID, type: VDIDatasetType): VDIReconcilerTargetRecord =
-  VDIReconcilerTargetRecordImpl(
-    ownerID = owner,
-    datasetID = syncControlRecord.datasetID,
-    sharesUpdated = syncControlRecord.sharesUpdated,
-    dataUpdated = syncControlRecord.dataUpdated,
-    metaUpdated = syncControlRecord.metaUpdated,
-    type = type,
-  )
 
 fun VDIReconcilerTargetRecord(
   ownerID: UserID,
@@ -47,8 +36,9 @@ fun VDIReconcilerTargetRecord(
   dataUpdated: OffsetDateTime,
   metaUpdated: OffsetDateTime,
   type: VDIDatasetType,
+  isUninstalled: Boolean,
 ): VDIReconcilerTargetRecord =
-  VDIReconcilerTargetRecordImpl(ownerID, datasetID, sharesUpdated, dataUpdated, metaUpdated, type)
+  VDIReconcilerTargetRecordImpl(ownerID, datasetID, sharesUpdated, dataUpdated, metaUpdated, type, isUninstalled)
 
 private data class VDIReconcilerTargetRecordImpl(
   @JsonProperty(VDIReconcilerTargetRecord.JsonKey.OwnerID)
@@ -68,6 +58,9 @@ private data class VDIReconcilerTargetRecordImpl(
 
   @JsonProperty(VDIReconcilerTargetRecord.JsonKey.Type)
   override val type: VDIDatasetType,
+
+  @JsonProperty(VDIReconcilerTargetRecord.JsonKey.IsUninstalled)
+  override val isUninstalled: Boolean,
 ) : VDIReconcilerTargetRecord {
   override fun getComparableID() = "$ownerID/$datasetID"
 }
