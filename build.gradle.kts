@@ -1,11 +1,11 @@
 plugins {
-  kotlin("jvm") version "1.9.10"
-  id("org.jetbrains.dokka") version "1.9.0"
+  kotlin("jvm") version "1.9.23"
+  id("org.jetbrains.dokka") version "1.9.20"
   `maven-publish`
 }
 
 group = "org.veupathdb.vdi"
-version = "9.0.0"
+version = "10.0.0"
 description = "Common components for VDI projects"
 
 repositories {
@@ -29,8 +29,7 @@ dependencies {
 
   implementation("org.unbroken-dome.base62:base62:1.1.0")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-  implementation("org.apache.commons:commons-compress:1.24.0")
-  implementation("org.apache.logging.log4j:log4j-api-kotlin:1.2.0")
+  implementation("org.apache.commons:commons-compress:1.26.1")
 
   testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
   testImplementation("org.mockito:mockito-core:5.2.0")
