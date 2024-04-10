@@ -26,13 +26,13 @@ data class DBEnvGroup(
           found.add(id)
 
           yield(DBEnvGroup(
-            env[EnvKey.AppDB.DBEnabledPrefix + id]?.toBoolean(),
-            env[EnvKey.AppDB.DBNamePrefix + id],
-            env[EnvKey.AppDB.DBLDAPPrefix + id],
-            env[EnvKey.AppDB.DBPassPrefix + id]?.let(::SecretString),
-            env[EnvKey.AppDB.DBControlSchemaPrefix + id],
-            env[EnvKey.AppDB.DBDataSchemaPrefix + id],
-            env[EnvKey.AppDB.DBPoolPrefix + id]?.toUByte(),
+            env.optBool(EnvKey.AppDB.DBEnabledPrefix + id),
+            env.optional(EnvKey.AppDB.DBNamePrefix + id),
+            env.optional(EnvKey.AppDB.DBLDAPPrefix + id),
+            env.optional(EnvKey.AppDB.DBPassPrefix + id)?.let(::SecretString),
+            env.optional(EnvKey.AppDB.DBControlSchemaPrefix + id),
+            env.optional(EnvKey.AppDB.DBDataSchemaPrefix + id),
+            env.optUByte(EnvKey.AppDB.DBPoolPrefix + id),
           ))
         }
       }
