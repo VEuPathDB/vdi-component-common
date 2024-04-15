@@ -1,5 +1,8 @@
 package org.veupathdb.vdi.lib.common.intra
 
+/**
+ * Internal registry of JSON object keys used in this package.
+ */
 internal object JSONKeys {
   const val JobID = "jobID"
   const val Message = "message"
