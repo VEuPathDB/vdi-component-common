@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "org.veupathdb.vdi"
-version = "10.0.1"
+version = "10.1.0"
 description = "Common components for VDI projects"
 
 repositories {
@@ -25,10 +25,10 @@ configurations.all {
 }
 
 dependencies {
-  implementation("org.veupathdb.vdi:vdi-component-json:1.0.0")
+  implementation("org.veupathdb.vdi:vdi-component-json:1.0.2")
 
   implementation("org.unbroken-dome.base62:base62:1.1.0")
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
   implementation("org.apache.commons:commons-compress:1.26.1")
 
   testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
