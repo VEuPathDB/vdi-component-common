@@ -24,6 +24,33 @@ class AtomicBool(initialValue: Boolean) {
   override fun hashCode() = runBlocking { get() }.hashCode()
 }
 
+class AtomicUShort(initialValue: UShort = 0u) {
+  private val lock = Mutex()
+  private var value = initialValue
+
+  suspend operator fun inc() = lock.withLock { value++; this }
+  suspend operator fun dec() = lock.withLock { value--; this }
+
+  suspend operator fun plusAssign(other: UShort) { lock.withLock { value = (value + other).toUShort() } }
+  suspend operator fun minusAssign(other: UShort) { lock.withLock { value = (value - other).toUShort() } }
+  suspend operator fun divAssign(other: UShort) { lock.withLock { value = (value / other).toUShort() } }
+  suspend operator fun timesAssign(other: UShort) { lock.withLock { value = (value * other).toUShort() } }
+  suspend operator fun remAssign(other: UShort) { lock.withLock { value = (value % other).toUShort() } }
+
+  suspend operator fun compareTo(other: AtomicUShort) = get().compareTo(other.get())
+  suspend operator fun compareTo(other: UShort) = get().compareTo(other)
+
+  suspend fun get() = lock.withLock { value }
+
+  suspend fun set(new: UShort) = lock.withLock { value = new }
+
+  override fun toString() = runBlocking { get() }.toString()
+
+  override fun equals(other: Any?) = other is AtomicUShort && runBlocking { other.get() == get() }
+
+  override fun hashCode() = runBlocking { get() }.hashCode()
+}
+
 class AtomicUInt(initialValue: UInt = 0u) {
   private val lock = Mutex()
   private var value = initialValue
