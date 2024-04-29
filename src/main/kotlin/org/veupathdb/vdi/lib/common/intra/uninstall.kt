@@ -11,7 +11,6 @@ import org.veupathdb.vdi.lib.common.field.ProjectID
  * ```json
  * {
  *   "vdiID": "W7GY9DuVdxv",
- *   "jobID": 22305,
  *   "projectID": "PlasmoDB"
  * }
  * ```
@@ -20,6 +19,5 @@ import org.veupathdb.vdi.lib.common.field.ProjectID
  */
 data class UninstallRequest(
   @JsonProperty(JSONKeys.VDIID)     val vdiID: DatasetID,
-  @JsonProperty(JSONKeys.JobID)     val jobID: ULong,
   @JsonProperty(JSONKeys.ProjectID) val projectID: ProjectID,
 )

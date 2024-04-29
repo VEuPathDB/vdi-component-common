@@ -11,7 +11,7 @@ import org.veupathdb.vdi.lib.common.model.VDIDatasetMeta
  * ```json
  * {
  *   "vdiID": "W7GY9DuVdxv",
- *   "jobID": 22305,
+ *   "importIndex": 22305,
  *   "meta": {
  *     ... see VDIDatasetMeta ...
  *   }
@@ -22,6 +22,6 @@ import org.veupathdb.vdi.lib.common.model.VDIDatasetMeta
  */
 data class ImportRequest(
   @JsonProperty(JSONKeys.VDIID) val vdiID: DatasetID,
-  @JsonProperty(JSONKeys.JobID) val jobID: ULong,
+  @JsonProperty(JSONKeys.JobID) val importIndex: UShort,
   @JsonProperty(JSONKeys.Meta)  val meta: VDIDatasetMeta,
 )

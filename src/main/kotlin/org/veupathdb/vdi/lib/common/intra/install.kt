@@ -12,7 +12,6 @@ import org.veupathdb.vdi.lib.common.model.VDIDatasetMeta
  * ```json
  * {
  *   "vdiID": "W7GY9DuVdxv",
- *   "jobID": 22305,
  *   "projectID": "PlasmoDB"
  * }
  * ```
@@ -21,7 +20,6 @@ import org.veupathdb.vdi.lib.common.model.VDIDatasetMeta
  */
 data class InstallDataRequest(
   @JsonProperty(JSONKeys.VDIID)     val vdiID: DatasetID,
-  @JsonProperty(JSONKeys.JobID)     val jobID: ULong,
   @JsonProperty(JSONKeys.ProjectID) val projectID: ProjectID,
 )
 
@@ -32,7 +30,6 @@ data class InstallDataRequest(
  * ```json
  * {
  *   "vdiID": "W7GY9DuVdxv",
- *   "jobID": 22305,
  *   "projectID": "PlasmoDB",
  *   "meta": {
  *     ... see VDIDatasetMeta ...
@@ -44,7 +41,6 @@ data class InstallDataRequest(
  */
 data class InstallMetaRequest(
   @JsonProperty(JSONKeys.VDIID)     val vdiID: DatasetID,
-  @JsonProperty(JSONKeys.JobID)     val jobID: ULong,
   @JsonProperty(JSONKeys.ProjectID) val projectID: ProjectID,
   @JsonProperty(JSONKeys.Meta)      val meta: VDIDatasetMeta,
 )
