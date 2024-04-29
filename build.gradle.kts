@@ -1,3 +1,6 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 plugins {
   kotlin("jvm") version "1.9.23"
   id("org.jetbrains.dokka") version "1.9.20"
@@ -38,6 +41,20 @@ dependencies {
 
 tasks.test {
   useJUnitPlatform()
+
+  testLogging {
+    events(
+      TestLogEvent.FAILED,
+      TestLogEvent.STANDARD_OUT,
+      TestLogEvent.STANDARD_ERROR,
+      TestLogEvent.PASSED
+    )
+
+    exceptionFormat = TestExceptionFormat.FULL
+    showExceptions = true
+    showCauses = true
+    showStackTraces = true
+  }
 }
 
 kotlin {
