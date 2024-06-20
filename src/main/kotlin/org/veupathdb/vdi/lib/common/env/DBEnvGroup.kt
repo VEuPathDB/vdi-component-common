@@ -8,11 +8,12 @@ data class DBEnvGroup(
   val name: String?,
   val pass: SecretString?,
   val host: String?,
-  val port: UByte?,
+  val port: UShort?,
   val ldap: String?,
   val controlSchema: String?,
   val dataSchema: String?,
   val poolSize: UByte?,
+  val pgDbName: String?,
 ) {
   companion object {
 
@@ -35,11 +36,12 @@ data class DBEnvGroup(
             env.optional(EnvKey.AppDB.DBNamePrefix + id),
             env.optional(EnvKey.AppDB.DBPassPrefix + id)?.let(::SecretString),
             env.optional(EnvKey.AppDB.DBHostPrefix + id),
-            env.optUByte(EnvKey.AppDB.DBPortPrefix + id),
+            env.optUShort(EnvKey.AppDB.DBPortPrefix + id),
             env.optional(EnvKey.AppDB.DBLDAPPrefix + id),
             env.optional(EnvKey.AppDB.DBControlSchemaPrefix + id),
             env.optional(EnvKey.AppDB.DBDataSchemaPrefix + id),
             env.optUByte(EnvKey.AppDB.DBPoolPrefix + id),
+            env.optional(EnvKey.AppDB.DBPGNamePrefix + id),
           ))
         }
       }

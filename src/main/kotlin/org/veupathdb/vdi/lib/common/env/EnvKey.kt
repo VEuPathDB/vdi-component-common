@@ -138,5 +138,11 @@ object EnvKey {
      * Required: no, defaults to oracle.
      */
     const val DBPlatformPrefix = "DB_PLATFORM_"
+
+    /**
+     * Type: String
+     * Required: no
+     */
+    const val DBPGNamePrefix = "DB_CONNECTION_PG_DB_NAME_"
   }
 }
