@@ -5,7 +5,7 @@ import org.veupathdb.vdi.lib.common.field.SecretString
 data class DBEnvGroup(
   val enabled: Boolean?,
   val platform: String?,
-  val name: String?,
+  val connectionName: String?,
   val pass: SecretString?,
   val host: String?,
   val port: UShort?,
@@ -13,10 +13,9 @@ data class DBEnvGroup(
   val controlSchema: String?,
   val dataSchema: String?,
   val poolSize: UByte?,
-  val pgDbName: String?,
+  val dbName: String?,
 ) {
   companion object {
-
     @JvmStatic
     fun fromEnvironment(env: Environment) =
       sequence {

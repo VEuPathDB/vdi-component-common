@@ -6,7 +6,7 @@
 :lib-package: org.veupathdb.vdi.lib.common
 :lib-group: org.veupathdb.vdi
 :lib-name: vdi-component-common
-:lib-version: 12.0.1
+:lib-version: 12.0.2
 :lib-feature: 12.0.0
 
 image:https://img.shields.io/github/license/{gh-group}/{gh-name}[title="License"]
