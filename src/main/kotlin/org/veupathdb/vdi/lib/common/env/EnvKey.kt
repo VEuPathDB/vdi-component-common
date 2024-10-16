@@ -113,7 +113,7 @@ object EnvKey {
      * Type: String
      * Required: yes
      */
-    const val DBNamePrefix = "DB_CONNECTION_NAME_"
+    const val DBConnectionNamePrefix = "DB_CONNECTION_NAME_"
 
     /**
      * Type: String
@@ -143,6 +143,6 @@ object EnvKey {
      * Type: String
      * Required: no
      */
-    const val DBPGNamePrefix = "DB_CONNECTION_DB_NAME_"
+    const val DBNamePrefix = "DB_CONNECTION_DB_NAME_"
   }
 }
