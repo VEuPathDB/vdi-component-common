@@ -6,8 +6,8 @@
 :lib-package: org.veupathdb.vdi.lib.common
 :lib-group: org.veupathdb.vdi
 :lib-name: vdi-component-common
-:lib-version: 11.1.0
-:lib-feature: 11.1.0
+:lib-version: 12.0.1
+:lib-feature: 12.0.0
 
 image:https://img.shields.io/github/license/{gh-group}/{gh-name}[title="License"]
 image:https://img.shields.io/badge/docs-dokka-ff69b4[link="https://{gh-group}.github.io/{gh-name}/dokka/{lib-feature}/{lib-name}/{lib-package}/index.html"]
