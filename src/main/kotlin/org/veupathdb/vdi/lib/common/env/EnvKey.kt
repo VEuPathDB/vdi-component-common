@@ -87,15 +87,15 @@ object EnvKey {
 
     /**
      * Type: String
-     * Required: no, unless "postgres" specified as DB_PLATFORM
+     * Required: no
      */
-    const val DBHostPrefix = "DB_HOST_"
+    const val DBHostPrefix = "DB_CONNECTION_HOST_"
 
     /**
      * Type: UByte
-     * Required: no, unless "postgres" specified as DB_PLATFORM
+     * Required: no
      */
-    const val DBPortPrefix = "DB_PORT_"
+    const val DBPortPrefix = "DB_CONNECTION_PORT_"
 
     /**
      * Type: String
@@ -135,14 +135,14 @@ object EnvKey {
 
     /**
      * Type: String
-     * Required: no, defaults to oracle.
+     * Required: no
      */
-    const val DBPlatformPrefix = "DB_PLATFORM_"
+    const val DBPlatformPrefix = "DB_CONNECTION_PLATFORM_"
 
     /**
      * Type: String
      * Required: no
      */
-    const val DBPGNamePrefix = "DB_CONNECTION_PG_DB_NAME_"
+    const val DBPGNamePrefix = "DB_CONNECTION_DB_NAME_"
   }
 }

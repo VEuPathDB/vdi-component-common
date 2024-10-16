@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "org.veupathdb.vdi"
-version = "11.1.1"
+version = "12.0.0"
 description = "Common components for VDI projects"
 
 repositories {
