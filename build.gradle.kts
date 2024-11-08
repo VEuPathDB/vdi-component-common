@@ -2,13 +2,13 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
-  kotlin("jvm") version "1.9.23"
+  kotlin("jvm") version "2.0.21"
   id("org.jetbrains.dokka") version "1.9.20"
   `maven-publish`
 }
 
 group = "org.veupathdb.vdi"
-version = "12.0.2"
+version = "12.1.0"
 description = "Common components for VDI projects"
 
 repositories {
@@ -23,20 +23,16 @@ repositories {
   }
 }
 
-configurations.all {
-  resolutionStrategy.cacheChangingModulesFor(0, "seconds")
-}
-
 dependencies {
   implementation("org.veupathdb.vdi:vdi-component-json:1.0.2")
 
   implementation("org.unbroken-dome.base62:base62:1.1.0")
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
-  implementation("org.apache.commons:commons-compress:1.26.1")
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+  implementation("org.apache.commons:commons-compress:1.27.1")
 
-  testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
-  testImplementation("org.mockito:mockito-core:5.2.0")
-  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
+  testImplementation("org.junit.jupiter:junit-jupiter-api:5.11.3")
+  testImplementation("org.mockito:mockito-core:5.14.2")
+  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.11.3")
 }
 
 tasks.test {
@@ -58,21 +54,26 @@ tasks.test {
 }
 
 kotlin {
-  jvmToolchain(18)
+  jvmToolchain {
+    languageVersion = JavaLanguageVersion.of(21)
+    vendor = JvmVendorSpec.AMAZON
+  }
 }
 
 java {
   withSourcesJar()
 }
 
+val dokkaPath = "docs/dokka/${(project.version as String).let { it.substring(0, it.lastIndexOf('.')) }}.0"
+
 tasks.dokkaHtml {
-  outputDirectory.set(file("docs/dokka/${project.version}"))
+  outputDirectory.set(file(dokkaPath))
 }
 
 val javadocJar = tasks.register<Jar>("javadocJar") {
   dependsOn(tasks.dokkaHtml)
   archiveClassifier.set("javadoc")
-  from(file("docs/dokka/${project.version}"))
+  from(file(dokkaPath))
 }
 
 tasks.withType<Jar> {

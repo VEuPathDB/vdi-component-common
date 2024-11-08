@@ -14,10 +14,11 @@ data class DBEnvGroup(
   val dataSchema: String?,
   val poolSize: UByte?,
   val dbName: String?,
+  val extensions: Map<String, String>,
 ) {
   companion object {
     @JvmStatic
-    fun fromEnvironment(env: Environment) =
+    fun fromEnvironment(env: Environment, vararg extendedPrefixes: String) =
       sequence {
         val found = HashSet<String>()
 
@@ -41,11 +42,21 @@ data class DBEnvGroup(
             env.optional(EnvKey.AppDB.DBDataSchemaPrefix + id),
             env.optUByte(EnvKey.AppDB.DBPoolPrefix + id),
             env.optional(EnvKey.AppDB.DBNamePrefix + id),
+            env.scrapeExtras(extendedPrefixes, id)
           ))
         }
       }
   }
 }
+
+private fun Environment.scrapeExtras(extras: Array<out String>, identifier: String) =
+  if (extras.isEmpty())
+    emptyMap()
+  else
+    HashMap<String, String>(extras.size).apply {
+      extras.forEach { prefix -> this@scrapeExtras[prefix + identifier]?.also { put(prefix, it) } }
+    }
+
 
 private fun String.popIdentifier() =
   when {
