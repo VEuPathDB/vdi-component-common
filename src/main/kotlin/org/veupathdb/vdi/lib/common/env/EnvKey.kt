@@ -146,5 +146,11 @@ object EnvKey {
      * Required: no
      */
     const val DBNamePrefix = "${CommonPrefix}DB_NAME_"
+
+    /**
+     * Type: List<String>
+     * Required: no
+     */
+    const val DBConnectionDataTypes = "DB_CONNECTION_DATA_TYPES_"
   }
 }
