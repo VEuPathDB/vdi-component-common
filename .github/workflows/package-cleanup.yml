@@ -1,0 +1,15 @@
+name: Package Cleanup
+on:
+  registry_package:
+    types:
+    - published
+
+jobs:
+  remove-oldest:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/delete-package-versions@v5
+      with:
+        package-type: maven
+        package-name: org.veupathdb.vdi.vdi-component-common
+        min-versions-to-keep: 5
