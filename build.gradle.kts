@@ -1,5 +1,6 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import java.io.BufferedReader
 
 plugins {
   kotlin("jvm") version "2.0.21"
@@ -8,7 +9,7 @@ plugins {
 }
 
 group = "org.veupathdb.vdi"
-version = "13.2.0"
+version = "14.0.0"
 description = "Common components for VDI projects"
 
 repositories {
@@ -64,10 +65,18 @@ java {
   withSourcesJar()
 }
 
-val dokkaPath = "docs/dokka/${(project.version as String).let { it.substring(0, it.lastIndexOf('.')) }}.0"
+val docVersion = with(project.version as String) { substring(0, lastIndexOf('.')) } + ".0"
+val dokkaPath = "docs/dokka/$docVersion"
+
+val updateReadme = tasks.register("update-readme-version") {
+  with(ProcessBuilder("sed", "-i", "s/:lib-version: .\\+/:lib-version: ${project.version}/;s/:lib-feature: .\\+/:lib-feature: $docVersion/", "readme.adoc").start()) {
+    require(waitFor() == 0) { "failed to update readme!\n" + errorStream.bufferedReader().use(BufferedReader::readText) }
+  }
+}
 
 tasks.dokkaHtml {
   outputDirectory.set(file(dokkaPath))
+  finalizedBy(updateReadme)
 }
 
 val javadocJar = tasks.register<Jar>("javadocJar") {

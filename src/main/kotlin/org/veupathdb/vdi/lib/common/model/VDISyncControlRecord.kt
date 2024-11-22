@@ -1,5 +1,6 @@
 package org.veupathdb.vdi.lib.common.model
 
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonGetter
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
@@ -36,7 +37,7 @@ fun VDISyncControlRecord(
   metaUpdated: OffsetDateTime
 ): VDISyncControlRecord = VDISyncControlRecordImpl(datasetID, sharesUpdated, dataUpdated, metaUpdated)
 
-private data class VDISyncControlRecordImpl(
+private data class VDISyncControlRecordImpl @JsonCreator constructor(
   @JsonProperty(VDISyncControlRecord.JsonKey.DatasetID)
   override val datasetID: DatasetID,
 

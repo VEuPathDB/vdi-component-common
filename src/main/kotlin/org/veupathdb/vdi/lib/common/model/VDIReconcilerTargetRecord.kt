@@ -1,5 +1,6 @@
 package org.veupathdb.vdi.lib.common.model
 
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonGetter
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -40,7 +41,7 @@ fun VDIReconcilerTargetRecord(
 ): VDIReconcilerTargetRecord =
   VDIReconcilerTargetRecordImpl(ownerID, datasetID, sharesUpdated, dataUpdated, metaUpdated, type, isUninstalled)
 
-private data class VDIReconcilerTargetRecordImpl(
+private data class VDIReconcilerTargetRecordImpl @JsonCreator constructor(
   @JsonProperty(VDIReconcilerTargetRecord.JsonKey.OwnerID)
   override val ownerID: UserID,
 
