@@ -163,7 +163,12 @@ object Zip {
     if (!zip.isReadable())
       throw IllegalStateException("cannot open unreadable zip file $zip")
 
-    return zip.inputStream().use { zipEntries(it) }
+    return sequence {
+      zip.inputStream().use { stream ->
+        for (value in zipEntries(stream))
+          yield(value)
+      }
+    }
   }
 
   /**
