@@ -153,7 +153,7 @@ object Zip {
    * @return A sequence of [ZipEntry] and [InputStream] instances contained in
    * the target zip file.
    */
-  fun zipEntries(zip: Path): Sequence<Pair<ZipEntry, InputStream>> = sequence {
+  fun zipEntries(zip: Path): Sequence<Pair<ZipEntry, InputStream>> {
     if (!zip.exists())
       throw FileNotFoundException("cannot open non-existent zip file $zip")
 
@@ -163,14 +163,32 @@ object Zip {
     if (!zip.isReadable())
       throw IllegalStateException("cannot open unreadable zip file $zip")
 
-    zip.inputStream().use { raw ->
-      val stream = ZipInputStream(raw)
-      var entry  = stream.nextEntry
+    return zip.inputStream().use { zipEntries(it) }
+  }
 
-      while (entry != null) {
-        yield(entry to UncloseableInputStream(stream))
-        entry = stream.nextEntry
-      }
+  /**
+   * Returns a sequence of [ZipEntry] instances paired with an [InputStream]
+   * that may be used to stream out the contents of the zip entry itself.
+   *
+   * **WARNING**: The [InputStream]s in the returned sequence must be consumed
+   * or skipped entirely before processing the next entry in the sequence.  This
+   * is due to the way the underlying [ZipInputStream] functions.  If an
+   * [InputStream] is consumed _after_ proceeding to the next sequence entry, it
+   * will return the contents of the next [InputStream] rather than the contents
+   * of the stream that was originally returned.
+   *
+   * @param zip Input stream containing the zip file contents to unzip.
+   *
+   * @return A sequence of [ZipEntry] and [InputStream] instances contained in
+   * the target zip file.
+   */
+  fun zipEntries(zip: InputStream) = sequence {
+    val stream = ZipInputStream(zip)
+    var entry  = stream.nextEntry
+
+    while (entry != null) {
+      yield(entry to UncloseableInputStream(stream))
+      entry = stream.nextEntry
     }
   }
 }
