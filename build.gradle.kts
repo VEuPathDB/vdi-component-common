@@ -3,13 +3,13 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 import java.io.BufferedReader
 
 plugins {
-  kotlin("jvm") version "2.0.21"
-  id("org.jetbrains.dokka") version "1.9.20"
+  kotlin("jvm") version "2.1.0"
+  id("org.jetbrains.dokka") version "2.0.0"
   `maven-publish`
 }
 
 group = "org.veupathdb.vdi"
-version = "14.2.1"
+version = "15.0.0"
 description = "Common components for VDI projects"
 
 repositories {
@@ -28,12 +28,12 @@ dependencies {
   implementation("org.veupathdb.vdi:vdi-component-json:1.0.2")
 
   implementation("org.unbroken-dome.base62:base62:1.1.0")
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
   implementation("org.apache.commons:commons-compress:1.27.1")
 
-  testImplementation("org.junit.jupiter:junit-jupiter-api:5.11.3")
-  testImplementation("org.mockito:mockito-core:5.14.2")
-  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.11.3")
+  testImplementation("org.junit.jupiter:junit-jupiter-api:5.11.4")
+  testImplementation("org.mockito:mockito-core:5.15.2")
+  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.11.4")
 }
 
 tasks.test {

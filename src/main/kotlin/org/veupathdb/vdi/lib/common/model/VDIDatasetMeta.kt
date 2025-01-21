@@ -14,6 +14,13 @@ import java.time.OffsetDateTime
 @JsonDeserialize(`as` = VDIDatasetMetaImpl::class)
 interface VDIDatasetMeta {
   /**
+   * Optional user-provided ID value that may be used to lookup the dataset in
+   * the VDI REST API.
+   */
+  @get:JsonGetter(JsonKey.UserStableID)
+  val userStableID: String?
+
+  /**
    * Dataset type information.
    */
   @get:JsonGetter(JsonKey.Type)
@@ -97,6 +104,7 @@ interface VDIDatasetMeta {
     const val SourceURL    = "sourceUrl"
     const val Visibility   = "visibility"
     const val Created      = "created"
+    const val UserStableID = "userStableId"
   }
 }
 
@@ -169,6 +177,7 @@ fun VDIDatasetMeta(rawJSON: String): VDIDatasetMeta = JSON.readValue(rawJSON)
  * @since v14.0.0
  */
 fun VDIDatasetMeta(
+  userStableID: String?,
   type: VDIDatasetType,
   projects: Set<ProjectID>,
   visibility: VDIDatasetVisibility,
@@ -182,6 +191,7 @@ fun VDIDatasetMeta(
   dependencies: Collection<VDIDatasetDependency>,
 ): VDIDatasetMeta =
   VDIDatasetMetaImpl(
+    userStableID,
     type,
     projects,
     visibility,
@@ -196,6 +206,9 @@ fun VDIDatasetMeta(
   )
 
 private data class VDIDatasetMetaImpl @JsonCreator constructor(
+  @JsonProperty(VDIDatasetMeta.JsonKey.UserStableID)
+  override val userStableID: String?,
+
   @JsonProperty(VDIDatasetMeta.JsonKey.Type)
   override val type: VDIDatasetType,
 
