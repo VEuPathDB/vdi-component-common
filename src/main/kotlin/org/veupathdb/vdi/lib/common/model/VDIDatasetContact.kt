@@ -2,7 +2,10 @@ package org.veupathdb.vdi.lib.common.model
 
 import com.fasterxml.jackson.annotation.JsonGetter
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 
+
+@JsonDeserialize(`as` = VDIDatasetContactImpl::class)
 interface VDIDatasetContact {
   @get:JsonGetter(JsonKey.Name)
   val name: String
