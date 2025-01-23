@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonGetter
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 
+
 @JsonDeserialize(`as` = VDIDatasetHyperlinkImpl::class)
 interface VDIDatasetHyperlink {
   @get:JsonGetter(JsonKey.URL)
@@ -32,10 +33,13 @@ fun VDIDatasetHyperlink(url: String, text: String, description: String?, isPubli
 private data class VDIDatasetHyperlinkImpl(
   @JsonProperty(VDIDatasetHyperlink.JsonKey.URL)
   override val url: String,
+
   @JsonProperty(VDIDatasetHyperlink.JsonKey.Text)
   override val text: String,
+
   @JsonProperty(VDIDatasetHyperlink.JsonKey.Description)
   override val description: String?,
+
   @JsonProperty(VDIDatasetHyperlink.JsonKey.IsPublication)
   override val isPublication: Boolean
 ) : VDIDatasetHyperlink {
