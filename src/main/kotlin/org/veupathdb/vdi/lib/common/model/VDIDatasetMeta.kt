@@ -47,6 +47,9 @@ interface VDIDatasetMeta {
   @get:JsonGetter(JsonKey.Name)
   val name: String
 
+  @get:JsonGetter(JsonKey.ShortName)
+  val shortName: String?
+
   /**
    * Optional short summary of the dataset.
    */
@@ -58,6 +61,12 @@ interface VDIDatasetMeta {
    */
   @get:JsonGetter(JsonKey.Description)
   val description: String?
+
+  @get:JsonGetter(JsonKey.ShortAttribution)
+  val shortAttribution: String?
+
+  @get:JsonGetter(JsonKey.Category)
+  val category: String?
 
   /**
    * Name or identifier for the originating source of the dataset.
@@ -79,6 +88,18 @@ interface VDIDatasetMeta {
   @get:JsonGetter(JsonKey.Dependencies)
   val dependencies: Collection<VDIDatasetDependency>
 
+  @get:JsonGetter(JsonKey.Publications)
+  val publications: Collection<VDIDatasetPublication>
+
+  @get:JsonGetter(JsonKey.Hyperlinks)
+  val hyperlinks: Collection<VDIDatasetHyperlink>
+
+  @get:JsonGetter(JsonKey.TaxonIDs)
+  val taxonIDs: Collection<Long>
+
+  @get:JsonGetter(JsonKey.Contacts)
+  val contacts: Collection<VDIDatasetContact>
+
   /**
    * Timestamp for when the dataset was created.
    */
@@ -86,17 +107,24 @@ interface VDIDatasetMeta {
   val created: OffsetDateTime
 
   object JsonKey {
-    const val Dependencies = "dependencies"
-    const val Description  = "description"
-    const val Name         = "name"
-    const val Owner        = "owner"
-    const val Projects     = "projects"
-    const val Origin       = "origin"
-    const val Summary      = "summary"
-    const val Type         = "type"
-    const val SourceURL    = "sourceUrl"
-    const val Visibility   = "visibility"
-    const val Created      = "created"
+    const val Category         = "category"
+    const val Contacts         = "contacts"
+    const val Created          = "created"
+    const val Dependencies     = "dependencies"
+    const val Description      = "description"
+    const val Hyperlinks       = "hyperlinks"
+    const val Name             = "name"
+    const val Origin           = "origin"
+    const val Owner            = "owner"
+    const val Projects         = "projects"
+    const val Publications     = "publications"
+    const val ShortAttribution = "shortAttribution"
+    const val ShortName        = "shortName"
+    const val SourceURL        = "sourceUrl"
+    const val Summary          = "summary"
+    const val TaxonIDs         = "taxonIds"
+    const val Type             = "type"
+    const val Visibility       = "visibility"
   }
 }
 
@@ -174,25 +202,39 @@ fun VDIDatasetMeta(
   visibility: VDIDatasetVisibility,
   owner: UserID,
   name: String,
+  shortName: String?,
   summary: String?,
   description: String?,
+  shortAttribution: String?,
+  category: String?,
   origin: String,
   sourceURL: String?,
   created: OffsetDateTime,
   dependencies: Collection<VDIDatasetDependency>,
+  publications: Collection<VDIDatasetPublication>,
+  hyperlinks: Collection<VDIDatasetHyperlink>,
+  taxonIDs: Collection<Long>,
+  contacts: Collection<VDIDatasetContact>,
 ): VDIDatasetMeta =
   VDIDatasetMetaImpl(
-    type,
-    projects,
-    visibility,
-    owner,
-    name,
-    summary,
-    description,
-    origin,
-    sourceURL,
-    created,
-    dependencies
+    type             = type,
+    projects         = projects,
+    visibility       = visibility,
+    owner            = owner,
+    name             = name,
+    shortName        = shortName,
+    summary          = summary,
+    description      = description,
+    shortAttribution = shortAttribution,
+    category         = category,
+    origin           = origin,
+    sourceURL        = sourceURL,
+    created          = created,
+    dependencies     = dependencies,
+    publications     = publications,
+    hyperlinks       = hyperlinks,
+    taxonIDs         = taxonIDs,
+    contacts         = contacts,
   )
 
 private data class VDIDatasetMetaImpl @JsonCreator constructor(
@@ -211,11 +253,20 @@ private data class VDIDatasetMetaImpl @JsonCreator constructor(
   @JsonProperty(VDIDatasetMeta.JsonKey.Name)
   override val name: String,
 
+  @JsonProperty(VDIDatasetMeta.JsonKey.ShortName)
+  override val shortName: String?,
+
   @JsonProperty(VDIDatasetMeta.JsonKey.Summary)
   override val summary: String?,
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Description)
   override val description: String?,
+
+  @JsonProperty(VDIDatasetMeta.JsonKey.ShortAttribution)
+  override val shortAttribution: String?,
+
+  @JsonProperty(VDIDatasetMeta.JsonKey.Category)
+  override val category: String?,
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Origin)
   override val origin: String,
@@ -228,6 +279,18 @@ private data class VDIDatasetMetaImpl @JsonCreator constructor(
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Dependencies)
   override val dependencies: Collection<VDIDatasetDependency>,
+
+  @JsonProperty(VDIDatasetMeta.JsonKey.Publications)
+  override val publications: Collection<VDIDatasetPublication>,
+
+  @JsonProperty(VDIDatasetMeta.JsonKey.Hyperlinks)
+  override val hyperlinks: Collection<VDIDatasetHyperlink>,
+
+  @JsonProperty(VDIDatasetMeta.JsonKey.TaxonIDs)
+  override val taxonIDs: Collection<Long>,
+
+  @JsonProperty(VDIDatasetMeta.JsonKey.Contacts)
+  override val contacts: Collection<VDIDatasetContact>,
 ) : VDIDatasetMeta {
   init {
     if (projects.isEmpty())
