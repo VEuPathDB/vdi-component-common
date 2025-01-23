@@ -10,5 +10,4 @@ registries:
   github-packages:
     type: maven-repository
     url: https://maven.pkg.github.com/veupathdb/maven-packages
-    username: ${{ secrets.PACKAGES_USER }}
-    password: ${{ secrets.PACKAGES_KEY }}
+    token: ${{ secrets.PACKAGES_KEY }}
