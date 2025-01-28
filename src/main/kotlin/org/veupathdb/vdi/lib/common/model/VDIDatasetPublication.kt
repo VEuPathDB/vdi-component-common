@@ -10,7 +10,7 @@ interface VDIDatasetPublication {
   val citation: String
 
   @get:JsonGetter(JsonKey.PubMedID)
-  val pubmedID: String
+  val pubmedID: String?
 
   object JsonKey {
     const val Citation = "citation"
@@ -26,12 +26,12 @@ private data class VDIDatasetPublicationImpl(
   override val citation: String,
 
   @JsonProperty(VDIDatasetPublication.JsonKey.PubMedID)
-  override val pubmedID: String,
+  override val pubmedID: String?,
 ): VDIDatasetPublication {
   init {
     when {
       citation.isBlank() -> throw IllegalArgumentException("citation value must not be blank")
-      pubmedID.isBlank() -> throw IllegalArgumentException("pubmed id must not be blank")
+      pubmedID?.isBlank() == true -> throw IllegalArgumentException("pubmed id must not be blank")
     }
   }
 }

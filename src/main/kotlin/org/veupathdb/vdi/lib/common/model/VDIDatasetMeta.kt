@@ -94,8 +94,8 @@ interface VDIDatasetMeta {
   @get:JsonGetter(JsonKey.Hyperlinks)
   val hyperlinks: Collection<VDIDatasetHyperlink>
 
-  @get:JsonGetter(JsonKey.TaxonIDs)
-  val taxonIDs: Collection<Long>
+  @get:JsonGetter(JsonKey.Organisms)
+  val organisms: Collection<String>
 
   @get:JsonGetter(JsonKey.Contacts)
   val contacts: Collection<VDIDatasetContact>
@@ -114,6 +114,7 @@ interface VDIDatasetMeta {
     const val Description      = "description"
     const val Hyperlinks       = "hyperlinks"
     const val Name             = "name"
+    const val Organisms        = "organisms"
     const val Origin           = "origin"
     const val Owner            = "owner"
     const val Projects         = "projects"
@@ -122,7 +123,6 @@ interface VDIDatasetMeta {
     const val ShortName        = "shortName"
     const val SourceURL        = "sourceUrl"
     const val Summary          = "summary"
-    const val TaxonIDs         = "taxonIds"
     const val Type             = "type"
     const val Visibility       = "visibility"
   }
@@ -213,7 +213,7 @@ fun VDIDatasetMeta(
   dependencies: Collection<VDIDatasetDependency>,
   publications: Collection<VDIDatasetPublication>,
   hyperlinks: Collection<VDIDatasetHyperlink>,
-  taxonIDs: Collection<Long>,
+  organisms: Collection<String>,
   contacts: Collection<VDIDatasetContact>,
 ): VDIDatasetMeta =
   VDIDatasetMetaImpl(
@@ -233,7 +233,7 @@ fun VDIDatasetMeta(
     dependencies     = dependencies,
     publications     = publications,
     hyperlinks       = hyperlinks,
-    taxonIDs         = taxonIDs,
+    organisms        = organisms,
     contacts         = contacts,
   )
 
@@ -286,8 +286,8 @@ private data class VDIDatasetMetaImpl @JsonCreator constructor(
   @JsonProperty(VDIDatasetMeta.JsonKey.Hyperlinks)
   override val hyperlinks: Collection<VDIDatasetHyperlink>,
 
-  @JsonProperty(VDIDatasetMeta.JsonKey.TaxonIDs)
-  override val taxonIDs: Collection<Long>,
+  @JsonProperty(VDIDatasetMeta.JsonKey.Organisms)
+  override val organisms: Collection<String>,
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Contacts)
   override val contacts: Collection<VDIDatasetContact>,
