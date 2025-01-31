@@ -27,8 +27,11 @@ interface VDIDatasetHyperlink {
   }
 }
 
+
+@Suppress("unused")
 fun VDIDatasetHyperlink(url: String, text: String, description: String?, isPublication: Boolean): VDIDatasetHyperlink =
   VDIDatasetHyperlinkImpl(url, text, description, isPublication)
+
 
 private data class VDIDatasetHyperlinkImpl(
   @JsonProperty(VDIDatasetHyperlink.JsonKey.URL)

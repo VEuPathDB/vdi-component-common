@@ -26,11 +26,11 @@ enum class VDIDatasetVisibility {
 
     @JvmStatic
     fun fromStringOrNull(value: String): VDIDatasetVisibility? {
-      val value = value.lowercase()
-
-      for (enum in values())
-        if (value == enum.value)
-          return enum
+      value.lowercase().let {
+        for (enum in entries)
+          if (enum.value == it)
+            return enum
+      }
 
       return null
     }

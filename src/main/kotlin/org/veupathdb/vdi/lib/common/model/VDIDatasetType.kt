@@ -20,6 +20,8 @@ interface VDIDatasetType {
   }
 }
 
+
+@Suppress("unused")
 fun VDIDatasetType(name: DataType, version: String): VDIDatasetType =
   VDIDatasetTypeImpl(name, version)
 

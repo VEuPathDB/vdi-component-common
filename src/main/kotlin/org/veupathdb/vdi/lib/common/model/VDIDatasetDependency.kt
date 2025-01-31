@@ -23,8 +23,11 @@ interface VDIDatasetDependency {
   }
 }
 
+
+@Suppress("unused")
 fun VDIDatasetDependency(identifier: String, version: String, displayName: String): VDIDatasetDependency =
   VDIDatasetDependencyImpl(identifier, version, displayName)
+
 
 private data class VDIDatasetDependencyImpl @JsonCreator constructor(
   @JsonProperty(VDIDatasetDependency.JsonKey.Identifier)

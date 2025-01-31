@@ -30,6 +30,8 @@ interface VDIReconcilerTargetRecord : VDISyncControlRecord {
   }
 }
 
+
+@Suppress("unused")
 fun VDIReconcilerTargetRecord(
   ownerID: UserID,
   datasetID: DatasetID,
@@ -40,6 +42,7 @@ fun VDIReconcilerTargetRecord(
   isUninstalled: Boolean,
 ): VDIReconcilerTargetRecord =
   VDIReconcilerTargetRecordImpl(ownerID, datasetID, sharesUpdated, dataUpdated, metaUpdated, type, isUninstalled)
+
 
 private data class VDIReconcilerTargetRecordImpl @JsonCreator constructor(
   @JsonProperty(VDIReconcilerTargetRecord.JsonKey.OwnerID)

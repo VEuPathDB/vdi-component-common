@@ -30,12 +30,15 @@ interface VDISyncControlRecord {
   }
 }
 
+
+@Suppress("unused")
 fun VDISyncControlRecord(
   datasetID: DatasetID,
   sharesUpdated: OffsetDateTime,
   dataUpdated: OffsetDateTime,
   metaUpdated: OffsetDateTime
 ): VDISyncControlRecord = VDISyncControlRecordImpl(datasetID, sharesUpdated, dataUpdated, metaUpdated)
+
 
 private data class VDISyncControlRecordImpl @JsonCreator constructor(
   @JsonProperty(VDISyncControlRecord.JsonKey.DatasetID)

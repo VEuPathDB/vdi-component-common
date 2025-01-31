@@ -19,11 +19,14 @@ interface VDIDatasetManifest {
   }
 }
 
+
+@Suppress("unused")
 fun VDIDatasetManifest(
   inputFiles: Collection<VDIDatasetFileInfo>,
   dataFiles: Collection<VDIDatasetFileInfo>,
 ): VDIDatasetManifest =
   VDIDatasetManifestImpl(inputFiles, dataFiles)
+
 
 private data class VDIDatasetManifestImpl @JsonCreator constructor(
   @JsonProperty(VDIDatasetManifest.JsonKey.InputFiles)

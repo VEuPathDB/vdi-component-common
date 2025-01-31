@@ -9,8 +9,11 @@ interface VDIDatasetShareOffer {
   val action: VDIShareOfferAction
 }
 
+
+@Suppress("unused")
 fun VDIDatasetShareOffer(action: VDIShareOfferAction): VDIDatasetShareOffer =
   VDIDatasetShareOfferImpl(action)
+
 
 private data class VDIDatasetShareOfferImpl @JsonCreator constructor(
   @JsonProperty("action")

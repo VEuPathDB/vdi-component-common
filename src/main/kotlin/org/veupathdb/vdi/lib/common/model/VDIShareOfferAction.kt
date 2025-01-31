@@ -17,7 +17,7 @@ enum class VDIShareOfferAction(@get:JsonValue val value: String) {
 
     @JvmStatic
     fun fromStringOrNull(value: String): VDIShareOfferAction? {
-      for (enum in values())
+      for (enum in entries)
         if (enum.value == value)
           return enum
 

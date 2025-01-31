@@ -43,6 +43,8 @@ interface VDIDatasetContact {
   }
 }
 
+
+@Suppress("unused")
 fun VDIDatasetContact(
   name: String,
   email: String?,
@@ -54,6 +56,7 @@ fun VDIDatasetContact(
   isPrimary: Boolean,
 ): VDIDatasetContact =
   VDIDatasetContactImpl(name, email, affiliation, city, state, country, address, isPrimary)
+
 
 private data class VDIDatasetContactImpl(
   @JsonProperty(VDIDatasetContact.JsonKey.Name)

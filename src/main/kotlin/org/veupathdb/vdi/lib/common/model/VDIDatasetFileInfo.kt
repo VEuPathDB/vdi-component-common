@@ -19,8 +19,11 @@ interface VDIDatasetFileInfo {
   }
 }
 
+
+@Suppress("unused")
 fun VDIDatasetFileInfo(filename: String, size: ULong): VDIDatasetFileInfo =
   VDIDatasetFileInfoImpl(filename, size)
+
 
 private data class VDIDatasetFileInfoImpl @JsonCreator constructor(
   @JsonProperty(VDIDatasetFileInfo.JsonKey.FileName)

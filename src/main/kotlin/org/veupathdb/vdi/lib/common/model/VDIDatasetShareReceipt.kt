@@ -9,8 +9,11 @@ interface VDIDatasetShareReceipt {
   val action: VDIShareReceiptAction
 }
 
+
+@Suppress("unused")
 fun VDIDatasetShareReceipt(action: VDIShareReceiptAction): VDIDatasetShareReceipt =
   VDIDatasetShareReceiptImpl(action)
+
 
 private data class VDIDatasetShareReceiptImpl @JsonCreator constructor(
   @JsonProperty("action")

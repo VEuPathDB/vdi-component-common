@@ -92,7 +92,7 @@ interface VDIDatasetMeta {
    * Collection of PubMed identifiers.
    */
   @get:JsonGetter(JsonKey.Publications)
-  val publications: Collection<String>
+  val publications: Collection<VDIDatasetPublication>
 
   @get:JsonGetter(JsonKey.Hyperlinks)
   val hyperlinks: Collection<VDIDatasetHyperlink>
@@ -214,7 +214,7 @@ fun VDIDatasetMeta(
   sourceURL: String?,
   created: OffsetDateTime,
   dependencies: Collection<VDIDatasetDependency>,
-  publications: Collection<String>,
+  publications: Collection<VDIDatasetPublication>,
   hyperlinks: Collection<VDIDatasetHyperlink>,
   organisms: Collection<String>,
   contacts: Collection<VDIDatasetContact>,
@@ -284,7 +284,7 @@ private data class VDIDatasetMetaImpl @JsonCreator constructor(
   override val dependencies: Collection<VDIDatasetDependency>,
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Publications)
-  override val publications: Collection<String>,
+  override val publications: Collection<VDIDatasetPublication>,
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Hyperlinks)
   override val hyperlinks: Collection<VDIDatasetHyperlink>,
