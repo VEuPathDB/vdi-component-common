@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 
 
+/**
+ * @since 15.0.0
+ */
 @JsonDeserialize(`as` = VDIDatasetContactImpl::class)
 interface VDIDatasetContact {
   @get:JsonGetter(JsonKey.Name)
@@ -44,6 +47,9 @@ interface VDIDatasetContact {
 }
 
 
+/**
+ * @since 15.0.0
+ */
 @Suppress("unused")
 fun VDIDatasetContact(
   name: String,

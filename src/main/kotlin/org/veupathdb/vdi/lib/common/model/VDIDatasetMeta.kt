@@ -11,6 +11,9 @@ import org.veupathdb.vdi.lib.json.JSON
 import java.io.InputStream
 import java.time.OffsetDateTime
 
+/**
+ * @since 1.0.0
+ */
 @JsonDeserialize(`as` = VDIDatasetMetaImpl::class)
 interface VDIDatasetMeta {
   /**
@@ -47,6 +50,9 @@ interface VDIDatasetMeta {
   @get:JsonGetter(JsonKey.Name)
   val name: String
 
+  /**
+   * @since 15.0.0
+   */
   @get:JsonGetter(JsonKey.ShortName)
   val shortName: String?
 
@@ -62,9 +68,15 @@ interface VDIDatasetMeta {
   @get:JsonGetter(JsonKey.Description)
   val description: String?
 
+  /**
+   * @since 15.0.0
+   */
   @get:JsonGetter(JsonKey.ShortAttribution)
   val shortAttribution: String?
 
+  /**
+   * @since 15.0.0
+   */
   @get:JsonGetter(JsonKey.Category)
   val category: String?
 
@@ -72,12 +84,16 @@ interface VDIDatasetMeta {
    * Name or identifier for the originating source of the dataset.
    *
    * This value MUST NOT be [blank][String.isBlank].
+   *
+   * @since 2.0.0
    */
   @get:JsonGetter(JsonKey.Origin)
   val origin: String
 
   /**
    * Optional URL for the dataset's origin.
+   *
+   * @since 2.2.0
    */
   @get:JsonGetter(JsonKey.SourceURL)
   val sourceURL: String?
@@ -90,21 +106,34 @@ interface VDIDatasetMeta {
 
   /**
    * Collection of PubMed identifiers.
+   *
+   * @since 15.0.0
    */
   @get:JsonGetter(JsonKey.Publications)
   val publications: Collection<VDIDatasetPublication>
 
+  /**
+   * @since 15.0.0
+   */
   @get:JsonGetter(JsonKey.Hyperlinks)
   val hyperlinks: Collection<VDIDatasetHyperlink>
 
+  /**
+   * @since 15.0.0
+   */
   @get:JsonGetter(JsonKey.Organisms)
   val organisms: Collection<String>
 
+  /**
+   * @since 15.0.0
+   */
   @get:JsonGetter(JsonKey.Contacts)
   val contacts: Collection<VDIDatasetContact>
 
   /**
    * Timestamp for when the dataset was created.
+   *
+   * @since 7.0.0
    */
   @get:JsonGetter(JsonKey.Created)
   val created: OffsetDateTime
