@@ -109,6 +109,9 @@ object Zip {
    * @param maxBytes Max count of decompressed bytes allowed to be read by the
    * given input stream.  Defaults to 10GiB.
    *
+   * If a greater number of bytes than the given value would be decompressed,
+   * this method will throw an [IllegalStateException].
+   *
    * @return A collection of paths to the files that were unzipped.
    */
   fun Path.unzip(into: Path, maxBytes: Long = 10737418240L): Collection<Path> {
@@ -157,6 +160,9 @@ object Zip {
    * @param maxBytes Max count of decompressed bytes allowed to be read by the
    * given input stream.  Defaults to 10GiB.
    *
+   * If a greater number of bytes than the given value would be decompressed,
+   * this method will throw an [IllegalStateException].
+   *
    * @return A sequence of [ZipEntry] and [InputStream] instances contained in
    * the target zip file.
    */
@@ -193,6 +199,9 @@ object Zip {
    *
    * @param maxBytes Max count of decompressed bytes allowed to be read by the
    * given input stream.  Defaults to 10GiB.
+   *
+   * If a greater number of bytes than the given value would be decompressed,
+   * this method will throw an [IllegalStateException].
    *
    * @return A sequence of [ZipEntry] and [InputStream] instances contained in
    * the target zip file.
