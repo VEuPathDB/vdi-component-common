@@ -211,7 +211,7 @@ object Zip {
     var entry  = stream.nextEntry
 
     while (entry != null) {
-      if (stream.uncompressedCount > maxBytes)
+      if (stream.uncompressedCount > maxBytes || entry.size > maxBytes)
         throw IllegalStateException("attempted to decompress more than $maxBytes bytes from a given zip stream")
 
       yield(entry to UncloseableInputStream(stream))
