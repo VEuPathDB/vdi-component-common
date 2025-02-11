@@ -1,5 +1,6 @@
 package org.veupathdb.vdi.lib.common.compression
 
+import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream
 import org.veupathdb.vdi.lib.common.io.UncloseableInputStream
 import java.io.FileNotFoundException
 import java.io.InputStream
@@ -105,9 +106,15 @@ object Zip {
    * **NOTE** This directory must exist and be empty at the time of this method
    * call.
    *
+   * @param maxBytes Max count of decompressed bytes allowed to be read by the
+   * given input stream.  Defaults to 10GiB.
+   *
+   * If a greater number of bytes than the given value would be decompressed,
+   * this method will throw an [IllegalStateException].
+   *
    * @return A collection of paths to the files that were unzipped.
    */
-  fun Path.unzip(into: Path): Collection<Path> {
+  fun Path.unzip(into: Path, maxBytes: Long = 10737418240L): Collection<Path> {
     if (!into.exists())
       throw IllegalStateException("cannot unzip $this into non-existent path $into")
 
@@ -119,7 +126,7 @@ object Zip {
 
     val unzipped = ArrayList<Path>(2)
 
-    zipEntries(this).forEach { (entry, zipStream) ->
+    zipEntries(this, maxBytes).forEach { (entry, zipStream) ->
       val target = into.resolve(entry.name)
 
       if (entry.isDirectory) {
@@ -150,10 +157,16 @@ object Zip {
    *
    * @param zip Path to the zip file whose entries should be sequenced.
    *
+   * @param maxBytes Max count of decompressed bytes allowed to be read by the
+   * given input stream.  Defaults to 10GiB.
+   *
+   * If a greater number of bytes than the given value would be decompressed,
+   * this method will throw an [IllegalStateException].
+   *
    * @return A sequence of [ZipEntry] and [InputStream] instances contained in
    * the target zip file.
    */
-  fun zipEntries(zip: Path): Sequence<Pair<ZipEntry, InputStream>> {
+  fun zipEntries(zip: Path, maxBytes: Long = 10737418240L): Sequence<Pair<ZipEntry, InputStream>> {
     if (!zip.exists())
       throw FileNotFoundException("cannot open non-existent zip file $zip")
 
@@ -165,7 +178,7 @@ object Zip {
 
     return sequence {
       zip.inputStream().use { stream ->
-        for (value in zipEntries(stream))
+        for (value in zipEntries(stream, maxBytes))
           yield(value)
       }
     }
@@ -184,14 +197,23 @@ object Zip {
    *
    * @param zip Input stream containing the zip file contents to unzip.
    *
+   * @param maxBytes Max count of decompressed bytes allowed to be read by the
+   * given input stream.  Defaults to 10GiB.
+   *
+   * If a greater number of bytes than the given value would be decompressed,
+   * this method will throw an [IllegalStateException].
+   *
    * @return A sequence of [ZipEntry] and [InputStream] instances contained in
    * the target zip file.
    */
-  fun zipEntries(zip: InputStream) = sequence {
-    val stream = ZipInputStream(zip)
+  fun zipEntries(zip: InputStream, maxBytes: Long = 10737418240L) = sequence {
+    val stream = ZipArchiveInputStream(zip)
     var entry  = stream.nextEntry
 
     while (entry != null) {
+      if (stream.uncompressedCount > maxBytes)
+        throw IllegalStateException("attempted to decompress more than $maxBytes bytes from a given zip stream")
+
       yield(entry to UncloseableInputStream(stream))
       entry = stream.nextEntry
     }
