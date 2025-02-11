@@ -1,5 +1,7 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.dokka.base.DokkaBase
+import org.jetbrains.dokka.base.DokkaBaseConfiguration
 import java.io.BufferedReader
 
 plugins {
@@ -34,6 +36,12 @@ dependencies {
   testImplementation(libs.junit.api)
   testRuntimeOnly(libs.junit.engine)
   testImplementation(libs.mockito)
+}
+
+buildscript {
+  dependencies {
+    classpath("org.jetbrains.dokka:dokka-base:2.0.0")
+  }
 }
 
 tasks.test {
@@ -76,6 +84,11 @@ val updateReadme = tasks.register("update-readme-version") {
 
 tasks.dokkaHtml {
   outputDirectory.set(file(dokkaPath))
+
+  pluginConfiguration<DokkaBase, DokkaBaseConfiguration> {
+    footerMessage = "© 2023-2025 VEuPathDB"
+    customStyleSheets = listOf(file("docs/css/dokka.css"))
+  }
   finalizedBy(updateReadme)
 }
 
