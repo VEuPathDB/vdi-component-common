@@ -18,8 +18,8 @@ object EnvKey {
     /**
      * Administration endpoint secret key value.
      *
-     * Type: String
-     * Required: yes
+     * * Type: `String`
+     * * Required: **yes**
      */
     const val SecretKey = "ADMIN_AUTH_TOKEN"
   }
@@ -30,14 +30,14 @@ object EnvKey {
   object LDAP {
 
     /**
-     * Type: List<HostAddress>
-     * Required: yes
+     * * Type: `List<[HostAddress]>`
+     * * Required: **yes**
      */
     const val LDAPServers = "LDAP_SERVER"
 
     /**
-     * Type: String
-     * Required: yes
+     * * Type: `String`
+     * * Required: **yes**
      */
     const val OracleBaseDN = "ORACLE_BASE_DN"
   }
@@ -82,74 +82,114 @@ object EnvKey {
     const val CommonPrefix = "DB_CONNECTION_"
 
     /**
-     * Type: Boolean
-     * Required: no
+     * Environment variable prefix for the database enabled/disabled flag.
+     *
+     * * Type: `Boolean`
+     * * Required: no
      */
     const val DBEnabledPrefix = "${CommonPrefix}ENABLED_"
 
     /**
-     * Type: String
-     * Required: no
+     * Environment variable prefix for the database hostname value.
+     *
+     * This environment variable would not typically be used at the same time as
+     * [DBLDAPPrefix] prefixed variables.
+     *
+     * * Type: `String`
+     * * Required: no
      */
     const val DBHostPrefix = "${CommonPrefix}HOST_"
 
     /**
-     * Type: UByte
-     * Required: no
+     * Environment variable prefix for the database host port value.
+     *
+     * This environment variable would not typically be used at the same time as
+     * [DBLDAPPrefix] prefixed variables.
+     *
+     * * Type: `UByte`
+     * * Required: no
      */
     const val DBPortPrefix = "${CommonPrefix}PORT_"
 
     /**
-     * Type: String
-     * Required: yes
+     * Environment variable prefix for the database schema containing the VDI
+     * control tables.
+     *
+     * * Type: `String`
+     * * Required: **yes**
      */
     const val DBControlSchemaPrefix = "${CommonPrefix}CONTROL_SCHEMA_"
 
     /**
-     * Type: String
-     * Required: yes
+     * Environment variable prefix for the database schema containing the VDI
+     * installed-data tables.
+     *
+     * * Type: `String`
+     * * Required: **yes**
      */
     const val DBDataSchemaPrefix = "${CommonPrefix}DATA_SCHEMA_"
 
     /**
-     * Type: String
-     * Required: yes
+     * Environment variable prefix for the unique database identifier.
+     *
+     * * Type: `String`
+     * * Required: **yes**
      */
     const val DBConnectionNamePrefix = "${CommonPrefix}NAME_"
 
     /**
-     * Type: String
-     * Required: yes
+     * Environment variable prefix for the LDAP service name used to lookup
+     * database connection details.
+     *
+     * This environment variable would not typically be used at the same time as
+     * the [DBHostPrefix], [DBPortPrefix], or [DBNamePrefix] prefixed variables.
+     *
+     * * Type: `String`
+     * * Required: no
      */
     const val DBLDAPPrefix = "${CommonPrefix}LDAP_"
 
     /**
-     * Type: String
-     * Required: yes
+     * Environment variable prefix for the database credentials password.
+     *
+     * * Type: `String`
+     * * Required: **yes**
      */
     const val DBPassPrefix = "${CommonPrefix}PASS_"
 
     /**
-     * Type: UByte
-     * Required: no
+     * Environment variable prefix for the database connection pool size.
+     *
+     * * Type: `UByte`
+     * * Required: no
      */
     const val DBPoolPrefix = "${CommonPrefix}POOL_SIZE_"
 
     /**
-     * Type: String
-     * Required: no
+     * Environment variable prefix for the database platform type.
+     *
+     * * Type: `String`
+     * * Required: no
      */
     const val DBPlatformPrefix = "${CommonPrefix}PLATFORM_"
 
     /**
-     * Type: String
-     * Required: no
+     * Environment variable prefix for the target database name.
+     *
+     * This environment variable would not typically be used at the same time as
+     * [DBLDAPPrefix] prefixed variables.
+     *
+     * * Type: `String`
+     * * Required: no
      */
     const val DBNamePrefix = "${CommonPrefix}DB_NAME_"
 
     /**
-     * Type: List<String>
-     * Required: no
+     * Environment variable prefix for a list of data types that the database
+     * represented by the relevant configuration block accepts.
+     *
+     * * Type: `List<String>`
+     * * Required: no
      */
     const val DBConnectionDataTypes = "DB_CONNECTION_DATA_TYPES_"
   }

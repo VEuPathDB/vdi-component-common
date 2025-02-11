@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "org.veupathdb.vdi"
-version = "17.1.1"
+version = "17.1.2"
 description = "Common components for VDI projects"
 
 repositories {
@@ -27,11 +27,12 @@ repositories {
 }
 
 dependencies {
+  api(libs.compression)
+
   implementation(libs.json)
 
   implementation(libs.ldap)
   implementation(libs.coroutines)
-  implementation(libs.compression)
 
   testImplementation(libs.junit.api)
   testRuntimeOnly(libs.junit.engine)
