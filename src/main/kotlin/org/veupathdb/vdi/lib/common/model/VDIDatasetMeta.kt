@@ -310,19 +310,19 @@ private data class VDIDatasetMetaImpl @JsonCreator constructor(
   override val created: OffsetDateTime,
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Dependencies)
-  override val dependencies: Collection<VDIDatasetDependency>,
+  override val dependencies: Collection<VDIDatasetDependency> = emptyList(),
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Publications)
-  override val publications: Collection<VDIDatasetPublication>,
+  override val publications: Collection<VDIDatasetPublication> = emptyList(),
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Hyperlinks)
-  override val hyperlinks: Collection<VDIDatasetHyperlink>,
+  override val hyperlinks: Collection<VDIDatasetHyperlink> = emptyList(),
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Organisms)
-  override val organisms: Collection<String>,
+  override val organisms: Collection<String> = emptyList(),
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Contacts)
-  override val contacts: Collection<VDIDatasetContact>,
+  override val contacts: Collection<VDIDatasetContact> = emptyList(),
 ) : VDIDatasetMeta {
   init {
     if (projects.isEmpty())
