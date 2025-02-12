@@ -1,5 +1,6 @@
 package org.veupathdb.vdi.lib.common.model
 
+import com.fasterxml.jackson.annotation.JsonAlias
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonGetter
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -15,7 +16,7 @@ interface VDIDatasetFileInfo {
 
   object JsonKey {
     const val FileName = "filename"
-    const val FileSize = "size"
+    const val FileSize = "fileSize"
   }
 }
 
@@ -30,6 +31,7 @@ private data class VDIDatasetFileInfoImpl @JsonCreator constructor(
   override val filename: String,
 
   @JsonProperty(VDIDatasetFileInfo.JsonKey.FileSize)
+  @JsonAlias("size")
   override val size: ULong,
 ) : VDIDatasetFileInfo {
   init {
