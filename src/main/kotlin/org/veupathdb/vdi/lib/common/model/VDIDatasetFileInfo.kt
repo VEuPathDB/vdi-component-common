@@ -1,12 +1,14 @@
 package org.veupathdb.vdi.lib.common.model
 
-import com.fasterxml.jackson.annotation.JsonAlias
-import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonGetter
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.core.JsonParseException
+import com.fasterxml.jackson.core.JsonParser
+import com.fasterxml.jackson.databind.DeserializationContext
+import com.fasterxml.jackson.databind.JsonDeserializer
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
+import com.fasterxml.jackson.databind.node.ObjectNode
 
-@JsonDeserialize(`as` = VDIDatasetFileInfoImpl::class)
+@JsonDeserialize(using = FileInfoAdapter::class)
 interface VDIDatasetFileInfo {
   @get:JsonGetter(JsonKey.FileName)
   val filename: String
@@ -26,16 +28,39 @@ fun VDIDatasetFileInfo(filename: String, size: ULong): VDIDatasetFileInfo =
   VDIDatasetFileInfoImpl(filename, size)
 
 
-private data class VDIDatasetFileInfoImpl @JsonCreator constructor(
-  @JsonProperty(VDIDatasetFileInfo.JsonKey.FileName)
+private data class VDIDatasetFileInfoImpl(
   override val filename: String,
-
-  @JsonProperty(VDIDatasetFileInfo.JsonKey.FileSize)
-  @JsonAlias("size")
   override val size: ULong,
 ) : VDIDatasetFileInfo {
   init {
     if (filename.isBlank())
       throw IllegalArgumentException("filename must not be blank")
+  }
+}
+
+private object FileInfoAdapter : JsonDeserializer<VDIDatasetFileInfo>() {
+  override fun deserialize(parser: JsonParser, ctx: DeserializationContext): VDIDatasetFileInfo {
+    val raw = ctx.readValue(parser, ObjectNode::class.java)
+
+    var name: String? = null
+    var size: ULong? = null
+
+    for ((key, value) in raw.fields()) {
+      when (key) {
+        VDIDatasetFileInfo.JsonKey.FileName -> name = value.textValue()
+          ?: throw JsonParseException("expected $key to be a string but was ${value.nodeType} instead")
+        VDIDatasetFileInfo.JsonKey.FileSize,
+        "size" -> size = (value.takeIf { it.isNumber }
+          ?.asText() ?: throw JsonParseException("expected $key to be a number but was ${value.nodeType} instead"))
+          .toULong()
+      }
+    }
+
+    if (name == null)
+      throw JsonParseException("missing required field: ${VDIDatasetFileInfo.JsonKey.FileName}")
+    if (size == null)
+      throw JsonParseException("missing required field: ${VDIDatasetFileInfo.JsonKey.FileSize}")
+
+    return VDIDatasetFileInfoImpl(name, size)
   }
 }
