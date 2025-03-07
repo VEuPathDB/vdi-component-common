@@ -3,7 +3,9 @@ package org.veupathdb.vdi.lib.common.model
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonGetter
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 
+@JsonDeserialize(`as` = VDIDatasetShareOfferImpl::class)
 interface VDIDatasetShareOffer {
   @get:JsonGetter("action")
   val action: VDIShareOfferAction
