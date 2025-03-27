@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonGetter
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import com.fasterxml.jackson.module.kotlin.readValue
+import org.veupathdb.vdi.lib.common.field.DatasetID
 import org.veupathdb.vdi.lib.common.field.ProjectID
 import org.veupathdb.vdi.lib.common.field.UserID
 import org.veupathdb.vdi.lib.json.JSON
@@ -51,6 +52,8 @@ interface VDIDatasetMeta {
   val name: String
 
   /**
+   * An optional abbreviated name for the dataset.
+   *
    * @since 15.0.0
    */
   @get:JsonGetter(JsonKey.ShortName)
@@ -69,12 +72,16 @@ interface VDIDatasetMeta {
   val description: String?
 
   /**
+   * An optional short attribution value for the dataset.
+   *
    * @since 15.0.0
    */
   @get:JsonGetter(JsonKey.ShortAttribution)
   val shortAttribution: String?
 
   /**
+   * An optional category for the dataset.
+   *
    * @since 15.0.0
    */
   @get:JsonGetter(JsonKey.Category)
@@ -113,22 +120,53 @@ interface VDIDatasetMeta {
   val publications: Collection<VDIDatasetPublication>
 
   /**
+   * Collection of hyperlinks relevant to this VDI dataset.
+   *
    * @since 15.0.0
    */
   @get:JsonGetter(JsonKey.Hyperlinks)
   val hyperlinks: Collection<VDIDatasetHyperlink>
 
   /**
+   * Collection of organisms relevant to this VDI dataset.
+   *
    * @since 15.0.0
    */
   @get:JsonGetter(JsonKey.Organisms)
   val organisms: Collection<String>
 
   /**
+   * Collection of contacts for this VDI dataset.
+   *
    * @since 15.0.0
    */
   @get:JsonGetter(JsonKey.Contacts)
   val contacts: Collection<VDIDatasetContact>
+
+  /**
+   * ID of the original VDI dataset, if this dataset is a revision.
+   *
+   * If this dataset is _not_ a revision, this field must be null.  It is an
+   * error to set this field to a non-null value if [revisionHistory] contains
+   * one or more elements.
+   *
+   * @since 18.0.0
+   */
+  @get:JsonGetter(JsonKey.OriginalID)
+  val originalID: DatasetID?
+
+  /**
+   * List of revisions that have been made to the dataset represented by
+   * [originalID].
+   *
+   * If this dataset is _not_ a revision, this list must be empty.  It is an
+   * error to set this field to a non-empty value if [originalID] is null one or
+   * more elements.
+   *
+   * @since 18.0.0
+   */
+  @get:JsonGetter(JsonKey.RevisionHistory)
+  val revisionHistory: List<VDIDatasetRevision>
 
   /**
    * Timestamp for when the dataset was created.
@@ -148,9 +186,11 @@ interface VDIDatasetMeta {
     const val Name             = "name"
     const val Organisms        = "organisms"
     const val Origin           = "origin"
+    const val OriginalID       = "originalId"
     const val Owner            = "owner"
     const val Projects         = "projects"
     const val Publications     = "publications"
+    const val RevisionHistory  = "revisionHistory"
     const val ShortAttribution = "shortAttribution"
     const val ShortName        = "shortName"
     const val SourceURL        = "sourceUrl"
@@ -203,9 +243,15 @@ fun VDIDatasetMeta(rawJSON: String): VDIDatasetMeta = JSON.readValue(rawJSON)
  *
  * This value MUST NOT be [blank][String.isBlank].
  *
+ * @param shortName An optional abbreviated name for the dataset.
+ *
  * @param summary Optional short summary of the dataset.
  *
  * @param description Optional long-form description of the dataset.
+ *
+ * @param shortAttribution An optional short attribution value for the dataset.
+ *
+ * @param category An optional category for the dataset.
  *
  * @param origin Name or identifier for the originating source of the dataset.
  *
@@ -217,6 +263,20 @@ fun VDIDatasetMeta(rawJSON: String): VDIDatasetMeta = JSON.readValue(rawJSON)
  *
  * @param dependencies Collection of identifiers for external data the dataset
  * depends on.
+ *
+ * @param publications Collection of publications relevant to this VDI dataset.
+ *
+ * @param hyperlinks Collection of hyperlinks relevant to this VDI dataset.
+ *
+ * @param organisms Collection of organisms relevant to this VDI dataset.
+ *
+ * @param contacts Collection of contacts for this VDI dataset.
+ *
+ * @param originalID ID of the original VDI dataset, if this dataset is a
+ * revision.
+ *
+ * @param revisionHistory List of revisions that have been made to the dataset
+ * represented by [originalID].
  *
  * @return A new `VDIDatasetMeta` instance.
  *
@@ -247,6 +307,8 @@ fun VDIDatasetMeta(
   hyperlinks: Collection<VDIDatasetHyperlink>,
   organisms: Collection<String>,
   contacts: Collection<VDIDatasetContact>,
+  originalID: DatasetID?,
+  revisionHistory: List<VDIDatasetRevision>,
 ): VDIDatasetMeta =
   VDIDatasetMetaImpl(
     type             = type,
@@ -267,6 +329,8 @@ fun VDIDatasetMeta(
     hyperlinks       = hyperlinks,
     organisms        = organisms,
     contacts         = contacts,
+    originalID       = originalID,
+    revisionHistory  = revisionHistory,
   )
 
 private data class VDIDatasetMetaImpl @JsonCreator constructor(
@@ -323,6 +387,12 @@ private data class VDIDatasetMetaImpl @JsonCreator constructor(
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Contacts)
   override val contacts: Collection<VDIDatasetContact> = emptyList(),
+
+  @JsonProperty(VDIDatasetMeta.JsonKey.OriginalID)
+  override val originalID: DatasetID?,
+
+  @JsonProperty(VDIDatasetMeta.JsonKey.RevisionHistory)
+  override val revisionHistory: List<VDIDatasetRevision>,
 ) : VDIDatasetMeta {
   init {
     if (projects.isEmpty())
@@ -331,5 +401,9 @@ private data class VDIDatasetMetaImpl @JsonCreator constructor(
       throw IllegalArgumentException("origin must not be blank")
     if (name.isBlank())
       throw IllegalArgumentException("name must not be blank")
+    if (originalID == null && revisionHistory.isNotEmpty())
+      throw IllegalArgumentException("original ID must be null if a revision history is present")
+    if (originalID != null && revisionHistory.isEmpty())
+      throw IllegalArgumentException("revision history must not be empty if an original dataset ID is provided")
   }
 }

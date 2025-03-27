@@ -5,8 +5,8 @@ import org.jetbrains.dokka.base.DokkaBaseConfiguration
 import java.io.BufferedReader
 
 plugins {
-  kotlin("jvm") version "2.1.20"
-  id("org.jetbrains.dokka") version "2.0.0"
+  alias(libs.plugins.kotlin)
+  alias(libs.plugins.dokka)
   `maven-publish`
 }
 
@@ -33,21 +33,27 @@ dependencies {
 
   implementation(libs.ldap)
   implementation(libs.coroutines)
-
-  testImplementation(libs.junit.api)
-  testRuntimeOnly(libs.junit.engine)
-  testImplementation(libs.mockito)
 }
 
 buildscript {
   dependencies {
-    classpath("org.jetbrains.dokka:dokka-base:2.0.0")
+    classpath(libs.build.dokka)
+  }
+}
+
+testing {
+  suites {
+    withType<JvmTestSuite> {
+      useJUnitJupiter(libs.versions.junit)
+      dependencies {
+        implementation(libs.mockito.core)
+        implementation(libs.mockito.junit)
+      }
+    }
   }
 }
 
 tasks.test {
-  useJUnitPlatform()
-
   testLogging {
     events(
       TestLogEvent.FAILED,

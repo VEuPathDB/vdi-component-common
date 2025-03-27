@@ -1,4 +1,14 @@
+[versions]
+dokka = "2.0.0"
+junit = "5.12.1"
+mockito = "5.16.1"
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version = "2.1.20" }
+dokka  = { id = "org.jetbrains.dokka",      version.ref = "dokka"  }
+
 [libraries]
+build-dokka = { group = "org.jetbrains.dokka", name = "dokka-base", version.ref = "dokka" }
 
 # VPDB
 json = { group = "org.veupathdb.vdi", name = "vdi-component-json", version = "1.0.2" }
@@ -9,6 +19,7 @@ coroutines  = { group = "org.jetbrains.kotlinx",    name = "kotlinx-coroutines-c
 compression = { group = "org.apache.commons",       name = "commons-compress",        version = "1.27.1" }
 
 # Testing
-junit-api    = { group = "org.junit.jupiter", name = "junit-jupiter-api",    version = "5.12.1" }
-junit-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version = "5.12.1" }
-mockito      = { group = "org.mockito",       name = "mockito-core",         version = "5.16.1" }
+junit-api     = { group = "org.junit.jupiter", name = "junit-jupiter-api",    version.ref = "junit" }
+junit-engine  = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
+mockito-core  = { group = "org.mockito",       name = "mockito-core",         version.ref = "mockito" }
+mockito-junit = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
