@@ -307,8 +307,8 @@ fun VDIDatasetMeta(
   hyperlinks: Collection<VDIDatasetHyperlink>,
   organisms: Collection<String>,
   contacts: Collection<VDIDatasetContact>,
-  originalID: DatasetID?,
-  revisionHistory: List<VDIDatasetRevision>,
+  originalID: DatasetID? = null,
+  revisionHistory: List<VDIDatasetRevision> = emptyList(),
 ): VDIDatasetMeta =
   VDIDatasetMetaImpl(
     type             = type,
