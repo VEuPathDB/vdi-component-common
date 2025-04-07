@@ -15,9 +15,16 @@ interface VDIDatasetPublication {
   @get:JsonGetter(JsonKey.Citation)
   val citation: String?
 
+  /**
+   * @since 18.0.0
+   */
+  @get:JsonGetter(JsonKey.IsPrimary)
+  val isPrimary: Boolean
+
   object JsonKey {
-    const val Citation = "citation"
-    const val PubMedID = "pubmedId"
+    const val Citation  = "citation"
+    const val PubMedID  = "pubmedId"
+    const val IsPrimary = "isPrimary"
   }
 }
 
@@ -26,8 +33,8 @@ interface VDIDatasetPublication {
  * @since 15.0.0
  */
 @Suppress("unused")
-fun VDIDatasetPublication(pubmedID: String, citation: String?): VDIDatasetPublication =
-  VDIDatasetPublicationImpl(pubmedID, citation)
+fun VDIDatasetPublication(pubmedID: String, citation: String?, isPrimary: Boolean = false): VDIDatasetPublication =
+  VDIDatasetPublicationImpl(pubmedID, citation, isPrimary)
 
 
 private data class VDIDatasetPublicationImpl(
@@ -36,6 +43,9 @@ private data class VDIDatasetPublicationImpl(
 
   @JsonProperty(VDIDatasetPublication.JsonKey.Citation)
   override val citation: String?,
+
+  @JsonProperty(VDIDatasetPublication.JsonKey.IsPrimary)
+  override val isPrimary: Boolean,
 ): VDIDatasetPublication {
   init {
     when {

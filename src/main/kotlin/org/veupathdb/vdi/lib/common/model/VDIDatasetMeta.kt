@@ -405,5 +405,7 @@ private data class VDIDatasetMetaImpl @JsonCreator constructor(
       throw IllegalArgumentException("original ID must be null if a revision history is present")
     if (originalID != null && revisionHistory.isEmpty())
       throw IllegalArgumentException("revision history must not be empty if an original dataset ID is provided")
+    if (publications.isNotEmpty() && publications.count { it.isPrimary } != 1)
+      throw IllegalArgumentException("publication list must contain exactly 1 primary publication")
   }
 }
