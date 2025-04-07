@@ -6,6 +6,14 @@ updates:
   - github-packages
   schedule:
     interval: weekly
+  groups:
+    test-dependencies:
+      patterns:
+      - org.junit.*
+      - org.mockito.*
+    log4j:
+      patterns:
+      - org.apache.logging.*
 registries:
   github-packages:
     type: maven-repository
