@@ -75,7 +75,7 @@ java {
 }
 
 val docVersion = with(project.version as String) { substring(0, lastIndexOf('.')) } + ".0"
-val dokkaPath = "docs/dokka/$docVersion"
+val dokkaPath = "docs/dokka/"
 
 val updateReadme = tasks.register("update-readme-version") {
   with(ProcessBuilder("sed", "-i", "s/:lib-version: .\\+/:lib-version: ${project.version}/;s/:lib-feature: .\\+/:lib-feature: $docVersion/", "readme.adoc").start()) {
