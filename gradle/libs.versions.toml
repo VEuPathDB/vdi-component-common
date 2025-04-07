@@ -1,7 +1,7 @@
 [versions]
 dokka = "2.0.0"
 junit = "5.12.1"
-mockito = "5.16.1"
+mockito = "5.17.0"
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version = "2.1.20" }
