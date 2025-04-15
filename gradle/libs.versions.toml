@@ -5,7 +5,7 @@ json = { group = "org.veupathdb.vdi", name = "vdi-component-json", version = "1.
 
 # Implementation
 ldap        = { group = "org.unbroken-dome.base62", name = "base62",                  version = "1.1.0" }
-coroutines  = { group = "org.jetbrains.kotlinx",    name = "kotlinx-coroutines-core", version = "1.10.1" }
+coroutines  = { group = "org.jetbrains.kotlinx",    name = "kotlinx-coroutines-core", version = "1.10.2" }
 compression = { group = "org.apache.commons",       name = "commons-compress",        version = "1.27.1" }
 
 # Testing
