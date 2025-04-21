@@ -19,8 +19,11 @@ import org.veupathdb.vdi.lib.common.model.VDIDatasetType
  * @since v10.1.0
  */
 data class UninstallRequest(
-  @JsonProperty(JSONKeys.VDIID)     val vdiID:     DatasetID,
-  @JsonProperty(JSONKeys.ProjectID) val projectID: ProjectID,
+  @JsonProperty(JSONKeys.VDIID)
+  val vdiID: DatasetID,
+
+  @JsonProperty(JSONKeys.ProjectID)
+  val projectID: ProjectID,
 
   /**
    * Type information for the target dataset.

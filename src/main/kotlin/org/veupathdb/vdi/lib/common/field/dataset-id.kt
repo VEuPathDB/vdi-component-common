@@ -49,7 +49,7 @@ fun DatasetID(raw: String): DatasetID {
  *
  * @return A new random dataset ID.
  */
-fun DatasetID(): DatasetID {
+suspend fun DatasetID(): DatasetID {
   return DatasetID(ShortID.generate())
 }
 
