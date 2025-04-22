@@ -21,7 +21,7 @@ object ShortID {
    * Cap on generated random int values to keep those values within 30 bits for
    * lossless serialization, which significantly reduces the chance of conflict.
    */
-  private const val MaxRandomInt = 1_073_741_823
+  private const val MaxRandomInt = 1.shl(30).minus(1)
 
   /**
    * Base62 Alphabet

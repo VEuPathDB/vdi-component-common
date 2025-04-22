@@ -39,30 +39,34 @@ object TempFiles {
   @OptIn(ExperimentalPathApi::class)
   inline fun <T> withTempDirectory(fn: (directory: Path) -> T): T {
     val dir = makeTempDirectory()
-    val out = fn(dir)
-    dir.deleteRecursively()
-    return out
+    return try {
+      fn(dir)
+    } finally {
+      dir.deleteRecursively()
+    }
   }
 
   inline fun <T> withTempFile(fn: (file: Path) -> T): T {
     val file = makeTempFile()
-    val out  = fn(file)
-    file.deleteIfExists()
-    return out
+    return try {
+      fn(file)
+    } finally {
+      file.deleteIfExists()
+    }
   }
 
   @OptIn(ExperimentalPathApi::class)
   inline fun <T> withTempPath(fn: (path: Path) -> T): T {
     val path = makeTempPath()
-    val out  = fn(path)
-
-    if (path.exists()) {
-      if (path.isDirectory())
-        path.deleteRecursively()
-      else
-        path.deleteIfExists()
+    return try {
+      fn(path)
+    } finally {
+      if (path.exists()) {
+        if (path.isDirectory())
+          path.deleteRecursively()
+        else
+          path.deleteIfExists()
+      }
     }
-
-    return out
   }
 }
