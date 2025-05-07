@@ -6,15 +6,17 @@ import com.fasterxml.jackson.annotation.JsonValue
 enum class VDIDatasetVisibility {
   Private,
   Protected,
+  Controlled,
   Public,
   ;
 
   @get:JsonValue
   val value
     get() = when (this) {
-      Private   -> "private"
-      Protected -> "protected"
-      Public    -> "public"
+      Private    -> "private"
+      Protected  -> "protected"
+      Controlled -> "controlled"
+      Public     -> "public"
     }
 
   companion object {

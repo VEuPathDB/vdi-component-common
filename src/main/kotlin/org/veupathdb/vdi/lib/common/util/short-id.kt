@@ -6,7 +6,13 @@ import kotlinx.coroutines.sync.withLock
 import org.veupathdb.vdi.lib.common.OriginTimestamp
 import kotlin.random.Random
 
-
+/**
+ * VDI Short ID Generator
+ *
+ * Implementation of VDI-specific dataset ID generation.  This ID generator is
+ * not suitable for general purpose use; it operates on VDI specifics at a time
+ * resolution in seconds.
+ */
 object ShortID {
   /**
    * Maximum allowed value for tie-breaking before resetting the counter for the
@@ -97,15 +103,14 @@ object ShortID {
   private var lastTime = timestamp()
 
   /**
-   * Generates a 15 digit time-based identifier encoded in base-62.
+   * Generates a 13 digit time-based identifier encoded in base-62.
    *
    * This identifier is constructed of the following parts:
    *
-   * 1. A random 16-bit worker ID generated on class load.
-   * 2. A tie-breaker, incremented if multiple IDs are generated within the same
-   *    second.
-   * 3. The number of seconds passed since [OriginTimestamp].
-   * 4. 7 bytes of random data
+   * 1. Counter of seconds since [OriginTimestamp].
+   * 2. [Tie-breaker][tieBreaker] value for handling multiple ID requests within
+   *    a single system-clock second.
+   * 3. A random 30-bit int value.
    *
    * @return A new identifier string.
    */

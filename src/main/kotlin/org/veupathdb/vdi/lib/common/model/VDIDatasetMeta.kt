@@ -63,7 +63,7 @@ interface VDIDatasetMeta {
    * Optional short summary of the dataset.
    */
   @get:JsonGetter(JsonKey.Summary)
-  val summary: String?
+  val summary: String
 
   /**
    * Optional long-form description of the dataset.
@@ -176,6 +176,14 @@ interface VDIDatasetMeta {
   @get:JsonGetter(JsonKey.Created)
   val created: OffsetDateTime
 
+  /**
+   * Additional dataset properties/characteristics.
+   *
+   * @since 18.0.0
+   */
+  @get:JsonGetter(JsonKey.Properties)
+  val properties: VDIDatasetProperties?
+
   object JsonKey {
     const val Category         = "category"
     const val Contacts         = "contacts"
@@ -189,6 +197,7 @@ interface VDIDatasetMeta {
     const val OriginalID       = "originalId"
     const val Owner            = "owner"
     const val Projects         = "projects"
+    const val Properties       = "properties"
     const val Publications     = "publications"
     const val RevisionHistory  = "revisionHistory"
     const val ShortAttribution = "shortAttribution"
@@ -295,7 +304,7 @@ fun VDIDatasetMeta(
   owner: UserID,
   name: String,
   shortName: String?,
-  summary: String?,
+  summary: String,
   description: String?,
   shortAttribution: String?,
   category: String?,
@@ -309,6 +318,7 @@ fun VDIDatasetMeta(
   contacts: Collection<VDIDatasetContact>,
   originalID: DatasetID? = null,
   revisionHistory: List<VDIDatasetRevision> = emptyList(),
+  properties: VDIDatasetProperties? = null,
 ): VDIDatasetMeta =
   VDIDatasetMetaImpl(
     type             = type,
@@ -331,6 +341,7 @@ fun VDIDatasetMeta(
     contacts         = contacts,
     originalID       = originalID,
     revisionHistory  = revisionHistory,
+    properties       = properties,
   )
 
 private data class VDIDatasetMetaImpl @JsonCreator constructor(
@@ -353,7 +364,7 @@ private data class VDIDatasetMetaImpl @JsonCreator constructor(
   override val shortName: String?,
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Summary)
-  override val summary: String?,
+  override val summary: String,
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Description)
   override val description: String?,
@@ -393,6 +404,9 @@ private data class VDIDatasetMetaImpl @JsonCreator constructor(
 
   @JsonProperty(VDIDatasetMeta.JsonKey.RevisionHistory)
   override val revisionHistory: List<VDIDatasetRevision>,
+
+  @JsonProperty(VDIDatasetMeta.JsonKey.Properties)
+  override val properties: VDIDatasetProperties?,
 ) : VDIDatasetMeta {
   init {
     if (projects.isEmpty())
