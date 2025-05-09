@@ -10,7 +10,7 @@
 :lib-feature: 18.0.0
 
 image:https://img.shields.io/github/license/{gh-group}/{gh-name}[title="License"]
-image:https://img.shields.io/badge/docs-dokka-ff69b4[link="https://{gh-group}.github.io/{gh-name}"]
+image:https://img.shields.io/badge/docs-dokka-ff69b4[link="https://{gh-group}.github.io/{gh-name}/dokka/{lib-feature}"]
 image:https://img.shields.io/github/v/tag/{gh-group}/{gh-name}[GitHub tag (latest SemVer)]
 
 Common JSON handling functionality for all VDI JVM-based projects.
