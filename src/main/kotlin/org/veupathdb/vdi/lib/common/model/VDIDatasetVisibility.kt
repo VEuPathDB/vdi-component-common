@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonValue
 enum class VDIDatasetVisibility {
   Private,
   Protected,
-  Controlled,
   Public,
   ;
 
@@ -15,7 +14,6 @@ enum class VDIDatasetVisibility {
     get() = when (this) {
       Private    -> "private"
       Protected  -> "protected"
-      Controlled -> "controlled"
       Public     -> "public"
     }
 
@@ -27,14 +25,7 @@ enum class VDIDatasetVisibility {
         ?: throw IllegalArgumentException("Unrecognized VDIDatasetVisibility value: $value")
 
     @JvmStatic
-    fun fromStringOrNull(value: String): VDIDatasetVisibility? {
-      value.lowercase().let {
-        for (enum in entries)
-          if (enum.value == it)
-            return enum
-      }
-
-      return null
-    }
+    fun fromStringOrNull(value: String): VDIDatasetVisibility? =
+      value.lowercase().let { entries.firstOrNull { e -> e.value == it } }
   }
 }
