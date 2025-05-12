@@ -32,7 +32,6 @@ enum class VDIDatasetRevisionAction(
   Extend(1u, "extend"),
   ;
 
-  @JsonValue
   override fun toString() = stringValue
 
   companion object {
