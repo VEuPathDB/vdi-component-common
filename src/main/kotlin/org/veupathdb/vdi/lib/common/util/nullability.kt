@@ -20,7 +20,7 @@ import kotlin.contracts.contract
  * @return Either the value of the receiver, if it was not `null`, or the value
  * returned by executing the block [fn].
  */
-inline infix fun <T> T?.or(fn: () -> T): T = this ?: fn()
+inline infix fun <T> T?.orElse(fn: () -> T): T = this ?: fn()
 
 /**
  * Tests if the target object reference is null.

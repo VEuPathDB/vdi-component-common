@@ -400,13 +400,13 @@ private data class VDIDatasetMetaImpl @JsonCreator constructor(
   override val contacts: Collection<VDIDatasetContact> = emptyList(),
 
   @JsonProperty(VDIDatasetMeta.JsonKey.OriginalID)
-  override val originalID: DatasetID?,
+  override val originalID: DatasetID? = null,
 
   @JsonProperty(VDIDatasetMeta.JsonKey.RevisionHistory)
-  override val revisionHistory: List<VDIDatasetRevision>,
+  override val revisionHistory: List<VDIDatasetRevision> = emptyList(),
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Properties)
-  override val properties: VDIDatasetProperties?,
+  override val properties: VDIDatasetProperties? = null,
 ) : VDIDatasetMeta {
   init {
     if (projects.isEmpty())
