@@ -1,4 +1,6 @@
 .idea/
+!.idea/inspectionProfiles/Project_Default.xml
+
 .gradle/
 build/
 .env

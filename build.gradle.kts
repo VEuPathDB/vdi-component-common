@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "org.veupathdb.vdi"
-version = "18.0.0-b2"
+version = "18.0.0-b4"
 description = "Common components for VDI projects"
 
 repositories {
@@ -33,6 +33,7 @@ dependencies {
 
   implementation(libs.ldap)
   implementation(libs.coroutines)
+  implementation(libs.log.slf4j.api)
 }
 
 buildscript {

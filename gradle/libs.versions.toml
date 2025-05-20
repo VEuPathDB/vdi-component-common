@@ -10,6 +10,8 @@ dokka  = { id = "org.jetbrains.dokka",      version.ref = "dokka"  }
 [libraries]
 build-dokka = { group = "org.jetbrains.dokka", name = "dokka-base", version.ref = "dokka" }
 
+log-slf4j-api = { group = "org.slf4j",                name = "slf4j-api",         version = "2.0.17" }
+
 # VPDB
 json = { group = "org.veupathdb.vdi", name = "vdi-component-json", version = "1.0.2" }
 

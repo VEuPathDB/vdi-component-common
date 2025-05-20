@@ -80,14 +80,6 @@ interface VDIDatasetMeta {
   val shortAttribution: String?
 
   /**
-   * An optional category for the dataset.
-   *
-   * @since 15.0.0
-   */
-  @get:JsonGetter(JsonKey.Category)
-  val category: String?
-
-  /**
    * Name or identifier for the originating source of the dataset.
    *
    * This value MUST NOT be [blank][String.isBlank].
@@ -185,7 +177,6 @@ interface VDIDatasetMeta {
   val properties: VDIDatasetProperties?
 
   object JsonKey {
-    const val Category         = "category"
     const val Contacts         = "contacts"
     const val Created          = "created"
     const val Dependencies     = "dependencies"
@@ -260,8 +251,6 @@ fun VDIDatasetMeta(rawJSON: String): VDIDatasetMeta = JSON.readValue(rawJSON)
  *
  * @param shortAttribution An optional short attribution value for the dataset.
  *
- * @param category An optional category for the dataset.
- *
  * @param origin Name or identifier for the originating source of the dataset.
  *
  * This value MUST NOT be [blank][String.isBlank].
@@ -307,7 +296,6 @@ fun VDIDatasetMeta(
   summary: String,
   description: String?,
   shortAttribution: String?,
-  category: String?,
   origin: String,
   sourceURL: String?,
   created: OffsetDateTime,
@@ -330,7 +318,6 @@ fun VDIDatasetMeta(
     summary          = summary,
     description      = description,
     shortAttribution = shortAttribution,
-    category         = category,
     origin           = origin,
     sourceURL        = sourceURL,
     created          = created,
@@ -371,9 +358,6 @@ private data class VDIDatasetMetaImpl @JsonCreator constructor(
 
   @JsonProperty(VDIDatasetMeta.JsonKey.ShortAttribution)
   override val shortAttribution: String?,
-
-  @JsonProperty(VDIDatasetMeta.JsonKey.Category)
-  override val category: String?,
 
   @JsonProperty(VDIDatasetMeta.JsonKey.Origin)
   override val origin: String,
