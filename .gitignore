@@ -1,5 +1,6 @@
-.idea/
-!.idea/inspectionProfiles/Project_Default.xml
+.idea/*
+
+!.idea/inspectionProfiles
 
 .gradle/
 build/
