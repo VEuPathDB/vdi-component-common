@@ -9,6 +9,9 @@
 :lib-version: 17.1.6
 :lib-feature: 17.1.0
 
+[IMPORTANT]
+This repository has been merged into the primary VDI service repo.
+
 image:https://img.shields.io/github/license/{gh-group}/{gh-name}[title="License"]
 image:https://img.shields.io/badge/docs-dokka-ff69b4[link="https://{gh-group}.github.io/{gh-name}"]
 image:https://img.shields.io/github/v/tag/{gh-group}/{gh-name}[GitHub tag (latest SemVer)]
